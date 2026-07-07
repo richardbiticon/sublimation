@@ -1516,3 +1516,20 @@
   .cf-hero-logo { display: block; height: 66px; width: auto; }
   @media (min-width: 768px) { .cf-hero-logo { height: 88px; } }
   .cf-logo-ink { display: block; height: 58px; width: auto; }
+
+  /* ============ HERO → BODY BLEED + REGISTERED MARK ============ */
+  .hero-bleed {
+    height: 130px;
+    background: linear-gradient(to bottom, #0A0A0A 0%, #180608 24%, #FCF8F7 100%);
+  }
+  @media (min-width: 768px) {
+    .hero-bleed { height: 200px; }
+  }
+  /* Tasteful superscript registered mark for large display headings */
+  .rmark {
+    font-size: 0.4em;
+    vertical-align: 0.55em;
+    font-weight: 600;
+    letter-spacing: 0;
+    margin-left: 0.02em;
+  }
