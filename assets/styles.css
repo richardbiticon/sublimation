@@ -1533,3 +1533,42 @@
     letter-spacing: 0;
     margin-left: 0.02em;
   }
+
+  /* ============ THE PROMISE CARD (echoes the hero's warm-dark material) ============ */
+  .cf-promise {
+    position: relative;
+    overflow: hidden;
+    padding: 34px 32px;
+    color: #fff;
+    border: 1px solid rgba(194,57,70,0.28);
+    background:
+      radial-gradient(130% 90% at 12% 0%, rgba(194,57,70,0.24) 0%, rgba(194,57,70,0) 56%),
+      linear-gradient(160deg, #1f070a 0%, #0A0A0A 52%, #050505 100%);
+    box-shadow: 0 30px 60px -34px rgba(31,7,10,0.65);
+  }
+  .cf-promise::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 4px;
+    background: #C23946;
+  }
+  .cf-promise-stat {
+    padding: 20px 0;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .cf-promise-stat:first-of-type { border-top: 0; padding-top: 4px; }
+  .cf-promise-num {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 1.9rem;
+    line-height: 1;
+    letter-spacing: 0.005em;
+    color: #fff;
+  }
+  .cf-promise-sub {
+    margin-top: 8px;
+    color: rgba(255,255,255,0.62);
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
