@@ -1470,8 +1470,8 @@
       position: relative;
       width: 100%;
       max-width: 440px;
-      height: 220px;
-      margin: 26px auto 0;
+      height: 196px;
+      margin: 16px auto 0;
       pointer-events: auto;
     }
     .hero-jersey-stage { position: relative; width: 100%; height: 100%; }
@@ -1510,3 +1510,9 @@
     .hero-jersey-slider { height: 172px; margin-top: 16px; }
     .hero-jersey-slide { width: 140px; }
   }
+
+  /* ============ CUSTOMFUZE BRAND LOCKUP ============ */
+  .cf { text-transform: none !important; white-space: nowrap; }
+  .cf-hero-logo { display: block; height: 66px; width: auto; }
+  @media (min-width: 768px) { .cf-hero-logo { height: 88px; } }
+  .cf-logo-ink { display: block; height: 58px; width: auto; }
