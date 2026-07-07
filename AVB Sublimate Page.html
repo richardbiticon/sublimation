@@ -1,0 +1,3258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Custom Sublimated Jerseys | All Volleyball</title>
+<meta name="description" content="Volleyball-only, system-driven, built for clubs and teams that expect more. Gear you love. On time. Under budget. Done correctly. Guaranteed.">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Tailwind via the official Play CDN. Prototype only; the Shopify port should compile Tailwind from source. -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'avb-black':    '#0A0A0A',
+          'avb-body':     '#242424',
+          'avb-red':      '#C23946',
+          'avb-red-dark': '#A82F3B',
+          'avb-offwhite': '#FCF8F7',
+          'avb-grey':     '#6B6C6C',
+          'avb-divider':  '#E8E6E4',
+          'avb-promo':    '#F2F2F2',
+        },
+        fontFamily: {
+          display: ['Oswald', 'sans-serif'],
+          body:    ['Inter',  'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: #242424; background: #fff; -webkit-font-smoothing: antialiased; }
+  .font-display { font-family: 'Oswald', sans-serif; }
+  .display-tight { letter-spacing: 0; }
+  #deadline, #build, #timeline, #service { scroll-margin-top: 32px; }
+
+  /* Hero loads with a single slow fade. No looping. */
+  .hero-fade { opacity: 0; animation: heroFade 900ms ease-out 80ms forwards; }
+  @keyframes heroFade { to { opacity: 1; } }
+
+  .hero-copy {
+    position: relative;
+    z-index: 20;
+  }
+  .hero-jersey-slider {
+    display: none;
+  }
+  @media (min-width: 1024px) {
+    .hero-shell {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .hero-copy {
+      max-width: 46rem;
+    }
+    .hero-jersey-slider {
+      position: absolute;
+      top: 50%;
+      right: clamp(32px, 5vw, 72px);
+      z-index: 5;
+      display: block;
+      min-width: 0;
+      width: clamp(300px, 32vw, 500px);
+      height: min(70vh, 460px);
+      min-height: 360px;
+      pointer-events: auto;
+      transform: translateY(-50%);
+    }
+    .hero-jersey-slider:focus-visible {
+      outline: 1px solid rgba(255,255,255,0.42);
+      outline-offset: 8px;
+    }
+    .hero-jersey-stage {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+    .hero-jersey-slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      width: min(56%, 300px);
+      height: 94%;
+      margin: auto;
+      opacity: 0;
+      transform: translateX(0) scale(0.78);
+      transform-origin: center;
+      transition: opacity 520ms ease, transform 680ms cubic-bezier(.2,.7,.2,1), filter 520ms ease;
+      will-change: transform, opacity, filter;
+    }
+    .hero-jersey-placeholder {
+      display: block;
+      width: 100%;
+      max-height: calc(100% - 64px);
+      flex: 1 1 auto;
+      min-height: 0;
+      background: transparent;
+      filter: drop-shadow(0 26px 40px rgba(0,0,0,0.42));
+    }
+    .hero-jersey-caption {
+      flex: 0 0 auto;
+      text-align: center;
+      color: #fff;
+      text-shadow: 0 8px 22px rgba(0,0,0,0.55);
+    }
+    .hero-jersey-title {
+      display: block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+    .hero-jersey-desc {
+      display: block;
+      margin-top: 7px;
+      color: rgba(255,255,255,0.72);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+    .hero-jersey-slide[data-slot="-2"] {
+      z-index: 0;
+      opacity: 0.16;
+      filter: blur(3px) saturate(0.75);
+      transform: translateX(-70%) scale(0.66);
+    }
+    .hero-jersey-slide[data-slot="-1"] {
+      z-index: 1;
+      opacity: 0.34;
+      filter: blur(2px) saturate(0.85);
+      transform: translateX(-36%) scale(0.82);
+    }
+    .hero-jersey-slide[data-slot="0"] {
+      z-index: 3;
+      opacity: 1;
+      filter: none;
+      transform: translateX(0) scale(1.08);
+    }
+    .hero-jersey-slide[data-slot="1"] {
+      z-index: 1;
+      opacity: 0.34;
+      filter: blur(2px) saturate(0.85);
+      transform: translateX(36%) scale(0.82);
+    }
+    .hero-jersey-slide[data-slot="2"] {
+      z-index: 0;
+      opacity: 0.16;
+      filter: blur(3px) saturate(0.75);
+      transform: translateX(70%) scale(0.66);
+    }
+    .hero-jersey-slide.is-resetting {
+      opacity: 0;
+      transition: none;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-jersey-slide {
+        transition: none;
+      }
+    }
+  }
+
+  /* Reveal-on-scroll. CSS hides the initial state; GSAP fades in.
+     If GSAP fails to load, the JS fallback adds .is-visible. */
+  .reveal { opacity: 0; transform: translateY(20px); }
+  .reveal.is-visible { opacity: 1; transform: translateY(0);
+    transition: opacity 800ms cubic-bezier(.2,.7,.2,1), transform 800ms cubic-bezier(.2,.7,.2,1); }
+
+  /* Timeline rows stay readable when dates are close together. */
+  .tl-step {
+    display: grid;
+    grid-template-columns: 34px minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: center;
+    padding: 13px 0;
+    border-top: 1px solid #E8E6E4;
+  }
+  .tl-step:first-child { border-top: 0; padding-top: 0; }
+  .tl-step-marker {
+    width: 28px; height: 28px;
+    border-radius: 999px;
+    background: #fff;
+    border: 1.5px solid #0A0A0A;
+    color: #0A0A0A;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+  .tl-step-kicker {
+    color: #6B6C6C;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    line-height: 1.25;
+    text-transform: uppercase;
+  }
+  .tl-step-title {
+    color: #0A0A0A;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.05;
+    text-transform: uppercase;
+  }
+  .tl-step-date {
+    color: #0A0A0A;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .tl-step--target .tl-step-marker {
+    background: #C23946;
+    border-color: #C23946;
+    color: #fff;
+    box-shadow: 0 0 0 6px rgba(194,57,70,0.12);
+  }
+  .tl-step--critical .tl-step-marker {
+    border-color: rgba(194,57,70,0.8);
+    color: #C23946;
+  }
+  .tl-step--critical.tl-step--target .tl-step-marker {
+    background: #C23946;
+    color: #fff;
+  }
+  .tl-step--past .tl-step-date,
+  .tl-step--past .tl-step-kicker { color: #C23946; }
+  @media (max-width: 640px) {
+    .tl-step { grid-template-columns: 32px minmax(0, 1fr); gap: 10px 12px; }
+    .tl-step-date { grid-column: 2; justify-self: start; font-size: 1rem; margin-top: -4px; }
+  }
+
+  /* Calendar */
+  .cal-cell { aspect-ratio: 1 / 1; }
+  .cal-day {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    font-feature-settings: 'tnum';
+    font-size: 0.9rem;
+    transition: background-color 150ms ease, color 150ms ease, box-shadow 150ms ease;
+  }
+  .cal-day--default  { color: #0A0A0A; }
+  .cal-day--default:hover  { background-color: #FCF8F7; }
+  .cal-day--today    { color: #0A0A0A; font-weight: 600; box-shadow: inset 0 0 0 1px #0A0A0A; }
+  .cal-day--today:hover    { background-color: #0A0A0A; color: #fff; }
+  .cal-day--selected { background-color: #C23946; color: #fff; font-weight: 600; }
+  .cal-day--critical {
+    color: #C23946;
+    background-color: rgba(194,57,70,0.12);
+    box-shadow: inset 0 0 0 1px rgba(194,57,70,0.42);
+    font-weight: 600;
+  }
+  .cal-day--critical:hover { background-color: rgba(194,57,70,0.8); color: #fff; }
+  .cal-day--selected-critical {
+    background-color: rgba(194,57,70,0.88);
+    color: #fff;
+    font-weight: 600;
+    box-shadow: inset 0 0 0 2px #0A0A0A;
+  }
+  .cal-day--disabled { color: rgba(107,108,108,0.32); cursor: not-allowed; }
+
+  .scenario-chip {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    padding: 7px 14px;
+    border: 1px solid #E8E6E4;
+    background: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-weight: 600;
+    color: #0A0A0A;
+    transition: all 200ms ease;
+    cursor: pointer;
+  }
+  .scenario-chip:hover { border-color: #0A0A0A; background: #0A0A0A; color: #fff; }
+  .scenario-chip.active { background: #0A0A0A; color: #fff; border-color: #0A0A0A; }
+  .scenario-chip.critical {
+    color: #C23946;
+    background: rgba(194,57,70,0.08);
+    border-color: rgba(194,57,70,0.42);
+  }
+  .scenario-chip.critical:hover { background: rgba(194,57,70,0.8); color: #fff; border-color: rgba(194,57,70,0.8); }
+  .scenario-chip.active.critical { background: #C23946; color: #fff; border-color: #C23946; }
+  .scenario-chip:disabled {
+    color: rgba(107,108,108,0.38);
+    background: #F2F2F2;
+    border-color: #E8E6E4;
+    cursor: not-allowed;
+  }
+  .scenario-chip:disabled:hover {
+    color: rgba(107,108,108,0.38);
+    background: #F2F2F2;
+    border-color: #E8E6E4;
+  }
+
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { scrollbar-width: none; }
+
+  /* Buttons */
+  .btn-red { background-color: #C23946; transition: background-color 200ms ease, transform 250ms cubic-bezier(.2,.7,.2,1); }
+  .btn-red:hover { background-color: #A82F3B; }
+  .btn-ghost-light { transition: background-color 200ms ease, border-color 200ms ease; }
+  .btn-ghost-light:hover { background-color: rgba(255,255,255,.06); }
+  .btn-ghost-dark { transition: background-color 200ms ease, color 200ms ease; }
+  .btn-ghost-dark:hover { background-color: #0A0A0A; color: #fff; }
+
+  .hero-actions {
+    position: relative;
+    align-items: flex-start;
+  }
+  .hero-more {
+    position: relative;
+    display: inline-flex;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .hero-more::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 10px;
+    height: 100%;
+  }
+  .hero-brand-cta,
+  .hero-option {
+    min-height: 54px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border: 1px solid rgba(255,255,255,0.45);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1;
+    padding: 0 22px;
+    white-space: nowrap;
+    background: rgba(255,255,255,0.03);
+    transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease;
+  }
+  .hero-brand-cta { min-width: 176px; }
+  .hero-brand-label-open { display: none; }
+  .hero-more:hover .hero-brand-label-default,
+  .hero-more:focus-within .hero-brand-label-default,
+  .hero-more.is-open .hero-brand-label-default { display: none; }
+  .hero-more:hover .hero-brand-label-open,
+  .hero-more:focus-within .hero-brand-label-open,
+  .hero-more.is-open .hero-brand-label-open { display: inline; }
+  .hero-brand-cta:hover,
+  .hero-option:hover {
+    background: rgba(255,255,255,0.09);
+    border-color: rgba(255,255,255,0.7);
+    color: #fff;
+  }
+  .hero-brand-cta svg,
+  .hero-option svg {
+    width: 16px;
+    height: 16px;
+    color: #C23946;
+    transition: transform 180ms ease;
+  }
+  .hero-brand-cta:hover svg,
+  .hero-option:hover svg { transform: translateX(3px); }
+  .hero-options {
+    position: absolute;
+    top: 0;
+    left: calc(100% + 10px);
+    display: inline-flex;
+    align-items: stretch;
+    gap: 10px;
+    width: max-content;
+    overflow: visible;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-18px);
+    pointer-events: none;
+    transition: opacity 160ms ease, transform 200ms ease, visibility 0ms linear 200ms;
+    z-index: 30;
+  }
+  .hero-more:hover .hero-options,
+  .hero-more:focus-within .hero-options,
+  .hero-more.is-open .hero-options {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    pointer-events: auto;
+    transition-delay: 0ms;
+  }
+  .hero-option {
+    opacity: 0;
+    transform: translateX(-12px);
+    transition: opacity 160ms ease, transform 200ms ease, background-color 180ms ease, border-color 180ms ease;
+  }
+  .hero-more:hover .hero-option,
+  .hero-more:focus-within .hero-option,
+  .hero-more.is-open .hero-option {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .hero-more:hover .hero-option:nth-child(2),
+  .hero-more:focus-within .hero-option:nth-child(2),
+  .hero-more.is-open .hero-option:nth-child(2) { transition-delay: 35ms; }
+  .hero-more:hover .hero-option:nth-child(3),
+  .hero-more:focus-within .hero-option:nth-child(3),
+  .hero-more.is-open .hero-option:nth-child(3) { transition-delay: 70ms; }
+  @media (max-width: 900px) {
+    .hero-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .hero-more {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      width: 100%;
+    }
+    .hero-more:hover .hero-brand-label-default,
+    .hero-more:focus-within .hero-brand-label-default { display: inline; }
+    .hero-more:hover .hero-brand-label-open,
+    .hero-more:focus-within .hero-brand-label-open { display: none; }
+    .hero-more.is-open .hero-brand-label-default { display: none; }
+    .hero-more.is-open .hero-brand-label-open { display: inline; }
+    .hero-brand-cta,
+    .hero-option { width: 100%; }
+    .hero-options {
+      position: static;
+      top: auto;
+      left: auto;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      width: 100%;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-6px);
+      pointer-events: none;
+      transition: max-height 220ms ease, opacity 160ms ease, transform 180ms ease, visibility 0ms linear 220ms;
+    }
+    .hero-more:hover .hero-options,
+    .hero-more:focus-within .hero-options {
+      max-height: 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-6px);
+      pointer-events: none;
+    }
+    .hero-more.is-open .hero-options {
+      max-height: 80px;
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
+      transition-delay: 0ms;
+    }
+    .hero-option {
+      opacity: 0;
+      transform: translateY(-4px);
+      padding-inline: 14px;
+      transition-delay: 0ms !important;
+    }
+    .hero-more:hover .hero-option,
+    .hero-more:focus-within .hero-option {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    .hero-more.is-open .hero-option {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @media (max-width: 640px) {
+    .hero-more::after { display: none; }
+    .hero-options {
+      grid-template-columns: 1fr;
+    }
+    .hero-more:hover .hero-options,
+    .hero-more:focus-within .hero-options,
+    .hero-more.is-open .hero-options {
+      max-height: 220px;
+    }
+  }
+
+  .link-inline { text-decoration: underline; text-decoration-color: transparent;
+    text-underline-offset: 4px; transition: text-decoration-color 200ms ease, color 150ms ease; }
+  .link-inline:hover { text-decoration-color: currentColor; }
+
+  body.modal-open { overflow: hidden; }
+  .pdf-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(10,10,10,0.78);
+    padding: 5dvh 5vw;
+  }
+  .pdf-modal.is-open { display: flex; }
+  .pdf-modal-dialog {
+    width: 90vw;
+    height: 90dvh;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.42);
+  }
+  .pdf-modal-bar {
+    min-height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 18px;
+    background: #0A0A0A;
+    color: #fff;
+    border-bottom: 3px solid #C23946;
+  }
+  .pdf-modal-kicker {
+    color: rgba(255,255,255,0.55);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .pdf-modal-title {
+    margin-top: 2px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+  .pdf-modal-close {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,0.24);
+    color: #fff;
+    transition: background-color 160ms ease, border-color 160ms ease;
+  }
+  .pdf-modal-close:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.48);
+  }
+  .pdf-modal-frame {
+    flex: 1;
+    width: 100%;
+    min-height: 0;
+    border: 0;
+    background: #F2F2F2;
+  }
+  .pdf-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 10px 18px;
+    border-top: 1px solid #E8E6E4;
+    color: #6B6C6C;
+    font-size: 0.78rem;
+    line-height: 1.35;
+  }
+  .pdf-modal-open {
+    color: #0A0A0A;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+  @media (max-width: 640px) {
+    .pdf-modal { padding: 5dvh 5vw; }
+    .pdf-modal-bar { min-height: 54px; padding: 12px 14px; }
+    .pdf-modal-title { font-size: 1rem; }
+    .pdf-modal-footer { align-items: flex-start; flex-direction: column; }
+  }
+
+  /* ============ DEADLINE CARDS ============ */
+  .deadline-card {
+    position: relative;
+    padding: 36px 32px;
+    overflow: hidden;
+  }
+  @media (min-width: 768px) {
+    .deadline-card { padding: 48px 44px; }
+  }
+  .deadline-card--guaranteed { background: #0A0A0A; color: #fff; }
+  .deadline-card--guaranteed::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 4px;
+    background: #C23946;
+  }
+  .deadline-card--estimated { background: #fff; border: 1px solid #E8E6E4; color: #0A0A0A; }
+  .deadline-kicker {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .deadline-stamp {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px;
+    background: rgba(194,57,70,0.16);
+    color: #C23946;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    font-weight: 700;
+    border: 1px solid rgba(194,57,70,0.32);
+  }
+  .deadline-card--estimated .deadline-stamp {
+    background: #F2F2F2;
+    color: #6B6C6C;
+    border-color: #E8E6E4;
+  }
+  .deadline-number {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    line-height: 0.9;
+    text-transform: uppercase;
+    font-size: clamp(3.2rem, 7vw, 5.2rem);
+  }
+  .deadline-number-line {
+    display: block;
+    white-space: nowrap;
+  }
+  .deadline-number-line--sub {
+    margin-top: 4px;
+  }
+  @media (min-width: 1024px) {
+    .deadline-number {
+      font-size: clamp(3.15rem, 5.2vw, 5.2rem);
+    }
+  }
+  .deadline-copy {
+    margin-top: 22px;
+    max-width: 28rem;
+    line-height: 1.6;
+    font-size: 1rem;
+  }
+  @media (min-width: 768px) {
+    .deadline-copy { font-size: 1.05rem; }
+  }
+  .deadline-grid {
+    margin-top: 32px;
+    padding-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .deadline-card--guaranteed .deadline-grid { border-top: 1px solid rgba(255,255,255,0.15); }
+  .deadline-card--estimated .deadline-grid { border-top: 1px solid #E8E6E4; }
+  .deadline-grid-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .deadline-card--guaranteed .deadline-grid-label { color: rgba(255,255,255,0.55); }
+  .deadline-card--estimated .deadline-grid-label { color: #6B6C6C; }
+  .deadline-grid-value {
+    margin-top: 6px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  /* ============ BUILD / BRAND TABS (no 3D) ============ */
+  .build-brand-tabs {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(132px, 1fr));
+    gap: 8px;
+    overflow-x: auto;
+    max-width: 100%;
+    padding-bottom: 4px;
+  }
+  @media (max-width: 720px) {
+    .build-brand-tabs { display: flex; }
+    .build-brand-tab { flex: 0 0 154px; }
+  }
+  .build-brand-tab {
+    min-height: 74px;
+    border: 1px solid #E8E6E4;
+    background: #fff;
+    color: #0A0A0A;
+    padding: 13px 14px;
+    text-align: left;
+    position: relative;
+    transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+    cursor: pointer;
+  }
+  .build-brand-tab::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--tab-accent, #C23946);
+    opacity: 0;
+    transition: opacity 180ms ease;
+  }
+  .build-brand-tab:hover {
+    border-color: #0A0A0A;
+    transform: translateY(-1px);
+  }
+  .build-brand-tab[aria-selected="true"] {
+    border-color: var(--tab-accent, #C23946);
+    box-shadow: inset 0 0 0 1px var(--tab-accent, #C23946);
+  }
+  .build-brand-tab[aria-selected="true"]::before { opacity: 1; }
+  .build-brand-tab-name {
+    display: block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+  .build-brand-tab-label {
+    display: block;
+    margin-top: 8px;
+    color: #6B6C6C;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+
+  .brand-tabs-shell {
+    margin-top: 32px;
+    padding: 10px 0 12px;
+    position: sticky;
+    top: 0;
+    z-index: 60;
+    background: rgba(252,248,247,0.94);
+    border-top: 1px solid rgba(232,230,228,0.78);
+    border-bottom: 1px solid rgba(232,230,228,0.78);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transition: box-shadow 180ms ease, padding 180ms ease;
+  }
+  .brand-tabs-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .brand-tabs-shell.is-floating {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-top: 0;
+    padding: 10px 6px;
+    box-shadow: 0 12px 30px rgba(10,10,10,0.08);
+  }
+  .brand-tabs-shell.is-floating .brand-tabs-inner {
+    padding: 0 24px;
+  }
+  .brand-tabs-placeholder {
+    display: none;
+  }
+  .brand-tabs-placeholder.is-active {
+    display: block;
+  }
+  @media (max-width: 720px) {
+    .brand-tabs-shell {
+      margin-top: 28px;
+      padding: 9px 0 10px;
+    }
+    .brand-tabs-shell.is-floating .brand-tabs-inner {
+      padding: 0;
+    }
+  }
+
+  .brand-products {
+    margin-top: 32px;
+  }
+  .brand-products-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 14px;
+  }
+  .brand-products-kicker {
+    color: #6B6C6C;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .brand-products-title {
+    margin-top: 4px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #0A0A0A;
+    font-size: 1.45rem;
+    line-height: 1;
+  }
+  .brand-products-note {
+    color: #6B6C6C;
+    font-size: 0.82rem;
+    line-height: 1.45;
+    max-width: 22rem;
+    text-align: right;
+  }
+  .brand-product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .product-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    background: #fff;
+    border: 1px solid #E8E6E4;
+    overflow: hidden;
+    transition: border-color 180ms ease, transform 220ms cubic-bezier(.2,.7,.2,1), box-shadow 220ms ease;
+  }
+  .product-card:hover {
+    border-color: #0A0A0A;
+    transform: translateY(-2px);
+    box-shadow: 0 18px 40px -26px rgba(10,10,10,0.42);
+  }
+  .product-photo {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    background:
+      linear-gradient(135deg, rgba(252,248,247,0.96), rgba(242,242,242,0.86)),
+      radial-gradient(circle at 78% 14%, rgba(194,57,70,0.16), transparent 38%);
+    overflow: hidden;
+  }
+  .product-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 18px;
+    transition: transform 320ms cubic-bezier(.2,.7,.2,1);
+  }
+  .product-photo.product-photo--contain img {
+    object-fit: contain;
+    padding: 24px;
+  }
+  .product-card:hover .product-photo img { transform: scale(1.045); }
+  .product-photo-fallback {
+    position: absolute;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 22px;
+    color: #0A0A0A;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    line-height: 1.02;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .product-photo.is-fallback .product-photo-fallback { display: flex; }
+  .product-photo.is-fallback img { display: none; }
+  .product-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 16px;
+  }
+  .product-title {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #0A0A0A;
+    font-size: 1.05rem;
+    line-height: 1.08;
+  }
+  .product-desc {
+    margin-top: 8px;
+    color: #242424;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    min-height: 4.05rem;
+  }
+  .product-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 16px;
+    padding-top: 13px;
+    border-top: 1px solid #E8E6E4;
+  }
+  .product-meta-label {
+    display: block;
+    color: #6B6C6C;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .product-meta-value {
+    display: block;
+    margin-top: 4px;
+    color: #0A0A0A;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+  .product-cta {
+    margin-top: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 12px;
+    background: #0A0A0A;
+    color: #fff;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: background-color 160ms ease;
+  }
+  .product-cta:hover { background: #C23946; }
+  @media (max-width: 980px) {
+    .brand-product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .brand-products-head { align-items: start; flex-direction: column; }
+    .brand-products-note { text-align: left; }
+  }
+  @media (max-width: 720px) {
+    .brand-product-grid {
+      display: flex;
+      overflow-x: auto;
+      gap: 12px;
+      padding: 0 6px 10px 0;
+      margin-right: -6px;
+      scroll-snap-type: x mandatory;
+      scroll-padding-left: 0;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .brand-product-grid::-webkit-scrollbar { display: none; }
+    .brand-product-grid .product-card {
+      flex: 0 0 min(82vw, 330px);
+      scroll-snap-align: start;
+    }
+    .product-photo { aspect-ratio: 4 / 3; }
+    .product-desc { min-height: 0; }
+  }
+  @media (max-width: 560px) {
+    .brand-product-grid .product-card { flex-basis: 84vw; }
+  }
+
+  .cfz-compare {
+    margin-top: 32px;
+    background: #fff;
+    border: 1px solid #E8E6E4;
+    overflow-x: auto;
+  }
+  .cfz-compare table {
+    width: 100%;
+    min-width: 780px;
+    border-collapse: collapse;
+  }
+  .cfz-compare th,
+  .cfz-compare td {
+    padding: 18px 20px;
+    text-align: left;
+    vertical-align: top;
+    border-top: 1px solid #E8E6E4;
+    transition: background-color 160ms ease, box-shadow 160ms ease, color 160ms ease;
+  }
+  .cfz-compare thead th {
+    border-top: 0;
+    color: #6B6C6C;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+  .cfz-compare th:first-child,
+  .cfz-compare td:first-child {
+    width: 24%;
+  }
+  .cfz-compare th:nth-child(2),
+  .cfz-compare td:nth-child(2) {
+    width: 38%;
+  }
+  .cfz-compare th:nth-child(3),
+  .cfz-compare td:nth-child(3) {
+    width: 38%;
+  }
+  .cfz-compare-primary {
+    background: #0A0A0A;
+    color: #fff !important;
+  }
+  .cfz-compare td.cfz-compare-primary {
+    background: #fff;
+    color: #0A0A0A !important;
+    box-shadow: inset 4px 0 0 #C23946;
+  }
+  .cfz-compare tbody tr:hover > td {
+    background: #FCF8F7;
+  }
+  .cfz-compare tbody tr:hover > td.cfz-compare-primary {
+    background: #FFF4F5;
+    box-shadow: inset 4px 0 0 #C23946;
+  }
+  .cfz-compare .is-col-hover {
+    background: rgba(194,57,70,0.055);
+  }
+  .cfz-compare th.is-col-hover {
+    background: #FCF8F7;
+    color: #0A0A0A;
+    box-shadow: inset 0 -3px 0 #C23946;
+  }
+  .cfz-compare th.cfz-compare-primary.is-col-hover {
+    background: #0A0A0A;
+    color: #fff !important;
+    box-shadow: inset 0 -3px 0 #C23946;
+  }
+  .cfz-compare td.cfz-compare-primary.is-col-hover,
+  .cfz-compare tbody tr:hover > td.cfz-compare-primary.is-col-hover {
+    background: #FFF0F2;
+    box-shadow: inset 4px 0 0 #C23946, inset 0 0 0 999px rgba(194,57,70,0.035);
+  }
+  .cfz-compare td.is-cell-hover {
+    box-shadow: inset 0 0 0 2px rgba(194,57,70,0.5);
+  }
+  .cfz-compare td.cfz-compare-primary.is-cell-hover {
+    box-shadow: inset 4px 0 0 #C23946, inset 0 0 0 2px rgba(194,57,70,0.55);
+  }
+  .cfz-compare-metric {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    color: #0A0A0A;
+    line-height: 1.08;
+    text-transform: uppercase;
+  }
+  .cfz-compare-value {
+    color: #242424;
+    font-size: 0.96rem;
+    line-height: 1.5;
+  }
+  .cfz-compare-value strong {
+    display: block;
+    margin-bottom: 4px;
+    color: #0A0A0A;
+    font-weight: 700;
+  }
+  .cfz-compare td.cfz-compare-primary .cfz-compare-value strong {
+    color: #C23946;
+  }
+  @media (max-width: 720px) {
+    .cfz-compare { margin-top: 28px; overflow-x: visible; }
+    .cfz-compare table { min-width: 0; table-layout: fixed; }
+    .cfz-compare th:first-child,
+    .cfz-compare td:first-child { display: none; }
+    .cfz-compare th:nth-child(2),
+    .cfz-compare td:nth-child(2),
+    .cfz-compare th:nth-child(3),
+    .cfz-compare td:nth-child(3) { width: 50%; }
+    .cfz-compare th,
+    .cfz-compare td { padding: 16px 12px; }
+    .cfz-compare-cell::before {
+      content: attr(data-metric);
+      display: block;
+      margin-bottom: 10px;
+      color: #6B6C6C;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+    .cfz-compare-value { font-size: 0.88rem; line-height: 1.45; }
+  }
+
+  .detail-row {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: 18px;
+    padding: 22px 0;
+    border-top: 1px solid #E8E6E4;
+    align-items: start;
+  }
+  .detail-row:first-child { border-top: 0; padding-top: 4px; }
+  .detail-num {
+    width: 34px; height: 34px;
+    border-radius: 999px;
+    background: #FCF8F7;
+    border: 1px solid #E8E6E4;
+    color: #0A0A0A;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .detail-row[data-brand-accent] .detail-num {
+    color: var(--brand-accent, #C23946);
+    border-color: var(--brand-accent, #C23946);
+    background: rgba(255,255,255,0.6);
+  }
+  .detail-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #0A0A0A;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+  .detail-desc {
+    color: #242424;
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .build-side-proof {
+    display: grid;
+    grid-template-columns: 110px minmax(0, 1fr);
+    gap: 14px;
+    padding: 11px 0;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .build-side-proof:first-child { border-top: 0; padding-top: 0; }
+  .build-side-proof-label {
+    color: rgba(255,255,255,0.5);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1.35;
+  }
+  .build-side-proof-value {
+    color: #fff;
+    font-size: 0.92rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  /* ============ SERVICE GRID ============ */
+  .svc-cell {
+    background: #fff;
+    padding: 32px 28px;
+  }
+  .svc-cell-num {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    color: #C23946;
+    font-size: 1.6rem;
+    line-height: 1;
+    margin-bottom: 14px;
+  }
+  .svc-cell-title {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #0A0A0A;
+    font-size: 1.05rem;
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+  .svc-cell-desc {
+    color: #242424;
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  /* ============ COMPARE GRID ============ */
+  .compare-row {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+  }
+  .compare-mark { flex: 0 0 22px; margin-top: 2px; line-height: 1; }
+  .compare-typical .compare-mark { color: rgba(255,255,255,0.3); font-size: 1.3rem; }
+  .compare-us .compare-mark { color: #C23946; }
+
+  /* ============ BRAND LOGO RAIL ============ */
+  .brand-stage {
+    overflow: hidden;
+    border-top: 1px solid #E8E6E4;
+    border-bottom: 1px solid #E8E6E4;
+    padding: 18px 0;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  }
+  .brand-wheel {
+    display: flex;
+    gap: 16px;
+    width: max-content;
+    animation: brandMarquee 32s linear infinite;
+    will-change: transform;
+  }
+  .brand-stage:hover .brand-wheel { animation-play-state: paused; }
+  @media (prefers-reduced-motion: reduce) {
+    .brand-wheel { animation: none; }
+  }
+  .brand-card {
+    flex: 0 0 clamp(190px, 22vw, 260px);
+    min-height: 136px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    background: #fff;
+    border: 1px solid #E8E6E4;
+    padding: 22px;
+  }
+  .brand-logo {
+    width: 100%;
+    max-width: 180px;
+    max-height: 66px;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: 0.82;
+    transition: filter 200ms ease, opacity 200ms ease, transform 250ms cubic-bezier(.2,.7,.2,1);
+  }
+  .brand-wordmark {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.3rem;
+    font-weight: 600;
+    line-height: 1;
+    text-transform: lowercase;
+    color: #0A0A0A;
+    opacity: 0.82;
+    transition: opacity 200ms ease, transform 250ms cubic-bezier(.2,.7,.2,1);
+  }
+  .brand-card:hover .brand-logo { filter: none; opacity: 1; transform: scale(1.04); }
+  .brand-card:hover .brand-wordmark { opacity: 1; transform: scale(1.04); }
+  @keyframes brandMarquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ============ STAT STRIP ============ */
+  .stat-block {
+    position: relative;
+    padding-top: 32px;
+  }
+  .stat-block::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 40px; height: 2px;
+    background: #C23946;
+  }
+  @media (min-width: 1024px) {
+    .stat-block { padding-left: 28px; }
+    .stat-block::before { left: 28px; }
+    .stat-block:first-child { padding-left: 0; }
+    .stat-block:first-child::before { left: 0; }
+  }
+</style>
+</head>
+<body class="font-body">
+
+<!-- ====================================================================
+     SECTION 1. HERO
+     ==================================================================== -->
+<section class="relative w-full h-[100svh] max-h-[680px] md:h-[540px] md:max-h-none xl:h-[580px] bg-avb-black overflow-hidden hero-fade">
+  <div class="absolute inset-0" style="
+       background:
+         radial-gradient(ellipse 75% 55% at 22% 12%, rgba(194,57,70,0.55) 0%, rgba(194,57,70,0) 60%),
+         radial-gradient(ellipse 65% 50% at 82% 88%, rgba(80,16,24,0.75) 0%, rgba(80,16,24,0) 65%),
+         radial-gradient(ellipse 55% 40% at 50% 50%, rgba(30,6,10,0.55) 0%, rgba(30,6,10,0) 70%),
+         linear-gradient(155deg, #050505 0%, #1A0508 45%, #0A0A0A 100%);"></div>
+  <div class="absolute inset-0 opacity-[0.07] mix-blend-overlay pointer-events-none" style="
+       background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22220%22 height=%22220%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%222%22 stitchTiles=%22stitch%22/><feColorMatrix values=%220 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0%22/></filter><rect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/></svg>');"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/10"></div>
+
+  <div class="hero-shell relative h-full max-w-[1440px] mx-auto px-6 lg:px-12 flex flex-col justify-center py-10 md:py-12">
+    <div class="hero-copy max-w-3xl">
+      <div class="text-[0.7rem] uppercase tracking-[0.3em] text-avb-red font-semibold mb-4 md:mb-5">Custom Sublimated Jerseys · Volleyball-only</div>
+      <h1 class="font-display font-semibold text-white uppercase leading-[0.95] display-tight text-[2.2rem] sm:text-[2.8rem] md:text-[3.6rem] lg:text-[4.4rem]">
+        For programs<br>where average<br>isn't enough.
+      </h1>
+      <p class="mt-5 text-white/85 text-[1rem] md:text-[1.15rem] max-w-xl leading-relaxed">
+        Most dealers are too big to care, too small to deliver, or just not built to keep up. We're volleyball-only — and built to keep up.
+      </p>
+      <div class="hero-actions mt-7 flex flex-col sm:flex-row gap-3">
+        <a href="#build" data-brand-target="customfuze" class="group inline-flex items-center justify-center gap-2 btn-red text-white font-medium px-6 py-3.5 text-[1rem]">
+          Start with CustomFuze
+          <svg class="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+        </a>
+        <div class="hero-more" id="hero-more">
+          <a href="#build" id="hero-more-toggle" class="hero-brand-cta" data-brand-target="adidas" aria-expanded="false" aria-controls="hero-options">
+            <span class="hero-brand-label-default">Major Brands</span>
+            <span class="hero-brand-label-open">Adidas</span>
+            <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+          </a>
+          <div class="hero-options" id="hero-options" aria-label="Major brand shortcuts">
+            <a href="#build" class="hero-option" data-brand-target="asics">
+              ASICS
+              <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+            </a>
+            <a href="#build" class="hero-option" data-brand-target="mizuno">
+              Mizuno
+              <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+            </a>
+            <a href="#build" class="hero-option" data-brand-target="under-armour">
+              Under Armour
+              <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-jersey-slider" id="hero-jersey-slider" role="img" aria-label="Brand jersey preview carousel" tabindex="0">
+      <div class="hero-jersey-stage">
+        <figure class="hero-jersey-slide" data-slot="-2">
+          <svg class="hero-jersey-placeholder" viewBox="0 0 320 430" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="hero-jersey-asics" x1="58" y1="38" x2="262" y2="388" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#f4f8ff"/>
+                <stop offset=".44" stop-color="#2f6eb3"/>
+                <stop offset="1" stop-color="#102b50"/>
+              </linearGradient>
+            </defs>
+            <path d="M94 36 130 20c17 18 43 18 60 0l36 16 38 62-36 36v240H92V134L56 98 94 36Z" fill="url(#hero-jersey-asics)"/>
+            <path d="M130 20c17 18 43 18 60 0l-12 50h-36L130 20Z" fill="#fff" opacity=".82"/>
+            <path d="M96 100c34 22 75 31 128 26M106 150h108M106 302h108" stroke="#fff" stroke-width="5" opacity=".26" fill="none"/>
+            <text x="160" y="238" text-anchor="middle" font-family="Oswald, Arial, sans-serif" font-size="84" font-weight="700" fill="#fff">07</text>
+          </svg>
+          <figcaption class="hero-jersey-caption">
+            <span class="hero-jersey-title">ASICS</span>
+            <span class="hero-jersey-desc">7 Weeks Estimated</span>
+          </figcaption>
+        </figure>
+        <figure class="hero-jersey-slide" data-slot="-1">
+          <svg class="hero-jersey-placeholder" viewBox="0 0 320 430" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="hero-jersey-adidas" x1="48" y1="34" x2="272" y2="390" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#f3f3f3"/>
+                <stop offset=".5" stop-color="#4a4a4a"/>
+                <stop offset="1" stop-color="#111"/>
+              </linearGradient>
+            </defs>
+            <path d="M92 34 130 20c17 18 43 18 60 0l38 14 44 64-40 40v236H88V138L48 98 92 34Z" fill="url(#hero-jersey-adidas)"/>
+            <path d="M130 20c17 18 43 18 60 0l-11 48h-38L130 20Z" fill="#fff" opacity=".84"/>
+            <path d="M104 92v230M124 94v228M144 98v224" stroke="#fff" stroke-width="6" opacity=".25"/>
+            <text x="178" y="242" text-anchor="middle" font-family="Oswald, Arial, sans-serif" font-size="82" font-weight="700" fill="#fff">23</text>
+          </svg>
+          <figcaption class="hero-jersey-caption">
+            <span class="hero-jersey-title">Adidas</span>
+            <span class="hero-jersey-desc">6-10 Weeks Estimated</span>
+          </figcaption>
+        </figure>
+        <figure class="hero-jersey-slide" data-slot="0">
+          <svg class="hero-jersey-placeholder" viewBox="0 0 320 430" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="hero-jersey-red" x1="58" y1="40" x2="270" y2="382" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#9d2431"/>
+                <stop offset=".58" stop-color="#c23946"/>
+                <stop offset="1" stop-color="#2b070b"/>
+              </linearGradient>
+            </defs>
+            <path d="M90 34 128 18c18 20 46 20 64 0l38 16 36 70-34 28v242H88V132l-34-28 36-70Z" fill="url(#hero-jersey-red)"/>
+            <path d="M128 18c18 20 46 20 64 0l-14 54h-36L128 18Z" fill="#111" opacity=".72"/>
+            <path d="M93 96h134M104 134h112M104 320h112" stroke="#fff" stroke-width="5" opacity=".22"/>
+            <path d="M78 82c28 30 61 45 99 45 29 0 53-8 72-25" stroke="#fff" stroke-width="6" opacity=".18" fill="none"/>
+            <text x="160" y="238" text-anchor="middle" font-family="Oswald, Arial, sans-serif" font-size="90" font-weight="700" fill="#fff">30</text>
+          </svg>
+          <figcaption class="hero-jersey-caption">
+            <span class="hero-jersey-title">CustomFuze</span>
+            <span class="hero-jersey-desc">30 Days Guaranteed</span>
+          </figcaption>
+        </figure>
+        <figure class="hero-jersey-slide" data-slot="1">
+          <svg class="hero-jersey-placeholder" viewBox="0 0 320 430" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="hero-jersey-green" x1="58" y1="40" x2="264" y2="390" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#7a8f68"/>
+                <stop offset="1" stop-color="#2f4632"/>
+              </linearGradient>
+            </defs>
+            <path d="M96 34 130 20c17 19 43 19 60 0l34 14 34 58-35 32v250H97V124L62 92 96 34Z" fill="url(#hero-jersey-green)"/>
+            <path d="M130 20c17 19 43 19 60 0l-10 48h-40L130 20Z" fill="#101510" opacity=".72"/>
+            <path d="M101 118h118M112 160h96M112 300h96" stroke="#fff" stroke-width="5" opacity=".2"/>
+            <text x="160" y="238" text-anchor="middle" font-family="Oswald, Arial, sans-serif" font-size="86" font-weight="700" fill="#ff8d2a" stroke="#fff" stroke-width="4">12</text>
+          </svg>
+          <figcaption class="hero-jersey-caption">
+            <span class="hero-jersey-title">Mizuno</span>
+            <span class="hero-jersey-desc">9 Weeks Estimated</span>
+          </figcaption>
+        </figure>
+        <figure class="hero-jersey-slide" data-slot="2">
+          <svg class="hero-jersey-placeholder" viewBox="0 0 320 430" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="hero-jersey-ua" x1="58" y1="40" x2="264" y2="390" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#31353b"/>
+                <stop offset=".55" stop-color="#16191d"/>
+                <stop offset="1" stop-color="#67131e"/>
+              </linearGradient>
+            </defs>
+            <path d="M96 34 130 20c17 19 43 19 60 0l34 14 38 62-37 32v246H95V128L58 96 96 34Z" fill="url(#hero-jersey-ua)"/>
+            <path d="M130 20c17 19 43 19 60 0l-10 48h-40L130 20Z" fill="#fff" opacity=".78"/>
+            <path d="M100 116h120M112 166h96M112 314h96" stroke="#fff" stroke-width="5" opacity=".2"/>
+            <path d="M126 88c18 18 50 18 68 0" stroke="#c23946" stroke-width="8" opacity=".7" fill="none"/>
+            <text x="160" y="238" text-anchor="middle" font-family="Oswald, Arial, sans-serif" font-size="84" font-weight="700" fill="#fff">10</text>
+          </svg>
+          <figcaption class="hero-jersey-caption">
+            <span class="hero-jersey-title">Under Armour</span>
+            <span class="hero-jersey-desc">10 Weeks Estimated</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================================
+     SECTION 1. BUILD DETAILS — text-only, brand-tabbed
+     Service-level promises per line, no fabric / material talk.
+     ==================================================================== -->
+<section id="build" class="bg-avb-offwhite py-24 md:py-32 px-6 lg:px-12">
+  <div class="max-w-[1280px] mx-auto">
+
+    <div class="mb-12 lg:mb-16">
+      <div class="text-[11px] uppercase tracking-[0.25em] text-avb-grey font-semibold mb-4 reveal">01 / Per-line promises</div>
+      <h2 class="font-display font-semibold text-avb-black uppercase reveal display-tight"
+          style="font-size: clamp(2.25rem, 5.5vw, 4rem); line-height: 1;">
+        Start with CustomFuze.<br>Compare the rest.
+      </h2>
+      <p class="mt-5 text-avb-grey text-base md:text-lg max-w-xl reveal">
+        CustomFuze is the first recommendation when the date, budget, and reorder plan need to stay under control. The major brands are still here when the badge is required — but this is the cleanest path for most teams.
+      </p>
+
+      <div id="brand-tabs-sentinel" aria-hidden="true"></div>
+      <div id="brand-tabs-shell" class="brand-tabs-shell reveal">
+        <div class="brand-tabs-inner">
+          <div id="build-brand-tabs" class="build-brand-tabs no-scrollbar" role="tablist" aria-label="Choose a uniform brand"></div>
+        </div>
+      </div>
+      <div id="brand-tabs-placeholder" class="brand-tabs-placeholder" aria-hidden="true"></div>
+
+      <div class="brand-products reveal" aria-label="Selected brand products">
+        <div class="brand-products-head">
+          <div>
+            <div class="brand-products-kicker" id="brand-products-kicker">Featured products</div>
+            <h3 class="brand-products-title" id="brand-products-title">CustomFuze products</h3>
+          </div>
+          <p class="brand-products-note" id="brand-products-note">
+            Quote ranges are planning ranges. Your specialist confirms final team pricing.
+          </p>
+        </div>
+        <div id="brand-product-grid" class="brand-product-grid"></div>
+      </div>
+
+      <div class="cfz-compare reveal" aria-label="CustomFuze comparison against major branded lines">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Metric</th>
+              <th scope="col" class="cfz-compare-primary">CustomFuze</th>
+              <th scope="col" id="cfz-compare-target-heading">Major brands</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cfz-compare-metric">Lead time</td>
+              <td class="cfz-compare-primary cfz-compare-cell" data-metric="Lead time">
+                <div class="cfz-compare-value"><strong>30 days from Design Lock.</strong> Guaranteed in writing on your quote.</div>
+              </td>
+              <td class="cfz-compare-cell" data-metric="Lead time" data-compare-key="lead">
+                <div class="cfz-compare-value"><strong>6 – 10 weeks typical.</strong> Runs on the manufacturer's calendar and allocation queue.</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="cfz-compare-metric">Minimum orders</td>
+              <td class="cfz-compare-primary cfz-compare-cell" data-metric="Minimum orders">
+                <div class="cfz-compare-value"><strong>No reorder minimum.</strong> One replacement jersey midseason is still a real order.</div>
+              </td>
+              <td class="cfz-compare-cell" data-metric="Minimum orders" data-compare-key="minimum">
+                <div class="cfz-compare-value"><strong>Brand minimums can apply.</strong> Adds and reorders depend on the brand's current rules.</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="cfz-compare-metric">Deadline promise</td>
+              <td class="cfz-compare-primary cfz-compare-cell" data-metric="Deadline promise">
+                <div class="cfz-compare-value"><strong>If we miss, freight is on us.</strong> The accountability is simple and visible before you approve.</div>
+              </td>
+              <td class="cfz-compare-cell" data-metric="Deadline promise" data-compare-key="deadline">
+                <div class="cfz-compare-value"><strong>Estimated, then confirmed.</strong> Hard dates arrive once stock, slotting, or allocation clears.</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="cfz-compare-metric">Late roster changes</td>
+              <td class="cfz-compare-primary cfz-compare-cell" data-metric="Late roster changes">
+                <div class="cfz-compare-value"><strong>Handled through your specialist.</strong> Late adds, libero alternates, and split rosters stay manageable.</div>
+              </td>
+              <td class="cfz-compare-cell" data-metric="Late roster changes" data-compare-key="roster">
+                <div class="cfz-compare-value"><strong>Depends on cutoff status.</strong> Changes may be limited once the brand production window closes.</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="cfz-compare-metric">Design continuity</td>
+              <td class="cfz-compare-primary cfz-compare-cell" data-metric="Design continuity">
+                <div class="cfz-compare-value"><strong>Saved artwork and colors.</strong> Reorders pull from the same approved file, palette, and notes.</div>
+              </td>
+              <td class="cfz-compare-cell" data-metric="Design continuity" data-compare-key="design">
+                <div class="cfz-compare-value"><strong>Catalogs can shift.</strong> We preserve the spec, but brand templates can change season to season.</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="cfz-compare-metric">Reorder path</td>
+              <td class="cfz-compare-primary cfz-compare-cell" data-metric="Reorder path">
+                <div class="cfz-compare-value"><strong>One approval email.</strong> Same kit, same look, same price band whenever the roster changes.</div>
+              </td>
+              <td class="cfz-compare-cell" data-metric="Reorder path" data-compare-key="reorder">
+                <div class="cfz-compare-value"><strong>Coordinated window.</strong> We time the reorder around brand availability and production cycles.</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="cfz-compare-metric">Best fit</td>
+              <td class="cfz-compare-primary cfz-compare-cell" data-metric="Best fit">
+                <div class="cfz-compare-value"><strong>Most clubs and teams.</strong> Choose it when speed, flexibility, and year-to-year control matter most.</div>
+              </td>
+              <td class="cfz-compare-cell" data-metric="Best fit" data-compare-key="best">
+                <div class="cfz-compare-value"><strong>Badge-required programs.</strong> Choose Adidas, Mizuno, ASICS, or Under Armour when the brand mark is the priority.</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <div class="grid lg:grid-cols-[minmax(0,1fr)_360px] gap-8 lg:gap-12 items-stretch">
+
+      <!-- Main details panel -->
+      <div class="bg-white border border-avb-divider p-8 md:p-10">
+        <div class="text-[11px] uppercase tracking-[0.22em] text-avb-grey font-semibold mb-2" id="build-brand-kicker">House line</div>
+        <h3 id="build-brand-name" class="font-display font-semibold text-avb-black uppercase text-3xl md:text-4xl mb-4">CustomFuze</h3>
+        <p id="build-brand-copy" class="text-avb-body leading-relaxed max-w-2xl mb-8 text-base md:text-lg"></p>
+        <div id="build-details"></div>
+      </div>
+
+      <!-- Side panel: brand-level guarantees + CTA -->
+      <aside class="bg-avb-black text-white p-8 md:p-10 flex flex-col">
+        <div class="text-[11px] uppercase tracking-[0.22em] text-avb-red font-semibold mb-3">Provider promise</div>
+        <h4 class="font-display font-semibold uppercase text-2xl mb-4 leading-tight" id="build-side-title">House line guarantee</h4>
+        <p class="text-white/85 leading-relaxed text-base mb-6" id="build-side-copy"></p>
+        <div class="space-y-0 pt-4 border-t border-white/15" id="build-side-proofs"></div>
+        <a id="build-side-cta" href="mailto:team@allvolleyball.com" class="mt-auto pt-10 inline-flex items-center gap-2 text-avb-red font-semibold text-xs uppercase tracking-[0.18em] hover:text-white transition-colors">
+          Ask about CustomFuze →
+        </a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================================
+     SECTION 2. TIMELINE PICKER
+     ==================================================================== -->
+<section id="timeline" class="bg-white py-24 md:py-32 px-6 lg:px-12">
+  <div class="max-w-[1280px] mx-auto">
+
+    <div class="mb-12 lg:mb-16">
+      <div class="text-[11px] uppercase tracking-[0.25em] text-avb-grey font-semibold mb-4 reveal">02 / Timeline</div>
+      <h2 class="font-display font-semibold text-avb-black uppercase reveal display-tight"
+          style="font-size: clamp(2.25rem, 5.5vw, 4rem); line-height: 1;">
+        Your timeline,<br>not ours.
+      </h2>
+      <p class="mt-5 text-avb-grey text-base md:text-lg max-w-xl reveal">
+        Pick the date your team needs to be on the court. We'll show you when to start.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-stretch">
+
+      <div class="flex flex-col">
+        <div class="bg-white border border-avb-divider p-6 md:p-8 h-full w-full">
+          <div class="mb-7">
+            <div class="text-[11px] uppercase tracking-[0.22em] text-avb-grey font-semibold mb-2">Selected timeline</div>
+            <h3 id="cal-timeline-title" class="font-display font-semibold text-avb-black uppercase leading-none text-2xl md:text-3xl">CustomFuze Timeline</h3>
+            <p id="cal-timeline-subtitle" class="mt-2 text-sm text-avb-grey leading-relaxed">30-day guaranteed window</p>
+          </div>
+          <div class="flex items-center justify-between mb-6">
+            <button id="cal-prev" class="text-avb-black hover:text-avb-red transition-colors p-1 disabled:text-avb-grey/40 disabled:cursor-not-allowed" aria-label="Previous month">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/></svg>
+            </button>
+            <div id="cal-label" class="font-display font-semibold uppercase tracking-wide text-avb-black text-lg md:text-xl"></div>
+            <button id="cal-next" class="text-avb-black hover:text-avb-red transition-colors p-1 disabled:text-avb-grey/40 disabled:cursor-not-allowed" aria-label="Next month">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
+            </button>
+          </div>
+          <div class="grid grid-cols-7 gap-1 mb-2 text-[10px] uppercase tracking-[0.18em] text-avb-grey font-semibold text-center">
+            <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+          </div>
+          <div id="cal-grid" class="grid grid-cols-7 gap-1"></div>
+          <div class="mt-5 space-y-2 text-xs text-avb-grey">
+            <p id="cal-availability-note"></p>
+            <p><span class="font-semibold text-avb-red">Red dates</span> are rush requests: <span id="cal-rush-note"></span></p>
+            <p id="cal-ideal-note"></p>
+          </div>
+        </div>
+
+        <!-- Quick scenario chips -->
+        <div class="hidden mt-5 flex-wrap items-center gap-2">
+          <span class="text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold mr-1">Quick pick</span>
+          <button class="scenario-chip" data-weeks="5">Tryouts</button>
+          <button class="scenario-chip" data-weeks="6">Tournament weekend</button>
+          <button class="scenario-chip" data-weeks="12">Season opener</button>
+          <button class="scenario-chip" data-weeks="20">Next club year</button>
+        </div>
+      </div>
+
+      <div class="flex">
+        <div class="bg-white border border-avb-divider p-6 md:p-8 h-full w-full flex flex-col">
+
+          <div class="mb-6">
+            <span class="text-[11px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Timeline check</span>
+            <h3 id="tl-summary" class="mt-2 font-display font-semibold text-avb-black uppercase leading-tight text-[1.6rem]"></h3>
+            <p id="tl-helper" class="mt-2 text-sm text-avb-grey leading-relaxed"></p>
+          </div>
+
+          <div id="tl-track"></div>
+
+          <div id="tl-status" class="mt-10 pt-6 border-t border-avb-divider text-base leading-relaxed"></div>
+
+          <div class="mt-auto pt-8">
+            <a href="mailto:team@allvolleyball.com" class="inline-flex w-full items-center justify-center gap-2 btn-red text-white font-medium px-7 py-4 text-base">
+              Send Us Your Roster
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================================
+     SECTION 3. DEADLINE — Two paths, one promise
+     Guaranteed (CustomFuze) vs. Estimated range (all branded)
+     ==================================================================== -->
+<section id="deadline" class="bg-avb-offwhite py-24 md:py-32 px-6 lg:px-12">
+  <div class="max-w-[1280px] mx-auto">
+
+    <div class="mb-12 lg:mb-16">
+      <div class="text-[11px] uppercase tracking-[0.25em] text-avb-grey font-semibold mb-4 reveal">03 / Delivery</div>
+      <h2 class="font-display font-semibold text-avb-black uppercase reveal display-tight"
+          style="font-size: clamp(2.25rem, 5.5vw, 4rem); line-height: 1;">
+        Two paths.<br>One straight answer.
+      </h2>
+      <p class="mt-5 text-avb-grey text-base md:text-lg max-w-xl reveal">
+        Most dealers hide behind "4 to 8 weeks" with no commitment. We tell you up front what we guarantee and what we estimate — because if you can't get a straight answer at the start, things fall through the cracks at the end.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-6 lg:gap-8">
+
+      <!-- CustomFuze: guaranteed -->
+      <article class="deadline-card deadline-card--guaranteed reveal">
+        <div class="deadline-kicker text-avb-red">
+          <span>CustomFuze · House line</span>
+          <span class="deadline-stamp">Guaranteed</span>
+        </div>
+        <div class="deadline-number">
+          <span class="deadline-number-line">30 days.</span>
+          <span class="deadline-number-line deadline-number-line--sub">In writing.</span>
+        </div>
+        <p class="deadline-copy text-white/85">
+          Lock the design today, your team is on the court in 30 days from Design Lock. We sign the date on your quote. If we miss it, we cover the freight — no fine print, no policy fights.
+        </p>
+        <div class="deadline-grid">
+          <div>
+            <div class="deadline-grid-label">Quote in</div>
+            <div class="deadline-grid-value">24 hrs</div>
+          </div>
+          <div>
+            <div class="deadline-grid-label">Design lock</div>
+            <div class="deadline-grid-value">Day 1</div>
+          </div>
+          <div>
+            <div class="deadline-grid-label">On court</div>
+            <div class="deadline-grid-value">Day 30</div>
+          </div>
+        </div>
+        <a href="mailto:team@allvolleyball.com?subject=CustomFuze%20sublimation%20quote" class="mt-8 inline-flex items-center gap-2 btn-red text-white font-medium px-6 py-3.5 text-base">
+          Start a CustomFuze quote
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+        </a>
+      </article>
+
+      <!-- Branded lines: estimated -->
+      <article class="deadline-card deadline-card--estimated reveal">
+        <div class="deadline-kicker text-avb-grey">
+          <span>Adidas · Mizuno · ASICS · Under Armour</span>
+          <span class="deadline-stamp">Estimated</span>
+        </div>
+        <div class="deadline-number">
+          <span class="deadline-number-line">6 – 10 weeks.</span>
+          <span class="deadline-number-line deadline-number-line--sub">Estimated.</span>
+        </div>
+        <p class="deadline-copy text-avb-body">
+          Branded lines run on the manufacturer's calendar, not ours. We share a real range up front, lock a confirmed ship date as soon as the brand clears stock and slotting, and stay on top of it the whole way.
+        </p>
+        <div class="deadline-grid">
+          <div>
+            <div class="deadline-grid-label">Best case</div>
+            <div class="deadline-grid-value text-avb-black">6 wks</div>
+          </div>
+          <div>
+            <div class="deadline-grid-label">Typical</div>
+            <div class="deadline-grid-value text-avb-black">8 wks</div>
+          </div>
+          <div>
+            <div class="deadline-grid-label">Outer edge</div>
+            <div class="deadline-grid-value text-avb-black">10 wks</div>
+          </div>
+        </div>
+        <a id="deadline-brand-cta" href="mailto:team@allvolleyball.com?subject=Branded%20sublimation%20quote" class="mt-8 inline-flex items-center gap-2 border border-avb-black text-avb-black font-medium px-6 py-3.5 text-base btn-ghost-dark">
+          <span id="deadline-brand-cta-text">Ask about a branded line</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+        </a>
+      </article>
+    </div>
+
+    <p class="mt-8 text-sm text-avb-grey reveal">
+      Tournament weekend coming up fast? <a href="mailto:team@allvolleyball.com" class="link-inline text-avb-black font-medium">Send the date.</a> We do rush windows on CustomFuze when the calendar allows.
+    </p>
+  </div>
+</section>
+
+
+<!-- ====================================================================
+     SECTION 4. WE ARE THE GO-TO — Volleyball-first
+     ==================================================================== -->
+<section class="bg-white py-24 md:py-32 px-6 lg:px-12">
+  <div class="max-w-[1280px] mx-auto">
+
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-20 lg:mb-24">
+      <div class="lg:col-span-5">
+        <div class="text-[11px] uppercase tracking-[0.25em] text-avb-grey font-semibold mb-4 reveal">04 / The go-to</div>
+        <h2 class="font-display font-semibold text-avb-black uppercase reveal display-tight"
+            style="font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.02;">
+          One sport.<br>Thirty years.<br>No detours.
+        </h2>
+      </div>
+      <div class="lg:col-span-7 lg:pt-4 space-y-5 text-avb-body text-base md:text-lg leading-relaxed reveal">
+        <p>Most dealers handle twelve sports. We've handled one — and we've handled it since 1995. We're not a generalist that also takes volleyball orders. We're a volleyball-only operation, run on a system built specifically for the way clubs, schools, and directors actually work.</p>
+        <p>That focus is the whole point. We're not winging it — we run a proven process that keeps every quote, every reorder, every ship date on the rails. No chasing answers. No learning curve on your program. No things falling through the cracks the week before tryouts.</p>
+      </div>
+    </div>
+
+    <!-- Stat strip -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-y-12 lg:gap-y-0 lg:divide-x lg:divide-avb-divider reveal">
+      <div class="stat-block">
+        <div class="font-display font-semibold text-avb-black leading-[0.85]" style="font-size: clamp(3rem, 6vw, 5rem);">
+          <span class="stat-num" data-target="30">0</span>
+        </div>
+        <div class="mt-3 text-[11px] uppercase tracking-[0.18em] text-avb-grey font-semibold">Years in the sport</div>
+        <div class="mt-1.5 text-sm text-avb-body">Same shop. Same focus.</div>
+      </div>
+      <div class="stat-block">
+        <div class="font-display font-semibold text-avb-black leading-[0.85]" style="font-size: clamp(3rem, 6vw, 5rem);">
+          <span class="stat-num" data-target="2000">0</span><span class="text-avb-red">+</span>
+        </div>
+        <div class="mt-3 text-[11px] uppercase tracking-[0.18em] text-avb-grey font-semibold">Clubs outfitted</div>
+        <div class="mt-1.5 text-sm text-avb-body">From 6-team rec to national.</div>
+      </div>
+      <div class="stat-block">
+        <div class="font-display font-semibold text-avb-black leading-[0.85]" style="font-size: clamp(3rem, 6vw, 5rem);">
+          <span class="stat-num" data-target="24">0</span><span class="text-avb-grey/60 text-3xl ml-1">hrs</span>
+        </div>
+        <div class="mt-3 text-[11px] uppercase tracking-[0.18em] text-avb-grey font-semibold">Quote turnaround</div>
+        <div class="mt-1.5 text-sm text-avb-body">Real number, every time.</div>
+      </div>
+      <div class="stat-block">
+        <div class="font-display font-semibold text-avb-black leading-[0.85]" style="font-size: clamp(3rem, 6vw, 5rem);">
+          <span class="stat-num" data-target="1">0</span>
+        </div>
+        <div class="mt-3 text-[11px] uppercase tracking-[0.18em] text-avb-grey font-semibold">Sport we cover</div>
+        <div class="mt-1.5 text-sm text-avb-body">The intentional choice.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================================
+     SECTION 5. SERVICE — How we show up
+     ==================================================================== -->
+<section id="service" class="bg-white py-24 md:py-32 px-6 lg:px-12">
+  <div class="max-w-[1280px] mx-auto">
+
+    <div class="grid lg:grid-cols-12 gap-12 mb-16">
+      <div class="lg:col-span-5">
+        <div class="text-[11px] uppercase tracking-[0.25em] text-avb-grey font-semibold mb-4 reveal">05 / How we show up</div>
+        <h2 class="font-display font-semibold text-avb-black uppercase reveal display-tight"
+            style="font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.02;">
+          You won't<br>be passed<br>around.
+        </h2>
+      </div>
+      <div class="lg:col-span-7 lg:pt-6 space-y-5 text-avb-body text-base md:text-lg leading-relaxed reveal">
+        <p>Tired of chasing answers? Getting lost in a portal? Watching things fall through the cracks the week before tryouts? That's what happens when a generalist tries to keep up with a sport that isn't their main category.</p>
+        <p>One Team Sales Specialist owns your order from the first email to the last box on the doorstep. Same name, same direct line, every reorder, every year. No portals, no ticket queues, no "let me check with the rep." If you call, a real person picks up. If you email on a Friday afternoon, you get a real reply before the weekend.</p>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-avb-divider border border-avb-divider reveal">
+      <div class="svc-cell">
+        <div class="svc-cell-num">01</div>
+        <h3 class="svc-cell-title">A name, not a number</h3>
+        <p class="svc-cell-desc">One specialist on every order. They learn your roster, your colors, your reorder rhythm, your director's pet peeves.</p>
+      </div>
+      <div class="svc-cell">
+        <div class="svc-cell-num">02</div>
+        <h3 class="svc-cell-title">Real reply, one business day</h3>
+        <p class="svc-cell-desc">Quote in 24 hours. Mockup in 48. Question on a Friday afternoon — answer before you leave for the weekend.</p>
+      </div>
+      <div class="svc-cell">
+        <div class="svc-cell-num">03</div>
+        <h3 class="svc-cell-title">No surprises after</h3>
+        <p class="svc-cell-desc">The price you approve is the price you pay. The date we promise is the date it ships. No back-end fees, no policy fights.</p>
+      </div>
+      <div class="svc-cell">
+        <div class="svc-cell-num">04</div>
+        <h3 class="svc-cell-title">Reorders that remember</h3>
+        <p class="svc-cell-desc">We keep your artwork file, sizing notes, and roster from last year. A reorder is one email, not a restart from scratch.</p>
+      </div>
+      <div class="svc-cell">
+        <div class="svc-cell-num">05</div>
+        <h3 class="svc-cell-title">We answer the hard ones</h3>
+        <p class="svc-cell-desc">Late adds, libero contrast, school compliance, sponsor placement, sister-team kits. We've handled it before, and we'll tell you straight.</p>
+      </div>
+      <div class="svc-cell">
+        <div class="svc-cell-num">06</div>
+        <h3 class="svc-cell-title">Built for clubs, not brands</h3>
+        <p class="svc-cell-desc">We work for you, not the apparel companies. If a brand isn't right for your program this year, we'll say so on the call.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================================
+     SECTION 6. THE DIFFERENCE — side-by-side comparison
+     ==================================================================== -->
+<section class="bg-avb-black py-24 md:py-32 px-6 lg:px-12">
+  <div class="max-w-[1280px] mx-auto">
+
+    <div class="mb-14 lg:mb-16">
+      <div class="text-[11px] uppercase tracking-[0.25em] text-avb-red font-semibold mb-4 reveal">06 / The difference</div>
+      <h2 class="font-display font-semibold text-white uppercase reveal display-tight"
+          style="font-size: clamp(2.25rem, 5.5vw, 4rem); line-height: 1;">
+        Too big to care.<br>Too small to deliver.<br>We're neither.
+      </h2>
+      <p class="mt-5 text-white/65 text-base md:text-lg max-w-xl reveal">
+        The market is consolidating. The big players scale; the small ones disappear. We did neither — we built the volleyball-only alternative for programs that won't settle for either side of that trade.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-px bg-white/10 border border-white/15 reveal">
+      <div class="bg-avb-black p-8 md:p-10 compare-typical">
+        <div class="text-[11px] uppercase tracking-[0.25em] text-white/45 font-semibold mb-6">The other dealers</div>
+        <div class="text-white/75 leading-relaxed">
+          <div class="compare-row"><span class="compare-mark">—</span><span>Too big to care, or too small to keep up</span></div>
+          <div class="compare-row"><span class="compare-mark">—</span><span>Chasing answers across a ticket queue</span></div>
+          <div class="compare-row"><span class="compare-mark">—</span><span>Different rep every reorder</span></div>
+          <div class="compare-row"><span class="compare-mark">—</span><span>"4 to 8 weeks" with no real commitment</span></div>
+          <div class="compare-row"><span class="compare-mark">—</span><span>Volleyball is one of twelve categories</span></div>
+          <div class="compare-row"><span class="compare-mark">—</span><span>Things fall through the cracks late</span></div>
+        </div>
+      </div>
+      <div class="bg-white p-8 md:p-10 compare-us">
+        <div class="text-[11px] uppercase tracking-[0.25em] text-avb-red font-semibold mb-6">All Volleyball</div>
+        <div class="text-avb-body leading-relaxed">
+          <div class="compare-row">
+            <svg class="compare-mark w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+            <span>A human you can call by name</span>
+          </div>
+          <div class="compare-row">
+            <svg class="compare-mark w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+            <span>Same specialist year after year</span>
+          </div>
+          <div class="compare-row">
+            <svg class="compare-mark w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+            <span>30 days, guaranteed in writing on CustomFuze</span>
+          </div>
+          <div class="compare-row">
+            <svg class="compare-mark w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+            <span>Volleyball-only — every order, every day</span>
+          </div>
+          <div class="compare-row">
+            <svg class="compare-mark w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+            <span>Run on a proven system, not improvisation</span>
+          </div>
+          <div class="compare-row">
+            <svg class="compare-mark w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+            <span>Your file stays with us — reorders are one email</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================================
+     SECTION 7. BRAND SHOWCASE
+     ==================================================================== -->
+<section class="bg-white py-24 md:py-32 px-6 lg:px-12 overflow-hidden">
+  <div class="max-w-[1280px] mx-auto">
+
+    <div class="mb-12 lg:mb-16 text-center">
+      <div class="text-[11px] uppercase tracking-[0.25em] text-avb-grey font-semibold mb-4 reveal">07 / The lines</div>
+      <h2 class="font-display font-semibold text-avb-black uppercase reveal display-tight"
+          style="font-size: clamp(2.25rem, 5.5vw, 4rem); line-height: 1;">
+        Every brand<br>worth wearing.
+      </h2>
+      <p class="mt-5 text-avb-grey text-base md:text-lg max-w-xl mx-auto reveal">
+        CustomFuze is our house line. We do full custom on the brands your athletes already trust.
+      </p>
+    </div>
+
+    <div class="brand-stage">
+      <div class="brand-wheel" id="brand-wheel">
+        <div class="brand-card" aria-hidden="true">
+          <img class="brand-logo" src="https://cdn.shopify.com/s/files/1/0834/3745/3598/files/customfuze_logo_1.png?v=1756144449" alt="" loading="lazy" decoding="async">
+          <div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">House line</div>
+        </div>
+        <div class="brand-card" aria-hidden="true">
+          <div class="brand-wordmark">adidas</div>
+          <div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Full custom</div>
+        </div>
+        <div class="brand-card" aria-hidden="true">
+          <img class="brand-logo" src="https://cdn.shopify.com/s/files/1/0834/3745/3598/files/under_armour_logo.png?v=1726495605" alt="" loading="lazy" decoding="async">
+          <div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Full custom</div>
+        </div>
+        <div class="brand-card" aria-hidden="true">
+          <img class="brand-logo" src="https://cdn.shopify.com/s/files/1/0834/3745/3598/files/Mizuno.svg?v=1778155832" alt="" loading="lazy" decoding="async">
+          <div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Full custom</div>
+        </div>
+        <div class="brand-card" aria-hidden="true">
+          <img class="brand-logo" src="https://cdn.shopify.com/s/files/1/0834/3745/3598/files/asics_logo.png?v=1726495605" alt="" loading="lazy" decoding="async">
+          <div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Full custom</div>
+        </div>
+
+        <div class="brand-card">
+          <img class="brand-logo" src="https://cdn.shopify.com/s/files/1/0834/3745/3598/files/customfuze_logo_1.png?v=1756144449" alt="CustomFuze" loading="lazy" decoding="async">
+          <div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">House line</div>
+        </div>
+        <div class="brand-card">
+          <div class="brand-wordmark" aria-label="Adidas">adidas</div>
+          <div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Full custom</div>
+        </div>
+        <div class="brand-card">
+          <img class="brand-logo" src="https://cdn.shopify.com/s/files/1/0834/3745/3598/files/under_armour_logo.png?v=1726495605" alt="Under Armour" loading="lazy" decoding="async">
+          <div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Full custom</div>
+        </div>
+        <div class="brand-card">
+          <img class="brand-logo" src="https://cdn.shopify.com/s/files/1/0834/3745/3598/files/Mizuno.svg?v=1778155832" alt="Mizuno" loading="lazy" decoding="async">
+          <div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Full custom</div>
+        </div>
+        <div class="brand-card">
+          <img class="brand-logo" src="https://cdn.shopify.com/s/files/1/0834/3745/3598/files/asics_logo.png?v=1726495605" alt="ASICS" loading="lazy" decoding="async">
+          <div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Full custom</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 text-center text-sm text-avb-grey">
+      Don't see your brand? <a href="mailto:team@allvolleyball.com" class="link-inline text-avb-black font-medium">Ask us.</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================================
+     SECTION 8. TEAM-SIDE CLOSE
+     ==================================================================== -->
+<section class="bg-avb-offwhite py-24 md:py-32 px-6 lg:px-12">
+  <div class="max-w-2xl mx-auto text-center">
+    <h2 class="font-display font-semibold text-avb-black uppercase reveal display-tight"
+        style="font-size: clamp(2.25rem, 5.5vw, 4rem); line-height: 1;">
+      Serious about<br>your program?
+    </h2>
+    <p class="mt-6 text-avb-body text-base md:text-lg leading-relaxed reveal">
+      Send the roster. We'll send a quote in 24 hours and a real ship date you can plan around. If you're serious about your program, we're your partner.
+    </p>
+    <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
+      <a href="mailto:team@allvolleyball.com" class="inline-flex items-center gap-2 btn-red text-white font-medium px-7 py-4 text-base">
+        Email team@allvolleyball.com
+      </a>
+      <a href="tel:" class="inline-flex items-center gap-2 border border-avb-black text-avb-black font-medium px-7 py-4 text-base btn-ghost-dark">
+        Call the Team Line
+      </a>
+    </div>
+    <p class="mt-8 text-sm text-avb-grey leading-relaxed">
+      Or use the uniform builder. Save your mockup, share it with us, and a Team Sales Specialist will be in touch in one business day or less.
+    </p>
+    <div class="mt-14 pt-10 border-t border-avb-divider reveal">
+      <p class="font-display uppercase tracking-[0.14em] text-avb-black text-base md:text-xl leading-snug">
+        Gear you love. On time. Under budget. Done correctly. <span class="text-avb-red">Guaranteed.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<div id="sample-pdf-modal" class="pdf-modal" aria-hidden="true">
+  <div class="pdf-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="sample-pdf-title">
+    <div class="pdf-modal-bar">
+      <div>
+        <div class="pdf-modal-kicker">PDF preview</div>
+        <h2 id="sample-pdf-title" class="pdf-modal-title">Sample quote PDF</h2>
+      </div>
+      <button id="sample-pdf-close" class="pdf-modal-close" type="button" aria-label="Close PDF preview">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <iframe id="sample-pdf-frame" class="pdf-modal-frame" title="Sample quote PDF" data-src="output/pdf/sample-sublimation-quote.pdf#view=FitH"></iframe>
+    <div class="pdf-modal-footer">
+      <span>This is a demo preview. Final pricing, artwork, and dates are confirmed by your Team Sales Specialist.</span>
+      <a class="pdf-modal-open" href="output/pdf/sample-sublimation-quote.pdf" target="_blank" rel="noopener">Open PDF</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ====================================================================
+     GSAP for scroll reveals + count-up
+     ==================================================================== -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+
+<!-- ====================================================================
+     TIMELINE PICKER
+     ==================================================================== -->
+<script>
+(() => {
+  const calLabel = document.getElementById('cal-label');
+  const calGrid  = document.getElementById('cal-grid');
+  const calPrev  = document.getElementById('cal-prev');
+  const calNext  = document.getElementById('cal-next');
+  const calAvailabilityNote = document.getElementById('cal-availability-note');
+  const calRushNote = document.getElementById('cal-rush-note');
+  const calIdealNote = document.getElementById('cal-ideal-note');
+  const calTimelineTitle = document.getElementById('cal-timeline-title');
+  const calTimelineSubtitle = document.getElementById('cal-timeline-subtitle');
+  const tlTrack    = document.getElementById('tl-track');
+  const tlSummary  = document.getElementById('tl-summary');
+  const tlHelper   = document.getElementById('tl-helper');
+  const tlStatus   = document.getElementById('tl-status');
+
+  if (!calLabel || !calGrid || !calPrev || !calNext || !tlTrack || !tlSummary || !tlHelper || !tlStatus) return;
+
+  const ANCHOR_TODAY = startOfDay(new Date());
+  const MONTHS_LONG  = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const MONTHS_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const fmtFull  = d => `${MONTHS_SHORT[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+  const fmtShort = d => `${MONTHS_SHORT[d.getMonth()]} ${d.getDate()}`;
+
+  const TIMELINE_CONFIGS = {
+    customfuze: {
+      brandName: 'CustomFuze',
+      startLeadDays: 2,
+      designToOnCourtDays: 30,
+      productionOffsetDays: 7,
+      shipBufferDays: 7,
+      rushWindowDays: 7,
+      rangeLabel: '30-day guaranteed window',
+      idealCopy: 'For the cleanest CustomFuze path',
+      steps: [
+        { label: 'Start request', note: '2 days before Design Lock' },
+        { label: 'Design Lock',   note: 'Roster, sizes, artwork approved' },
+        { label: 'Production',    note: '7 days from Design Lock' },
+        { label: 'Ships',         note: '7 days before target' },
+        { label: 'On Court',      note: '30 days from Design Lock' }
+      ]
+    },
+    adidas: createBrandTimelineConfig({
+      brandName: 'Adidas',
+      allocationLabel: 'stock and slotting',
+      startLeadDays: 5,
+      designToOnCourtDays: 56,
+      productionOffsetDays: 12,
+      shipBufferDays: 9,
+      rushWindowDays: 14,
+      rangeLabel: '8-week Adidas estimate',
+      lockLabel: 'Adidas Lock',
+      lockNote: 'Roster, sizes, artwork, brand marks approved'
+    }),
+    asics: createBrandTimelineConfig({
+      brandName: 'ASICS',
+      allocationLabel: 'team-line allocation',
+      startLeadDays: 4,
+      designToOnCourtDays: 49,
+      productionOffsetDays: 10,
+      shipBufferDays: 8,
+      rushWindowDays: 10,
+      rangeLabel: '7-week ASICS estimate',
+      lockLabel: 'ASICS Lock',
+      lockNote: 'Roster, sponsor marks, number layout approved'
+    }),
+    mizuno: createBrandTimelineConfig({
+      brandName: 'Mizuno',
+      allocationLabel: 'volleyball-line allocation',
+      startLeadDays: 6,
+      designToOnCourtDays: 63,
+      productionOffsetDays: 14,
+      shipBufferDays: 10,
+      rushWindowDays: 16,
+      rangeLabel: '9-week Mizuno estimate',
+      lockLabel: 'Mizuno Lock',
+      lockNote: 'Roster, libero variant, artwork approved'
+    }),
+    'under-armour': createBrandTimelineConfig({
+      brandName: 'Under Armour',
+      allocationLabel: 'UA allocation',
+      startLeadDays: 7,
+      designToOnCourtDays: 70,
+      productionOffsetDays: 16,
+      shipBufferDays: 12,
+      rushWindowDays: 18,
+      rangeLabel: '10-week Under Armour estimate',
+      lockLabel: 'UA Lock',
+      lockNote: 'Roster, contrast layout, artwork approved'
+    })
+  };
+
+  let activeTimelineSlug = 'customfuze';
+
+  let selectedDate = addDays(ANCHOR_TODAY, 42);
+  let viewYear  = selectedDate.getFullYear();
+  let viewMonth = selectedDate.getMonth();
+
+  function createBrandTimelineConfig({
+    brandName,
+    allocationLabel,
+    startLeadDays,
+    designToOnCourtDays,
+    productionOffsetDays,
+    shipBufferDays,
+    rushWindowDays,
+    rangeLabel,
+    lockLabel,
+    lockNote
+  }) {
+    return {
+      brandName,
+      allocationLabel,
+      startLeadDays,
+      designToOnCourtDays,
+      productionOffsetDays,
+      shipBufferDays,
+      rushWindowDays,
+      rangeLabel,
+      idealCopy: `For the cleanest ${brandName} path`,
+      steps: [
+        { label: 'Start request', note: `${startLeadDays} days before ${lockLabel}` },
+        { label: lockLabel,       note: lockNote },
+        { label: 'Allocation',    note: allocationLabel },
+        { label: 'Ships',         note: 'Estimated brand ship window' },
+        { label: 'On Court',      note: 'Target date' }
+      ]
+    };
+  }
+
+  function startOfDay(date) {
+    return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  }
+  function addDays(date, days) {
+    const d = new Date(date);
+    d.setDate(d.getDate() + days);
+    return d;
+  }
+  function addMonths(date, months) {
+    const d = new Date(date);
+    const day = d.getDate();
+    d.setDate(1);
+    d.setMonth(d.getMonth() + months);
+    d.setDate(Math.min(day, new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate()));
+    return d;
+  }
+  function diffDays(a, b) {
+    const x = new Date(a.getFullYear(), a.getMonth(), a.getDate());
+    const y = new Date(b.getFullYear(), b.getMonth(), b.getDate());
+    return Math.round((x - y) / 86400000);
+  }
+  function isSameDay(a, b) {
+    return a.getFullYear() === b.getFullYear()
+        && a.getMonth() === b.getMonth()
+        && a.getDate() === b.getDate();
+  }
+  function getActiveConfig() {
+    return TIMELINE_CONFIGS[activeTimelineSlug] || TIMELINE_CONFIGS.customfuze;
+  }
+  function getActiveTiming() {
+    const config = getActiveConfig();
+    const minIdealDate = getOnCourtDate(addDays(ANCHOR_TODAY, config.startLeadDays));
+    return {
+      config,
+      minIdealDate,
+      minDate: addDays(minIdealDate, -config.rushWindowDays),
+      maxDate: addDays(ANCHOR_TODAY, 365)
+    };
+  }
+  function getDesignLockDate(onCourtDate) {
+    return addDays(onCourtDate, -getActiveConfig().designToOnCourtDays);
+  }
+  function getOnCourtDate(designLockDate) {
+    return addDays(designLockDate, getActiveConfig().designToOnCourtDays);
+  }
+  function getTimelineDates(onCourtDate) {
+    const config = getActiveConfig();
+    const designLock = getDesignLockDate(onCourtDate);
+    const shipDate = addDays(onCourtDate, -config.shipBufferDays);
+    return [
+      addDays(designLock, -config.startLeadDays),
+      designLock,
+      addDays(designLock, config.productionOffsetDays),
+      shipDate,
+      onCourtDate
+    ];
+  }
+  function getDateState(date) {
+    const { minDate, minIdealDate, maxDate } = getActiveTiming();
+    if (date < minDate || date > maxDate) return 'disabled';
+    if (date < minIdealDate) return 'critical';
+    return 'ideal';
+  }
+
+  function updateCalendarNotes() {
+    const { config, minDate, minIdealDate } = getActiveTiming();
+    const rushEnd = addDays(minIdealDate, -1);
+    if (calTimelineTitle) calTimelineTitle.textContent = `${config.brandName} Timeline`;
+    if (calTimelineSubtitle) calTimelineSubtitle.textContent = config.rangeLabel;
+    if (calAvailabilityNote) calAvailabilityNote.textContent = `Today is ${fmtFull(ANCHOR_TODAY)}. Dates before ${fmtFull(minDate)} are unavailable for ${config.brandName}.`;
+    if (calRushNote) calRushNote.textContent = `${fmtFull(minDate)} through ${fmtFull(rushEnd)} are outside the ideal ${config.rangeLabel}, but we'll review what is possible.`;
+    if (calIdealNote) calIdealNote.textContent = `${config.idealCopy}, choose ${fmtFull(minIdealDate)} or later so approval, production, shipping, and team handoff all have room to breathe.`;
+  }
+
+  function renderCalendar() {
+    calLabel.textContent = `${MONTHS_LONG[viewMonth]} ${viewYear}`;
+    calGrid.innerHTML = '';
+
+    const firstDay = new Date(viewYear, viewMonth, 1);
+    const lastDay  = new Date(viewYear, viewMonth + 1, 0);
+    const startBlanks = firstDay.getDay();
+    const totalDays = lastDay.getDate();
+
+    for (let i = 0; i < startBlanks; i++) {
+      const cell = document.createElement('div');
+      cell.className = 'cal-cell';
+      calGrid.appendChild(cell);
+    }
+    for (let day = 1; day <= totalDays; day++) {
+      const date = new Date(viewYear, viewMonth, day);
+      const cell = document.createElement('div');
+      cell.className = 'cal-cell';
+
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.textContent = day;
+
+      const dateState  = getDateState(date);
+      const disabled   = dateState === 'disabled';
+      const isCritical = dateState === 'critical';
+      const isSelected = isSameDay(date, selectedDate);
+      const isToday    = isSameDay(date, ANCHOR_TODAY);
+
+      btn.className = 'cal-day ' + (
+        disabled   ? 'cal-day--disabled' :
+        isSelected && isCritical ? 'cal-day--selected-critical' :
+        isSelected ? 'cal-day--selected' :
+        isCritical ? 'cal-day--critical' :
+        isToday    ? 'cal-day--today'    :
+                     'cal-day--default'
+      );
+      if (isCritical) btn.setAttribute('aria-label', `${fmtFull(date)} rush request window`);
+      if (disabled) btn.disabled = true;
+      else btn.addEventListener('click', () => {
+        selectedDate = date;
+        renderCalendar();
+        updateTimeline();
+        syncScenarioChips();
+      });
+
+      cell.appendChild(btn);
+      calGrid.appendChild(cell);
+    }
+
+    const { minDate, maxDate } = getActiveTiming();
+    const minMonthStart  = new Date(minDate.getFullYear(), minDate.getMonth(), 1);
+    const maxMonthStart  = new Date(maxDate.getFullYear(), maxDate.getMonth(), 1);
+    const viewMonthStart = new Date(viewYear, viewMonth, 1);
+    calPrev.disabled = viewMonthStart <= minMonthStart;
+    calNext.disabled = viewMonthStart >= maxMonthStart;
+  }
+
+  calPrev.addEventListener('click', () => {
+    if (calPrev.disabled) return;
+    const prev = new Date(viewYear, viewMonth - 1, 1);
+    viewMonth = prev.getMonth();
+    viewYear  = prev.getFullYear();
+    renderCalendar();
+  });
+  calNext.addEventListener('click', () => {
+    if (calNext.disabled) return;
+    const next = new Date(viewYear, viewMonth + 1, 1);
+    viewMonth = next.getMonth();
+    viewYear  = next.getFullYear();
+    renderCalendar();
+  });
+
+  function syncScenarioChips() {
+    const days = diffDays(selectedDate, ANCHOR_TODAY);
+    const weeks = Math.round(days / 7);
+    document.querySelectorAll('.scenario-chip').forEach(chip => {
+      const chipDate = addDays(ANCHOR_TODAY, +chip.dataset.weeks * 7);
+      const chipState = getDateState(chipDate);
+      const disabled = chipState === 'disabled';
+      chip.disabled = disabled;
+      chip.classList.toggle('critical', !disabled && chipState === 'critical');
+      chip.classList.toggle('active', !disabled && +chip.dataset.weeks === weeks);
+    });
+  }
+  document.querySelectorAll('.scenario-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      if (chip.disabled) return;
+      const weeks = +chip.dataset.weeks;
+      selectedDate = addDays(ANCHOR_TODAY, weeks * 7);
+      viewYear  = selectedDate.getFullYear();
+      viewMonth = selectedDate.getMonth();
+      renderCalendar();
+      updateTimeline();
+      syncScenarioChips();
+    });
+  });
+
+  function buildTimelineSteps() {
+    tlTrack.innerHTML = '';
+    getActiveConfig().steps.forEach((step, i) => {
+      const row = document.createElement('div');
+      row.className = 'tl-step';
+      row.dataset.idx = i;
+      row.innerHTML = `
+        <div class="tl-step-marker">${i + 1}</div>
+        <div>
+          <div class="tl-step-kicker">${step.note}</div>
+          <div class="tl-step-title">${step.label}</div>
+        </div>
+        <div class="tl-step-date" data-role="date"></div>
+      `;
+      tlTrack.appendChild(row);
+    });
+  }
+
+  function updateTimeline() {
+    const config = getActiveConfig();
+    const { minIdealDate } = getActiveTiming();
+    const today      = ANCHOR_TODAY;
+    const target     = selectedDate;
+    const dates      = getTimelineDates(target);
+    const dateState  = getDateState(target);
+    const rows = tlTrack.querySelectorAll('.tl-step');
+
+    rows.forEach((row, i) => {
+      const isTarget = i === dates.length - 1;
+      const isPast = dates[i] < today && !isSameDay(dates[i], today);
+      row.classList.toggle('tl-step--target', isTarget);
+      row.classList.toggle('tl-step--critical', dateState === 'critical');
+      row.classList.toggle('tl-step--past', isPast);
+      row.querySelector('[data-role="date"]').textContent = fmtShort(dates[i]);
+    });
+
+    const days = diffDays(target, today);
+    const dayLabel = days === 1 ? 'day' : 'days';
+    const earliestIdealDays = diffDays(minIdealDate, today);
+
+    let html = '';
+    if (dateState === 'critical') {
+      tlSummary.textContent = 'Rush review needed';
+      tlHelper.textContent = `Selected on-court date: ${fmtFull(target)}. This is ${days} ${dayLabel} from today and needs a ${config.brandName} timeline review before we can commit.`;
+      html = `<p class="text-avb-red"><span class="font-semibold">Rush request.</span> ${fmtFull(target)} is before the ideal ${config.brandName} window. The normal start point was ${fmtFull(dates[0])} and lock date was ${fmtFull(dates[1])}; we will review it and confirm what is possible.</p>`;
+    } else if (days <= earliestIdealDays + 3) {
+      tlSummary.textContent = 'Earliest ideal schedule';
+      tlHelper.textContent = `Selected on-court date: ${fmtFull(target)}. The milestones below keep the order inside the ${config.brandName} ${config.rangeLabel}.`;
+      html = `<p class="text-avb-black"><span class="font-semibold">Earliest ideal window.</span> Start by ${fmtFull(dates[0])}; lock the order by ${fmtFull(dates[1])}, the next milestone is ${fmtFull(dates[2])}, ships around ${fmtFull(dates[3])}, and lands on court ${fmtFull(target)}.</p>`;
+    } else if (days <= earliestIdealDays + 28) {
+      tlSummary.textContent = 'Standard schedule';
+      tlHelper.textContent = `Selected on-court date: ${fmtFull(target)}. Use these dates as the latest safe checkpoints for ${config.brandName}.`;
+      html = `<p class="text-avb-black"><span class="font-semibold">Standard window.</span> Start by ${fmtFull(dates[0])} and lock the order by ${fmtFull(dates[1])} to keep the ${config.brandName} schedule intact.</p>`;
+    } else {
+      tlSummary.textContent = 'Plenty of runway';
+      tlHelper.textContent = `Selected on-court date: ${fmtFull(target)}. You have room to plan before the ${config.brandName} production clock starts.`;
+      html = `<p class="text-avb-black"><span class="font-semibold">Plenty of runway.</span> Your ${config.brandName} start target is ${fmtFull(dates[0])}, with room to plan before lock.</p>`;
+    }
+    tlStatus.innerHTML = html;
+  }
+
+  function ensureSelectedDateForActiveBrand(forceIdeal = false) {
+    const { minDate, minIdealDate, maxDate } = getActiveTiming();
+    if (forceIdeal || selectedDate < minDate || selectedDate > maxDate) {
+      selectedDate = minIdealDate;
+    }
+    viewYear  = selectedDate.getFullYear();
+    viewMonth = selectedDate.getMonth();
+  }
+
+  window.updateTimelineBrand = brandSlug => {
+    activeTimelineSlug = TIMELINE_CONFIGS[brandSlug] ? brandSlug : 'customfuze';
+    ensureSelectedDateForActiveBrand(true);
+    buildTimelineSteps();
+    updateCalendarNotes();
+    renderCalendar();
+    updateTimeline();
+    syncScenarioChips();
+  };
+
+  ensureSelectedDateForActiveBrand();
+  buildTimelineSteps();
+  updateCalendarNotes();
+  renderCalendar();
+  updateTimeline();
+  syncScenarioChips();
+})();
+</script>
+
+
+<!-- ====================================================================
+     BUILD DETAILS — brand-tabbed text panel (no 3D)
+     ==================================================================== -->
+<script>
+const BRANDS = [
+  {
+    slug: 'customfuze',
+    name: 'CustomFuze',
+    tabLabel: 'House line',
+    accent: '#C23946',
+    copy: 'Our house line, run on the system that defines how every All Volleyball order works. The path we recommend when the deadline is real, the budget needs to be tight, and the director needs the same kit available again next season without a story.',
+    details: [
+      ['Color fidelity, locked.',     'Your palette is matched against a saved swatch on file. Every reorder pulls from the same approved color — not a fresh interpretation.'],
+      ['30-day delivery, guaranteed.','From Design Lock to your door in 30 days. If we miss the date, the freight is on us. It is written into your quote.'],
+      ['Roster changes, last week.',  'Late adds, libero alternates, and split rosters are handled by your specialist on a phone call. No portal, no change-order form.'],
+      ['Reorders without restart.',   'Your artwork file, sizes, and roster stay on file. Next season is one approval email — same kit, same look, same price band.'],
+      ['No reorder minimum.',         'Order one replacement jersey midseason at the same price-per-unit. We do not punish small reorders.']
+    ],
+    sideTitle: 'House line guarantee',
+    sideCopy: 'CustomFuze ships in 30 days from Design Lock — every order, every reorder. Same artwork file, same team, same date on the calendar.',
+    proofs: [
+      ['Promise',        '30 days from Design Lock'],
+      ['If we miss',     'Freight on us'],
+      ['Reorder',        'Same kit, one email'],
+      ['Minimum',        'No order minimum on reorders']
+    ],
+    cta: 'Ask about CustomFuze'
+  },
+  {
+    slug: 'adidas',
+    name: 'Adidas',
+    tabLabel: 'Icon line',
+    accent: '#111111',
+    copy: 'For programs that need the brand badge on the kit — schools, scholastic programs, and clubs with a sponsor presentation to maintain. We handle the dealer side so you only deal with us.',
+    details: [
+      ['Authorized dealer access.',   'We carry the full Adidas team catalog. You don\'t need to chase the brand — we slot the order on our dealer account.'],
+      ['Brand-mark compliance.',      'Every layout we send back is built to Adidas brand standards, so school approvals and sponsor reviews go through without a second round.'],
+      ['Real range, not a guess.',    'We give you the brand\'s current production window up front and lock a confirmed ship date as soon as the line is allocated.'],
+      ['One contact, same person.',   'You email and call us — not Adidas. Your specialist owns the order from quote to delivery.'],
+      ['Reorder lockbox.',            'Adidas changes catalogs on their own schedule. We keep your spec on file and flag you early if a piece is being retired.']
+    ],
+    sideTitle: 'Adidas estimate window',
+    sideCopy: 'Adidas runs on the manufacturer\'s production calendar. We share the live range, then a confirmed date once stock and slotting clear.',
+    proofs: [
+      ['Typical',        '6 – 10 weeks'],
+      ['Confirmed when', 'Stock + slotting cleared'],
+      ['Your contact',   'One AVB specialist'],
+      ['Compliance',     'Built to brand standards']
+    ],
+    cta: 'Ask about Adidas'
+  },
+  {
+    slug: 'asics',
+    name: 'ASICS',
+    tabLabel: 'Court line',
+    accent: '#0057A8',
+    copy: 'A strong fit for programs that want a sharp court presentation and a clean sponsor or school-mark layout. We manage the ASICS team-line process end to end.',
+    details: [
+      ['Team-line access.',           'We hold the dealer relationship that puts your order in the ASICS team production queue — not the retail one.'],
+      ['Sponsor and mark layout.',    'We lay out sponsor placement, school marks, and number block to ASICS\'s spec so the kit reads cleanly from the bleachers.'],
+      ['Confirmed ship date.',        'We share the estimate window the day we quote, and replace it with a hard date the moment ASICS confirms allocation.'],
+      ['Late-roster handling.',       'Adds and libero alternates are placed against the same approved spec, not a new design — no risk of mismatched generations.'],
+      ['One reorder window per year.','We coordinate your reorder against the brand\'s production window so you don\'t miss the cutoff for next season.']
+    ],
+    sideTitle: 'ASICS estimate window',
+    sideCopy: 'ASICS runs in production cycles. We get you a real range fast and a hard ship date the moment your slot confirms.',
+    proofs: [
+      ['Typical',        '6 – 10 weeks'],
+      ['Confirmed when', 'Allocation locked'],
+      ['Your contact',   'One AVB specialist'],
+      ['Reorder window', 'Coordinated yearly']
+    ],
+    cta: 'Ask about ASICS'
+  },
+  {
+    slug: 'mizuno',
+    name: 'Mizuno',
+    tabLabel: 'Volleyball line',
+    accent: '#174EA6',
+    copy: 'The volleyball-credibility brand. For programs whose athletes already know the badge and whose directors want a kit that looks the part on a tournament stream.',
+    details: [
+      ['Volleyball-line standing.',   'We carry Mizuno\'s volleyball team line directly. You don\'t go through retail — we go through the team channel.'],
+      ['Libero variant handling.',    'Your libero kit is built from the same approved spec as the team look — same generation, same artwork file, not a last-minute alternate.'],
+      ['Sister-team coordination.',   'Multi-team clubs ordering Mizuno for varsity and a different line for younger groups get one bundled timeline from us.'],
+      ['Quote-to-confirm communication.', 'We share weekly status checkpoints once the order is placed with Mizuno — no silent stretches between Design Lock and ship date.'],
+      ['Reorder continuity.',         'Mizuno catalogs shift season to season. We flag you in advance if a piece is going to be replaced, so you can lock supply.']
+    ],
+    sideTitle: 'Mizuno estimate window',
+    sideCopy: 'Mizuno volleyball runs on a tight production cadence. We give a real range, then a confirmed date once the brand clears your allocation.',
+    proofs: [
+      ['Typical',        '6 – 10 weeks'],
+      ['Confirmed when', 'Volleyball line allocation'],
+      ['Status check',   'Weekly through your specialist'],
+      ['Libero variant', 'Same spec, same file']
+    ],
+    cta: 'Ask about Mizuno'
+  },
+  {
+    slug: 'under-armour',
+    name: 'Under Armour',
+    tabLabel: 'Performance line',
+    accent: '#C23946',
+    copy: 'For programs that want a high-contrast, performance-forward read. We handle the dealer side and the kit layout so your director only deals with us.',
+    details: [
+      ['Authorized team dealer.',     'We carry the Under Armour team line on our dealer account, so your order goes in through the right channel from day one.'],
+      ['High-contrast number layout.','Numbers, names, and sponsor blocks are laid out for legibility from the stands and from broadcast cameras — not just on the proof sheet.'],
+      ['Estimate, then confirmed.',   'We share the production window up front and replace it with a hard ship date when Under Armour confirms allocation.'],
+      ['Multi-team continuity.',      'Clubs running UA for varsity and a different line elsewhere get one consolidated delivery schedule from your specialist.'],
+      ['Reorder spec preservation.',  'Your approved spec stays on file. Next season\'s order pulls from the same artwork, not a fresh round of revisions.']
+    ],
+    sideTitle: 'Under Armour estimate window',
+    sideCopy: 'Under Armour runs on the manufacturer\'s production calendar. We share the live range and lock a confirmed ship date once allocated.',
+    proofs: [
+      ['Typical',        '6 – 10 weeks'],
+      ['Confirmed when', 'UA allocation cleared'],
+      ['Your contact',   'One AVB specialist'],
+      ['Reorder',        'Same spec, on file']
+    ],
+    cta: 'Ask about Under Armour'
+  }
+];
+
+const COMPARISON_TARGETS = {
+  customfuze: {
+    heading: 'Major brands',
+    rows: {
+      lead:     ['6 – 10 weeks typical.', 'Runs on the manufacturer\'s calendar and allocation queue.'],
+      minimum:  ['Brand minimums can apply.', 'Adds and reorders depend on the brand\'s current rules.'],
+      deadline: ['Estimated, then confirmed.', 'Hard dates arrive once stock, slotting, or allocation clears.'],
+      roster:   ['Depends on cutoff status.', 'Changes may be limited once the brand production window closes.'],
+      design:   ['Catalogs can shift.', 'We preserve the spec, but brand templates can change season to season.'],
+      reorder:  ['Coordinated window.', 'We time the reorder around brand availability and production cycles.'],
+      best:     ['Badge-required programs.', 'Choose Adidas, Mizuno, ASICS, or Under Armour when the brand mark is the priority.']
+    }
+  },
+  adidas: {
+    heading: 'Adidas',
+    rows: {
+      lead:     ['6 – 10 weeks typical.', 'Adidas runs through brand stock and team-line slotting; we confirm the ship date once allocation clears.'],
+      minimum:  ['Brand minimums can apply.', 'Adds and reorders follow Adidas team-order rules, current availability, and active catalog status.'],
+      deadline: ['Estimated, then confirmed.', 'We give the live range up front and lock the date once Adidas clears stock and slotting.'],
+      roster:   ['Cutoff-dependent.', 'Late adds may need a separate production window if the Adidas order has already moved forward.'],
+      design:   ['Brand standards apply.', 'We preserve your file, but layouts must stay inside Adidas mark and catalog requirements.'],
+      reorder:  ['Spec saved, availability checked.', 'We start from your approved file and confirm the current Adidas pieces before reorder.'],
+      best:     ['Badge-required programs.', 'Best when the Adidas mark matters for school, sponsor, or athlete preference.']
+    }
+  },
+  asics: {
+    heading: 'ASICS',
+    rows: {
+      lead:     ['6 – 10 weeks typical.', 'ASICS runs through team-line production cycles; we confirm the date when your allocation locks.'],
+      minimum:  ['Brand minimums can apply.', 'Small adds depend on ASICS team-line rules and whether the current production window is still open.'],
+      deadline: ['Estimated, then confirmed.', 'We replace the range with a hard date as soon as ASICS confirms allocation.'],
+      roster:   ['Window-dependent.', 'Late roster moves stay cleanest before ASICS closes the production slot.'],
+      design:   ['Spec-managed layout.', 'We keep sponsor marks, school marks, and number blocks aligned to ASICS requirements.'],
+      reorder:  ['Yearly window coordination.', 'We help time reorders around ASICS production cycles so you do not miss the cutoff.'],
+      best:     ['Court-focused programs.', 'Best when you want a clean ASICS team-line presentation and can work inside the brand calendar.']
+    }
+  },
+  mizuno: {
+    heading: 'Mizuno',
+    rows: {
+      lead:     ['6 – 10 weeks typical.', 'Mizuno volleyball runs on brand production cadence; we confirm once the line allocation clears.'],
+      minimum:  ['Brand minimums can apply.', 'Reorders and late adds depend on Mizuno availability and active volleyball-line rules.'],
+      deadline: ['Estimated, then confirmed.', 'You get the current range first, then a hard date when Mizuno confirms your slot.'],
+      roster:   ['Best before lock.', 'Libero variants and late adds are easiest before the Mizuno order moves into production.'],
+      design:   ['Catalog continuity varies.', 'We save the spec and flag catalog changes early when Mizuno updates pieces season to season.'],
+      reorder:  ['Continuity checked.', 'We pull from your saved file and verify the matching Mizuno item is still active.'],
+      best:     ['Volleyball-brand programs.', 'Best when Mizuno credibility is part of the program identity and the calendar has room.']
+    }
+  },
+  'under-armour': {
+    heading: 'Under Armour',
+    rows: {
+      lead:     ['6 – 10 weeks typical.', 'Under Armour runs on the manufacturer\'s production calendar; we lock the date once allocation clears.'],
+      minimum:  ['Brand minimums can apply.', 'Adds and reorders depend on UA team-line availability and current order rules.'],
+      deadline: ['Estimated, then confirmed.', 'We share the live range and replace it with a confirmed date once UA clears the order.'],
+      roster:   ['Allocation-dependent.', 'Late changes may need review if the Under Armour production slot has already closed.'],
+      design:   ['Performance-forward spec.', 'We keep number, name, and sponsor placement legible while staying inside UA requirements.'],
+      reorder:  ['Same spec, current line.', 'Your approved file stays on hand, and we confirm the current UA item before reorder.'],
+      best:     ['Performance-brand programs.', 'Best when the UA badge and high-contrast look are priorities over maximum flexibility.']
+    }
+  }
+};
+
+const PRODUCT_SETS = {
+  customfuze: [
+    {
+      title: 'Paramount Sleeveless',
+      desc: 'House-line jersey for programs that want a clean custom look with the fastest reorder path.',
+      price: '$45–$60',
+      eta: '30 days',
+      img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/JVJ3-0611_SUBLIME.jpg?v=1753807053'
+    },
+    {
+      title: 'Paramount Long Sleeve',
+      desc: 'Full-sleeve custom option for teams that want extra coverage without giving up the 30-day promise.',
+      price: '$50–$65',
+      eta: '30 days',
+      img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/JVJ4-0612_VIRTUE_b8555114-294e-483c-943a-8f21bab52d68.jpg?v=1753807206'
+    },
+    {
+      title: 'Men’s Sublimated Sleeveless',
+      desc: 'Lightweight men’s cut with saved artwork, saved colors, and simple replacement ordering.',
+      price: '$40–$55',
+      eta: '30 days',
+      img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/MSL_Ace_Front.jpg?v=1727725075'
+    },
+    {
+      title: 'Libero Alternate Kit',
+      desc: 'Contrast-ready alternate built from the same approved file so the team look stays coordinated.',
+      price: '$45–$65',
+      eta: '30 days',
+      img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/JVJ3-0611_SUBLIME.jpg?v=1753807053'
+    }
+  ],
+  adidas: [
+    {
+      title: 'Tabela 23 Short Sleeve',
+      desc: 'Recognizable Adidas court look for school programs and badge-required team orders.',
+      price: '$25–$45',
+      eta: '8 weeks',
+      img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/adidas_Women_s_Tabela_23_Short_Sleeve_Jersey_Black_-_1.png?v=1748305203'
+    },
+    {
+      title: 'Adidas Long Sleeve',
+      desc: 'Long-sleeve team option with three-stripe presence and a cleaner warmup-to-court read.',
+      price: '$35–$60',
+      eta: '8 weeks',
+      img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/adidas_Women_s_Tabela_23_Short_Sleeve_Jersey_Black_-_1.png?v=1748305203'
+    },
+    {
+      title: 'Adidas Sleeveless',
+      desc: 'Sleeveless team-line option for programs that want the Adidas mark with lighter coverage.',
+      price: '$30–$55',
+      eta: '8 weeks',
+      img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/adidas_Women_s_Tabela_23_Short_Sleeve_Jersey_Black_-_1.png?v=1748305203'
+    },
+    {
+      title: 'Adidas Libero Alternate',
+      desc: 'Badge-consistent alternate kit coordinated against Adidas stock, slotting, and color rules.',
+      price: '$30–$60',
+      eta: '8 weeks',
+      img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/adidas_Women_s_Tabela_23_Short_Sleeve_Jersey_Black_-_1.png?v=1748305203'
+    }
+  ],
+  asics: [
+    {
+      title: 'ASICS Court Jersey',
+      desc: 'Court-focused team look with sponsor and number placement managed to ASICS standards.',
+      price: '$30–$55',
+      eta: '7 weeks',
+      img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/asics_logo.png?v=1726495605'
+    },
+    {
+      title: 'ASICS Sleeveless',
+      desc: 'Clean sleeveless option for programs that want a lighter ASICS presentation.',
+      price: '$28–$50',
+      eta: '7 weeks',
+      img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/asics_logo.png?v=1726495605'
+    },
+    {
+      title: 'ASICS Libero Kit',
+      desc: 'Alternate colorway coordinated to the same approved ASICS team specification.',
+      price: '$32–$58',
+      eta: '7 weeks',
+      img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/asics_logo.png?v=1726495605'
+    },
+    {
+      title: 'ASICS Reorder Set',
+      desc: 'Replacement or add-on ordering planned around the current ASICS production window.',
+      price: '$30–$60',
+      eta: '7 weeks',
+      img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/asics_logo.png?v=1726495605'
+    }
+  ],
+  mizuno: [
+    {
+      title: 'V-Neck Sleeveless',
+      desc: 'Volleyball-first Mizuno silhouette for programs whose athletes know the badge.',
+      price: '$30–$55',
+      eta: '9 weeks',
+      img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/440813_9090_01.jpg?v=1744990865'
+    },
+    {
+      title: 'Mizuno Short Sleeve',
+      desc: 'Tournament-ready team jersey with the Mizuno volleyball read directors ask for.',
+      price: '$35–$60',
+      eta: '9 weeks',
+      img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/440813_9090_01.jpg?v=1744990865'
+    },
+    {
+      title: 'Mizuno Libero Variant',
+      desc: 'Contrast variant kept tied to the same team file and production generation.',
+      price: '$35–$62',
+      eta: '9 weeks',
+      img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/440813_9090_01.jpg?v=1744990865'
+    },
+    {
+      title: 'Mizuno Reorder Kit',
+      desc: 'Season-to-season continuity plan for programs staying inside the Mizuno catalog.',
+      price: '$35–$65',
+      eta: '9 weeks',
+      img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/440813_9090_01.jpg?v=1744990865'
+    }
+  ],
+  'under-armour': [
+    {
+      title: 'Team Tech Short Sleeve',
+      desc: 'Performance-forward UA jersey for high-contrast team and school presentations.',
+      price: '$25–$45',
+      eta: '10 weeks',
+      img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/1367847_001_01.jpg?v=1744990889'
+    },
+    {
+      title: 'UA Long Sleeve',
+      desc: 'Long-sleeve team option with UA branding and coordinated name/number layout.',
+      price: '$35–$60',
+      eta: '10 weeks',
+      img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/1367847_001_01.jpg?v=1744990889'
+    },
+    {
+      title: 'UA Libero Alternate',
+      desc: 'Contrast-ready alternate built around UA availability and the approved team spec.',
+      price: '$32–$58',
+      eta: '10 weeks',
+      img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/1367847_001_01.jpg?v=1744990889'
+    },
+    {
+      title: 'UA Reorder Set',
+      desc: 'Add-on or replacement kit checked against current UA allocation before order lock.',
+      price: '$30–$60',
+      eta: '10 weeks',
+      img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/1367847_001_01.jpg?v=1744990889'
+    }
+  ]
+};
+
+const SAMPLE_PDF_URL = 'output/pdf/sample-sublimation-quote.pdf';
+const brandTabs       = document.getElementById('build-brand-tabs');
+const buildKicker     = document.getElementById('build-brand-kicker');
+const buildName       = document.getElementById('build-brand-name');
+const buildCopy       = document.getElementById('build-brand-copy');
+const buildDetails    = document.getElementById('build-details');
+const buildSideTitle  = document.getElementById('build-side-title');
+const buildSideCopy   = document.getElementById('build-side-copy');
+const buildSideProofs = document.getElementById('build-side-proofs');
+const buildSideCta    = document.getElementById('build-side-cta');
+const deadlineBrandCta = document.getElementById('deadline-brand-cta');
+const deadlineBrandCtaText = document.getElementById('deadline-brand-cta-text');
+const compareTargetHeading = document.getElementById('cfz-compare-target-heading');
+const compareTargetCells = document.querySelectorAll('[data-compare-key]');
+const comparisonTable = document.querySelector('.cfz-compare table');
+const productKicker = document.getElementById('brand-products-kicker');
+const productTitle = document.getElementById('brand-products-title');
+const productNote = document.getElementById('brand-products-note');
+const productGrid = document.getElementById('brand-product-grid');
+const brandTabsShell = document.getElementById('brand-tabs-shell');
+const brandTabsSentinel = document.getElementById('brand-tabs-sentinel');
+const brandTabsPlaceholder = document.getElementById('brand-tabs-placeholder');
+const samplePdfModal = document.getElementById('sample-pdf-modal');
+const samplePdfFrame = document.getElementById('sample-pdf-frame');
+const samplePdfClose = document.getElementById('sample-pdf-close');
+const samplePdfTitle = document.getElementById('sample-pdf-title');
+const heroMore = document.getElementById('hero-more');
+const heroMoreToggle = document.getElementById('hero-more-toggle');
+const heroJerseySlider = document.getElementById('hero-jersey-slider');
+
+let currentBrandIndex = 0;
+let hasInitializedBrandSelection = false;
+
+function buildBrandTabs() {
+  if (!brandTabs) return;
+  brandTabs.innerHTML = '';
+  BRANDS.forEach((brand, index) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'build-brand-tab';
+    btn.setAttribute('role', 'tab');
+    btn.setAttribute('aria-selected', index === currentBrandIndex ? 'true' : 'false');
+    btn.style.setProperty('--tab-accent', brand.accent);
+    btn.innerHTML = `
+      <span class="build-brand-tab-name">${brand.name}</span>
+      <span class="build-brand-tab-label">${brand.tabLabel}</span>
+    `;
+    btn.addEventListener('click', () => selectBrand(index));
+    btn.addEventListener('keydown', e => {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      e.preventDefault();
+      const dir = e.key === 'ArrowRight' ? 1 : -1;
+      const next = (index + dir + BRANDS.length) % BRANDS.length;
+      selectBrand(next);
+      brandTabs.querySelectorAll('.build-brand-tab')[next].focus();
+    });
+    brandTabs.appendChild(btn);
+  });
+}
+
+function showSelectedBrandTab(index, behavior = 'smooth') {
+  if (!brandTabs) return;
+  const tabs = brandTabs.querySelectorAll('.build-brand-tab');
+  const tab = tabs[index];
+  if (!tab || brandTabs.scrollWidth <= brandTabs.clientWidth) return;
+
+  const targetLeft = tab.offsetLeft - ((brandTabs.clientWidth - tab.offsetWidth) / 2);
+  const nextLeft = Math.max(0, Math.min(targetLeft, brandTabs.scrollWidth - brandTabs.clientWidth));
+
+  try {
+    brandTabs.scrollTo({ left: nextLeft, behavior });
+  } catch (error) {
+    brandTabs.scrollLeft = nextLeft;
+  }
+}
+
+function selectBrand(index) {
+  currentBrandIndex = index;
+  const brand = BRANDS[index];
+
+  brandTabs.querySelectorAll('.build-brand-tab').forEach((btn, i) => {
+    btn.setAttribute('aria-selected', i === index ? 'true' : 'false');
+  });
+  showSelectedBrandTab(index, hasInitializedBrandSelection ? 'smooth' : 'auto');
+  hasInitializedBrandSelection = true;
+
+  buildKicker.textContent = brand.tabLabel;
+  buildName.textContent = brand.name;
+  buildCopy.textContent = brand.copy;
+
+  buildDetails.innerHTML = brand.details.map(([title, desc], i) => `
+    <div class="detail-row" data-brand-accent style="--brand-accent:${brand.accent}">
+      <div class="detail-num">${String(i + 1).padStart(2, '0')}</div>
+      <div>
+        <div class="detail-title">${title}</div>
+        <div class="detail-desc">${desc}</div>
+      </div>
+    </div>
+  `).join('');
+
+  buildSideTitle.textContent = brand.sideTitle;
+  buildSideCopy.textContent = brand.sideCopy;
+  buildSideProofs.innerHTML = brand.proofs.map(([label, value]) => `
+    <div class="build-side-proof">
+      <span class="build-side-proof-label">${label}</span>
+      <span class="build-side-proof-value">${value}</span>
+    </div>
+  `).join('');
+
+  buildSideCta.textContent = 'View sample PDF →';
+  buildSideCta.href = SAMPLE_PDF_URL;
+  buildSideCta.dataset.brand = brand.name;
+
+  updateDeadlineBrandCta(brand);
+  renderBrandProducts(brand);
+  updateComparisonTarget(brand);
+  if (typeof window.updateTimelineBrand === 'function') {
+    window.updateTimelineBrand(brand.slug);
+  }
+}
+
+function updateDeadlineBrandCta(brand) {
+  if (!deadlineBrandCta || !deadlineBrandCtaText) return;
+
+  const isHouseLine = brand.slug === 'customfuze';
+  const label = isHouseLine ? 'Ask about a branded line' : `Ask about ${brand.name}`;
+  const subject = isHouseLine ? 'Branded sublimation quote' : `${brand.name} sublimation quote`;
+
+  deadlineBrandCtaText.textContent = label;
+  deadlineBrandCta.href = `mailto:team@allvolleyball.com?subject=${encodeURIComponent(subject)}`;
+}
+
+function updateComparisonTarget(brand) {
+  const comparison = COMPARISON_TARGETS[brand.slug] || COMPARISON_TARGETS.customfuze;
+  if (compareTargetHeading) compareTargetHeading.textContent = comparison.heading;
+
+  compareTargetCells.forEach(cell => {
+    const row = comparison.rows[cell.dataset.compareKey];
+    if (!row) return;
+    cell.innerHTML = `<div class="cfz-compare-value"><strong>${row[0]}</strong> ${row[1]}</div>`;
+  });
+}
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  }[char]));
+}
+
+function renderBrandProducts(brand) {
+  if (!productGrid) return;
+  const products = PRODUCT_SETS[brand.slug] || PRODUCT_SETS.customfuze;
+  const isHouse = brand.slug === 'customfuze';
+
+  if (productKicker) productKicker.textContent = isHouse ? 'House-line picks' : 'Brand-line picks';
+  if (productTitle) productTitle.textContent = `${brand.name} products`;
+  if (productNote) {
+    productNote.textContent = isHouse
+      ? 'CustomFuze pricing stays flexible for reorders and late adds. Your specialist confirms final team pricing.'
+      : `${brand.name} pricing and ETA depend on current brand allocation. Your specialist confirms the live quote.`;
+  }
+
+  productGrid.innerHTML = products.map(product => {
+    const subject = encodeURIComponent(`${brand.name} quote: ${product.title}`);
+    const photoClass = product.img.includes('logo') ? ' product-photo--contain' : '';
+    return `
+      <article class="product-card">
+        <div class="product-photo${photoClass}">
+          <img src="${escapeHtml(product.img)}" alt="${escapeHtml(brand.name)} ${escapeHtml(product.title)}" loading="lazy" decoding="async"
+               onerror="this.closest('.product-photo').classList.add('is-fallback')">
+          <div class="product-photo-fallback">${escapeHtml(brand.name)}<br>${escapeHtml(product.title)}</div>
+        </div>
+        <div class="product-body">
+          <h4 class="product-title">${escapeHtml(product.title)}</h4>
+          <p class="product-desc">${escapeHtml(product.desc)}</p>
+          <div class="product-meta">
+            <div>
+              <span class="product-meta-label">Price range</span>
+              <span class="product-meta-value">${escapeHtml(product.price)}</span>
+            </div>
+            <div>
+              <span class="product-meta-label">ETA</span>
+              <span class="product-meta-value">${escapeHtml(product.eta)}</span>
+            </div>
+          </div>
+          <a class="product-cta" href="mailto:team@allvolleyball.com?subject=${subject}">Quote this</a>
+        </div>
+      </article>
+    `;
+  }).join('');
+}
+
+function initComparisonHover() {
+  if (!comparisonTable) return;
+  const cells = comparisonTable.querySelectorAll('th, td');
+
+  const clearHover = () => {
+    cells.forEach(cell => {
+      cell.classList.remove('is-col-hover', 'is-cell-hover');
+    });
+  };
+
+  const setHover = cell => {
+    clearHover();
+    const index = cell.cellIndex;
+    comparisonTable.querySelectorAll('tr').forEach(row => {
+      if (row.cells[index]) row.cells[index].classList.add('is-col-hover');
+    });
+    cell.classList.add('is-cell-hover');
+  };
+
+  cells.forEach(cell => {
+    cell.addEventListener('mouseenter', () => setHover(cell));
+    cell.addEventListener('focus', () => setHover(cell));
+    cell.addEventListener('mouseleave', clearHover);
+    cell.addEventListener('blur', clearHover);
+  });
+  comparisonTable.addEventListener('mouseleave', clearHover);
+}
+
+function initStickyBrandTabs() {
+  if (!brandTabsShell || !brandTabsSentinel || !brandTabsPlaceholder) return;
+
+  const syncPlaceholder = () => {
+    brandTabsPlaceholder.style.height = `${brandTabsShell.offsetHeight}px`;
+  };
+
+  const updateStickyState = () => {
+    const shouldFloat = brandTabsSentinel.getBoundingClientRect().top <= 0;
+    brandTabsShell.classList.toggle('is-floating', shouldFloat);
+    brandTabsPlaceholder.classList.toggle('is-active', shouldFloat);
+    if (shouldFloat) syncPlaceholder();
+  };
+
+  syncPlaceholder();
+  updateStickyState();
+  window.addEventListener('scroll', updateStickyState, { passive: true });
+  window.addEventListener('resize', () => {
+    syncPlaceholder();
+    updateStickyState();
+  });
+}
+
+function initSamplePdfModal() {
+  if (!buildSideCta || !samplePdfModal || !samplePdfFrame || !samplePdfClose) return;
+  let previousFocus = null;
+
+  const openModal = event => {
+    event.preventDefault();
+    previousFocus = document.activeElement;
+    if (!samplePdfFrame.src) {
+      samplePdfFrame.src = samplePdfFrame.dataset.src || SAMPLE_PDF_URL;
+    }
+    if (samplePdfTitle && buildSideCta.dataset.brand) {
+      samplePdfTitle.textContent = `${buildSideCta.dataset.brand} sample quote PDF`;
+    }
+    samplePdfModal.classList.add('is-open');
+    samplePdfModal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+    samplePdfClose.focus();
+  };
+
+  const closeModal = () => {
+    samplePdfModal.classList.remove('is-open');
+    samplePdfModal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+    if (previousFocus && typeof previousFocus.focus === 'function') previousFocus.focus();
+  };
+
+  buildSideCta.addEventListener('click', openModal);
+  samplePdfClose.addEventListener('click', closeModal);
+  samplePdfModal.addEventListener('click', event => {
+    if (event.target === samplePdfModal) closeModal();
+  });
+  window.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && samplePdfModal.classList.contains('is-open')) closeModal();
+  });
+}
+
+function initHeroJerseySlider() {
+  if (!heroJerseySlider) return;
+  const slides = Array.from(heroJerseySlider.querySelectorAll('.hero-jersey-slide'));
+  if (slides.length < 5) return;
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let slots = [-2, -1, 0, 1, 2];
+  let intervalId = null;
+
+  const applySlots = () => {
+    slides.forEach((slide, index) => {
+      slide.dataset.slot = String(slots[index]);
+    });
+  };
+
+  const slideRightToLeft = () => {
+    const resetSlide = slides[slots.findIndex(slot => slot === -2)];
+    if (resetSlide) resetSlide.classList.add('is-resetting');
+    slots = slots.map(slot => (slot === -2 ? 2 : slot - 1));
+    applySlots();
+    if (resetSlide) {
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => resetSlide.classList.remove('is-resetting'));
+      });
+    }
+  };
+
+  const stop = () => {
+    if (!intervalId) return;
+    window.clearInterval(intervalId);
+    intervalId = null;
+  };
+
+  const start = () => {
+    if (reducedMotion.matches || intervalId) return;
+    intervalId = window.setInterval(slideRightToLeft, 3000);
+  };
+
+  applySlots();
+  start();
+
+  heroJerseySlider.addEventListener('mouseenter', stop);
+  heroJerseySlider.addEventListener('mouseleave', start);
+  heroJerseySlider.addEventListener('focusin', stop);
+  heroJerseySlider.addEventListener('focusout', start);
+
+  const handleMotionChange = () => {
+    stop();
+    applySlots();
+    start();
+  };
+
+  if (typeof reducedMotion.addEventListener === 'function') {
+    reducedMotion.addEventListener('change', handleMotionChange);
+  } else if (typeof reducedMotion.addListener === 'function') {
+    reducedMotion.addListener(handleMotionChange);
+  }
+}
+
+function initHeroMoreMenu() {
+  if (!heroMore || !heroMoreToggle) return;
+  let toggleWasOpenOnPointerDown = false;
+  const clickOnlyMenu = window.matchMedia('(max-width: 900px), (hover: none), (pointer: coarse)');
+  const shouldUseClickOnly = () => clickOnlyMenu.matches;
+
+  const setOpen = isOpen => {
+    heroMore.classList.toggle('is-open', isOpen);
+    heroMoreToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  };
+
+  heroMore.addEventListener('mouseenter', () => {
+    if (!shouldUseClickOnly()) setOpen(true);
+  });
+  heroMore.addEventListener('mouseleave', () => {
+    if (!shouldUseClickOnly()) setOpen(false);
+  });
+  heroMore.addEventListener('focusin', () => {
+    if (!shouldUseClickOnly()) setOpen(true);
+  });
+  heroMore.addEventListener('focusout', () => {
+    if (shouldUseClickOnly()) return;
+    requestAnimationFrame(() => {
+      if (!heroMore.contains(document.activeElement)) setOpen(false);
+    });
+  });
+  heroMoreToggle.addEventListener('pointerdown', () => {
+    toggleWasOpenOnPointerDown = heroMore.classList.contains('is-open');
+  });
+  heroMoreToggle.addEventListener('click', event => {
+    const keyboardActivation = event.detail === 0;
+    const wasOpenBeforePointer = toggleWasOpenOnPointerDown;
+    toggleWasOpenOnPointerDown = false;
+    if (shouldUseClickOnly()) {
+      if (heroMore.classList.contains('is-open')) return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      setOpen(true);
+      return;
+    }
+    if (keyboardActivation || wasOpenBeforePointer) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    setOpen(true);
+  });
+
+  document.querySelectorAll('[data-brand-target]').forEach(link => {
+    link.addEventListener('click', () => {
+      const index = BRANDS.findIndex(brand => brand.slug === link.dataset.brandTarget);
+      if (index >= 0) selectBrand(index);
+    });
+  });
+
+  heroMore.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => setOpen(false));
+  });
+
+  document.addEventListener('click', event => {
+    if (!heroMore.contains(event.target)) setOpen(false);
+  });
+
+  window.addEventListener('keydown', event => {
+    if (event.key === 'Escape') setOpen(false);
+  });
+}
+
+buildBrandTabs();
+initComparisonHover();
+initStickyBrandTabs();
+initSamplePdfModal();
+initHeroJerseySlider();
+initHeroMoreMenu();
+selectBrand(0);
+</script>
+
+
+<!-- ====================================================================
+     SCROLL REVEALS + COUNT-UP (GSAP)
+     ==================================================================== -->
+<script>
+if (window.gsap && window.ScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.utils.toArray('.reveal').forEach(el => {
+    gsap.set(el, { opacity: 0, y: 20 });
+    gsap.to(el, {
+      opacity: 1, y: 0,
+      duration: 0.8, ease: 'power2.out',
+      scrollTrigger: { trigger: el, start: 'top 88%', once: true }
+    });
+  });
+
+  document.querySelectorAll('.stat-num').forEach(el => {
+    const target = +el.dataset.target;
+    const obj = { val: 0 };
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 85%',
+      once: true,
+      onEnter: () => {
+        gsap.to(obj, {
+          val: target,
+          duration: 1.5, ease: 'power2.out',
+          onUpdate: () => { el.textContent = Math.floor(obj.val).toLocaleString(); },
+          onComplete: () => { el.textContent = target.toLocaleString(); }
+        });
+      }
+    });
+  });
+} else {
+  document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+  document.querySelectorAll('.stat-num').forEach(el => {
+    el.textContent = (+el.dataset.target).toLocaleString();
+  });
+}
+</script>
+
+</body>
+</html>
