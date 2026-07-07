@@ -37,15 +37,16 @@
 </script>
 
 <link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/quote.css">
 </head>
 <body class="font-body">
 
 <!-- ====================================================================
-     TOP NAV — persistent quote CTA + link to the premium brands page
+     TOP NAV, persistent quote CTA + link to the premium brands page
      ==================================================================== -->
 <header class="site-nav">
   <div class="site-nav-inner">
-    <a href="index.html" class="site-nav-brand" aria-label="All Volleyball — CustomFuze">
+    <a href="index.html" class="site-nav-brand" aria-label="All Volleyball, CustomFuze">
       <span class="site-nav-brand-name">All Volleyball</span>
       <span class="site-nav-brand-tag">CustomFuze</span>
     </a>
@@ -54,7 +55,7 @@
         <span class="site-nav-switch-label-long">View the&nbsp;</span>Premium Brands
         <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
       </a>
-      <a href="mailto:team@allvolleyball.com?subject=CustomFuze%20sublimation%20quote" class="site-nav-cta">
+      <a href="#quote" data-quote="customfuze" class="site-nav-cta">
         Request a CustomFuze Quote
       </a>
     </nav>
@@ -82,10 +83,10 @@
         30 days.<br>Guaranteed<br>in writing.
       </h1>
       <p class="mt-5 text-white/85 text-[1rem] md:text-[1.15rem] max-w-xl leading-relaxed">
-        CustomFuze is the fully-custom jersey we build in-house — matched colors, saved artwork, no reorder minimum, and a delivery date we sign on your quote. If we miss it, the freight is on us.
+        CustomFuze is the fully-custom jersey we build in-house, matched colors, saved artwork, no reorder minimum, and a delivery date we sign on your quote. If we miss it, the freight is on us.
       </p>
       <div class="hero-actions mt-7 flex flex-col sm:flex-row gap-3">
-        <a href="mailto:team@allvolleyball.com?subject=CustomFuze%20sublimation%20quote" class="group inline-flex items-center justify-center gap-2 btn-red text-white font-medium px-6 py-3.5 text-[1rem]">
+        <a href="#quote" data-quote="customfuze" class="group inline-flex items-center justify-center gap-2 btn-red text-white font-medium px-6 py-3.5 text-[1rem]">
           Request a CustomFuze Quote
           <svg class="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
         </a>
@@ -192,13 +193,13 @@
 
 
 <!-- ====================================================================
-     SECTION 1. BUILD DETAILS — CustomFuze only (static)
+     SECTION 1. BUILD DETAILS, CustomFuze only (static)
      ==================================================================== -->
 <section id="build" class="bg-avb-offwhite py-24 md:py-32 px-6 lg:px-12">
   <div class="max-w-[1280px] mx-auto">
 
     <div class="mb-12 lg:mb-16">
-      <div class="text-[11px] uppercase tracking-[0.25em] text-avb-grey font-semibold mb-4 reveal">01 / The house line</div>
+      <div class="text-[11px] uppercase tracking-[0.25em] text-avb-grey font-semibold mb-4 reveal">The house line</div>
       <h2 class="font-display font-semibold text-avb-black uppercase reveal display-tight"
           style="font-size: clamp(2.25rem, 5.5vw, 4rem); line-height: 1;">
         CustomFuze,<br>in full.
@@ -218,41 +219,43 @@
         <p class="text-avb-body leading-relaxed max-w-2xl mb-8 text-base md:text-lg">Our house line, run on the system that defines how every All Volleyball order works. The path we recommend when the deadline is real, the budget needs to be tight, and the director needs the same kit available again next season without a story.</p>
         <div>
           <div class="detail-row" data-brand-accent style="--brand-accent:#C23946">
-            <div class="detail-num">01</div>
-            <div><div class="detail-title">Color fidelity, locked.</div><div class="detail-desc">Your palette is matched against a saved swatch on file. Every reorder pulls from the same approved color — not a fresh interpretation.</div></div>
+            <div><div class="detail-title">Color fidelity, locked.</div><div class="detail-desc">Your palette is matched against a saved swatch on file. Every reorder pulls from the same approved color, not a fresh interpretation.</div></div>
           </div>
           <div class="detail-row" data-brand-accent style="--brand-accent:#C23946">
-            <div class="detail-num">02</div>
             <div><div class="detail-title">30-day delivery, guaranteed.</div><div class="detail-desc">From Design Lock to your door in 30 days. If we miss the date, the freight is on us. It is written into your quote.</div></div>
           </div>
           <div class="detail-row" data-brand-accent style="--brand-accent:#C23946">
-            <div class="detail-num">03</div>
             <div><div class="detail-title">Roster changes, last week.</div><div class="detail-desc">Late adds, libero alternates, and split rosters are handled by your specialist on a phone call. No portal, no change-order form.</div></div>
           </div>
           <div class="detail-row" data-brand-accent style="--brand-accent:#C23946">
-            <div class="detail-num">04</div>
-            <div><div class="detail-title">Reorders without restart.</div><div class="detail-desc">Your artwork file, sizes, and roster stay on file. Next season is one approval email — same kit, same look, same price band.</div></div>
+            <div><div class="detail-title">Reorders without restart.</div><div class="detail-desc">Your artwork file, sizes, and roster stay on file. Next season is one approval email, same kit, same look, same price band.</div></div>
           </div>
           <div class="detail-row" data-brand-accent style="--brand-accent:#C23946">
-            <div class="detail-num">05</div>
             <div><div class="detail-title">No reorder minimum.</div><div class="detail-desc">Order one replacement jersey midseason at the same price-per-unit. We do not punish small reorders.</div></div>
           </div>
         </div>
       </div>
 
-      <!-- Side panel: guarantee + CTA -->
+      <!-- Side panel: the promise, kept simple -->
       <aside class="bg-avb-black text-white p-8 md:p-10 flex flex-col reveal">
-        <div class="text-[11px] uppercase tracking-[0.22em] text-avb-red font-semibold mb-3">Provider promise</div>
-        <h4 class="font-display font-semibold uppercase text-2xl mb-4 leading-tight">House line guarantee</h4>
-        <p class="text-white/85 leading-relaxed text-base mb-6">CustomFuze ships in 30 days from Design Lock — every order, every reorder. Same artwork file, same team, same date on the calendar.</p>
-        <div class="space-y-0 pt-4 border-t border-white/15">
-          <div class="build-side-proof"><span class="build-side-proof-label">Promise</span><span class="build-side-proof-value">30 days from Design Lock</span></div>
-          <div class="build-side-proof"><span class="build-side-proof-label">If we miss</span><span class="build-side-proof-value">Freight on us</span></div>
-          <div class="build-side-proof"><span class="build-side-proof-label">Reorder</span><span class="build-side-proof-value">Same kit, one email</span></div>
-          <div class="build-side-proof"><span class="build-side-proof-label">Minimum</span><span class="build-side-proof-value">No order minimum on reorders</span></div>
+        <div class="text-[11px] uppercase tracking-[0.22em] text-avb-red font-semibold mb-3">The promise</div>
+        <h4 class="font-display font-semibold uppercase text-3xl mb-4 leading-tight">30 days,<br>in writing.</h4>
+        <p class="text-white/85 leading-relaxed text-base mb-8">Lock the design and your team is on the court in 30 days. If we miss the date, the freight is on us.</p>
+        <div class="space-y-6 pt-6 border-t border-white/15">
+          <div>
+            <div class="font-display font-semibold text-3xl leading-none">30 days</div>
+            <div class="text-white/55 text-sm mt-1.5">Design Lock to your door, guaranteed</div>
+          </div>
+          <div>
+            <div class="font-display font-semibold text-3xl leading-none">No minimum</div>
+            <div class="text-white/55 text-sm mt-1.5">Reorder a single jersey at the same price</div>
+          </div>
         </div>
-        <a href="mailto:team@allvolleyball.com?subject=CustomFuze%20sublimation%20quote" class="mt-auto pt-10 inline-flex items-center gap-2 text-avb-red font-semibold text-xs uppercase tracking-[0.18em] hover:text-white transition-colors">
-          Request a CustomFuze Quote →
+        <a href="#quote" data-quote="customfuze" class="mt-auto pt-10 group">
+          <span class="inline-flex w-full items-center justify-center gap-2 btn-red text-white font-medium px-6 py-3.5 text-base">
+            Start your quote
+            <svg class="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+          </span>
         </a>
       </aside>
     </div>
@@ -276,7 +279,7 @@
             <h4 class="product-title">Paramount Sleeveless</h4>
             <p class="product-desc">House-line jersey for programs that want a clean custom look with the fastest reorder path.</p>
             <div class="product-meta">
-              <div><span class="product-meta-label">Price range</span><span class="product-meta-value">$45–$60</span></div>
+              <div><span class="product-meta-label">Price range</span><span class="product-meta-value">$45-$60</span></div>
               <div><span class="product-meta-label">ETA</span><span class="product-meta-value">30 days</span></div>
             </div>
             <a class="product-cta" href="mailto:team@allvolleyball.com?subject=CustomFuze%20quote%3A%20Paramount%20Sleeveless">Quote this</a>
@@ -291,7 +294,7 @@
             <h4 class="product-title">Paramount Long Sleeve</h4>
             <p class="product-desc">Full-sleeve custom option for teams that want extra coverage without giving up the 30-day promise.</p>
             <div class="product-meta">
-              <div><span class="product-meta-label">Price range</span><span class="product-meta-value">$50–$65</span></div>
+              <div><span class="product-meta-label">Price range</span><span class="product-meta-value">$50-$65</span></div>
               <div><span class="product-meta-label">ETA</span><span class="product-meta-value">30 days</span></div>
             </div>
             <a class="product-cta" href="mailto:team@allvolleyball.com?subject=CustomFuze%20quote%3A%20Paramount%20Long%20Sleeve">Quote this</a>
@@ -306,7 +309,7 @@
             <h4 class="product-title">Men's Sublimated Sleeveless</h4>
             <p class="product-desc">Lightweight men's cut with saved artwork, saved colors, and simple replacement ordering.</p>
             <div class="product-meta">
-              <div><span class="product-meta-label">Price range</span><span class="product-meta-value">$40–$55</span></div>
+              <div><span class="product-meta-label">Price range</span><span class="product-meta-value">$40-$55</span></div>
               <div><span class="product-meta-label">ETA</span><span class="product-meta-value">30 days</span></div>
             </div>
             <a class="product-cta" href="mailto:team@allvolleyball.com?subject=CustomFuze%20quote%3A%20Men%27s%20Sublimated%20Sleeveless">Quote this</a>
@@ -321,7 +324,7 @@
             <h4 class="product-title">Libero Alternate Kit</h4>
             <p class="product-desc">Contrast-ready alternate built from the same approved file so the team look stays coordinated.</p>
             <div class="product-meta">
-              <div><span class="product-meta-label">Price range</span><span class="product-meta-value">$45–$65</span></div>
+              <div><span class="product-meta-label">Price range</span><span class="product-meta-value">$45-$65</span></div>
               <div><span class="product-meta-label">ETA</span><span class="product-meta-value">30 days</span></div>
             </div>
             <a class="product-cta" href="mailto:team@allvolleyball.com?subject=CustomFuze%20quote%3A%20Libero%20Alternate%20Kit">Quote this</a>
@@ -344,7 +347,7 @@
           <tr>
             <td class="cfz-compare-metric">Lead time</td>
             <td class="cfz-compare-primary cfz-compare-cell" data-metric="Lead time"><div class="cfz-compare-value"><strong>30 days from Design Lock.</strong> Guaranteed in writing on your quote.</div></td>
-            <td class="cfz-compare-cell" data-metric="Lead time"><div class="cfz-compare-value"><strong>6 – 10 weeks typical.</strong> Runs on the manufacturer's calendar and allocation queue.</div></td>
+            <td class="cfz-compare-cell" data-metric="Lead time"><div class="cfz-compare-value"><strong>6 to 10 weeks typical.</strong> Runs on the manufacturer's calendar and allocation queue.</div></td>
           </tr>
           <tr>
             <td class="cfz-compare-metric">Minimum orders</td>
@@ -390,82 +393,13 @@
 
 
 <!-- ====================================================================
-     SECTION 2. TIMELINE PICKER — CustomFuze 30-day window
-     ==================================================================== -->
-<section id="timeline" class="bg-white py-24 md:py-32 px-6 lg:px-12">
-  <div class="max-w-[1280px] mx-auto">
-
-    <div class="mb-12 lg:mb-16">
-      <div class="text-[11px] uppercase tracking-[0.25em] text-avb-grey font-semibold mb-4 reveal">02 / Timeline</div>
-      <h2 class="font-display font-semibold text-avb-black uppercase reveal display-tight"
-          style="font-size: clamp(2.25rem, 5.5vw, 4rem); line-height: 1;">
-        Your timeline,<br>not ours.
-      </h2>
-      <p class="mt-5 text-avb-grey text-base md:text-lg max-w-xl reveal">
-        Pick the date your team needs to be on the court. We'll show you when to start the CustomFuze build.
-      </p>
-    </div>
-
-    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-stretch">
-
-      <div class="flex flex-col">
-        <div class="bg-white border border-avb-divider p-6 md:p-8 h-full w-full">
-          <div class="mb-7">
-            <div class="text-[11px] uppercase tracking-[0.22em] text-avb-grey font-semibold mb-2">Selected timeline</div>
-            <h3 id="cal-timeline-title" class="font-display font-semibold text-avb-black uppercase leading-none text-2xl md:text-3xl">CustomFuze Timeline</h3>
-            <p id="cal-timeline-subtitle" class="mt-2 text-sm text-avb-grey leading-relaxed">30-day guaranteed window</p>
-          </div>
-          <div class="flex items-center justify-between mb-6">
-            <button id="cal-prev" class="text-avb-black hover:text-avb-red transition-colors p-1 disabled:text-avb-grey/40 disabled:cursor-not-allowed" aria-label="Previous month">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/></svg>
-            </button>
-            <div id="cal-label" class="font-display font-semibold uppercase tracking-wide text-avb-black text-lg md:text-xl"></div>
-            <button id="cal-next" class="text-avb-black hover:text-avb-red transition-colors p-1 disabled:text-avb-grey/40 disabled:cursor-not-allowed" aria-label="Next month">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
-            </button>
-          </div>
-          <div class="grid grid-cols-7 gap-1 mb-2 text-[10px] uppercase tracking-[0.18em] text-avb-grey font-semibold text-center">
-            <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
-          </div>
-          <div id="cal-grid" class="grid grid-cols-7 gap-1"></div>
-          <div class="mt-5 space-y-2 text-xs text-avb-grey">
-            <p id="cal-availability-note"></p>
-            <p><span class="font-semibold text-avb-red">Red dates</span> are rush requests: <span id="cal-rush-note"></span></p>
-            <p id="cal-ideal-note"></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="flex">
-        <div class="bg-white border border-avb-divider p-6 md:p-8 h-full w-full flex flex-col">
-          <div class="mb-6">
-            <span class="text-[11px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Timeline check</span>
-            <h3 id="tl-summary" class="mt-2 font-display font-semibold text-avb-black uppercase leading-tight text-[1.6rem]"></h3>
-            <p id="tl-helper" class="mt-2 text-sm text-avb-grey leading-relaxed"></p>
-          </div>
-          <div id="tl-track"></div>
-          <div id="tl-status" class="mt-10 pt-6 border-t border-avb-divider text-base leading-relaxed"></div>
-          <div class="mt-auto pt-8">
-            <a href="mailto:team@allvolleyball.com?subject=CustomFuze%20sublimation%20quote" class="inline-flex w-full items-center justify-center gap-2 btn-red text-white font-medium px-7 py-4 text-base">
-              Send Us Your Roster
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ====================================================================
-     SECTION 3. DEADLINE — CustomFuze guaranteed vs. general estimate
+     SECTION 3. DEADLINE, CustomFuze guaranteed vs. general estimate
      ==================================================================== -->
 <section id="deadline" class="bg-avb-offwhite py-24 md:py-32 px-6 lg:px-12">
   <div class="max-w-[1280px] mx-auto">
 
     <div class="mb-12 lg:mb-16">
-      <div class="text-[11px] uppercase tracking-[0.25em] text-avb-grey font-semibold mb-4 reveal">03 / Delivery</div>
+      <div class="text-[11px] uppercase tracking-[0.25em] text-avb-grey font-semibold mb-4 reveal">Delivery</div>
       <h2 class="font-display font-semibold text-avb-black uppercase reveal display-tight"
           style="font-size: clamp(2.25rem, 5.5vw, 4rem); line-height: 1;">
         A date we sign,<br>not a range we hide behind.
@@ -488,14 +422,14 @@
           <span class="deadline-number-line deadline-number-line--sub">In writing.</span>
         </div>
         <p class="deadline-copy text-white/85">
-          Lock the design today, your team is on the court in 30 days from Design Lock. We sign the date on your quote. If we miss it, we cover the freight — no fine print, no policy fights.
+          Lock the design today, your team is on the court in 30 days from Design Lock. We sign the date on your quote. If we miss it, we cover the freight, no fine print, no policy fights.
         </p>
         <div class="deadline-grid">
           <div><div class="deadline-grid-label">Quote in</div><div class="deadline-grid-value">24 hrs</div></div>
           <div><div class="deadline-grid-label">Design lock</div><div class="deadline-grid-value">Day 1</div></div>
           <div><div class="deadline-grid-label">On court</div><div class="deadline-grid-value">Day 30</div></div>
         </div>
-        <a href="mailto:team@allvolleyball.com?subject=CustomFuze%20sublimation%20quote" class="mt-8 inline-flex items-center gap-2 btn-red text-white font-medium px-6 py-3.5 text-base">
+        <a href="#quote" data-quote="customfuze" class="mt-8 inline-flex items-center gap-2 btn-red text-white font-medium px-6 py-3.5 text-base">
           Request a CustomFuze Quote
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
         </a>
@@ -508,7 +442,7 @@
           <span class="deadline-stamp">Estimated</span>
         </div>
         <div class="deadline-number">
-          <span class="deadline-number-line">6 – 10 weeks.</span>
+          <span class="deadline-number-line">6 to 10 weeks.</span>
           <span class="deadline-number-line deadline-number-line--sub">Estimated.</span>
         </div>
         <p class="deadline-copy text-avb-body">
@@ -534,22 +468,22 @@
 
 
 <!-- ====================================================================
-     SECTION 4. WE ARE THE GO-TO — Volleyball-first
+     SECTION 4. WE ARE THE GO-TO, Volleyball-first
      ==================================================================== -->
 <section class="bg-white py-24 md:py-32 px-6 lg:px-12">
   <div class="max-w-[1280px] mx-auto">
 
     <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-20 lg:mb-24">
       <div class="lg:col-span-5">
-        <div class="text-[11px] uppercase tracking-[0.25em] text-avb-grey font-semibold mb-4 reveal">04 / The go-to</div>
+        <div class="text-[11px] uppercase tracking-[0.25em] text-avb-grey font-semibold mb-4 reveal">The go-to</div>
         <h2 class="font-display font-semibold text-avb-black uppercase reveal display-tight"
             style="font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.02;">
           One sport.<br>Thirty years.<br>No detours.
         </h2>
       </div>
       <div class="lg:col-span-7 lg:pt-4 space-y-5 text-avb-body text-base md:text-lg leading-relaxed reveal">
-        <p>Most dealers handle twelve sports. We've handled one — and we've handled it since 1995. We're not a generalist that also takes volleyball orders. We're a volleyball-only operation, run on a system built specifically for the way clubs, schools, and directors actually work.</p>
-        <p>That focus is the whole point. We're not winging it — we run a proven process that keeps every quote, every reorder, every ship date on the rails. No chasing answers. No learning curve on your program. No things falling through the cracks the week before tryouts.</p>
+        <p>Most dealers handle twelve sports. We've handled one, and we've handled it since 1995. We're not a generalist that also takes volleyball orders. We're a volleyball-only operation, run on a system built specifically for the way clubs, schools, and directors actually work.</p>
+        <p>That focus is the whole point. We're not winging it, we run a proven process that keeps every quote, every reorder, every ship date on the rails. No chasing answers. No learning curve on your program. No things falling through the cracks the week before tryouts.</p>
       </div>
     </div>
 
@@ -580,14 +514,14 @@
 
 
 <!-- ====================================================================
-     SECTION 5. SERVICE — How we show up
+     SECTION 5. SERVICE, How we show up
      ==================================================================== -->
 <section id="service" class="bg-white py-24 md:py-32 px-6 lg:px-12">
   <div class="max-w-[1280px] mx-auto">
 
     <div class="grid lg:grid-cols-12 gap-12 mb-16">
       <div class="lg:col-span-5">
-        <div class="text-[11px] uppercase tracking-[0.25em] text-avb-grey font-semibold mb-4 reveal">05 / How we show up</div>
+        <div class="text-[11px] uppercase tracking-[0.25em] text-avb-grey font-semibold mb-4 reveal">How we show up</div>
         <h2 class="font-display font-semibold text-avb-black uppercase reveal display-tight"
             style="font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.02;">
           You won't<br>be passed<br>around.
@@ -600,31 +534,31 @@
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-avb-divider border border-avb-divider reveal">
-      <div class="svc-cell"><div class="svc-cell-num">01</div><h3 class="svc-cell-title">A name, not a number</h3><p class="svc-cell-desc">One specialist on every order. They learn your roster, your colors, your reorder rhythm, your director's pet peeves.</p></div>
-      <div class="svc-cell"><div class="svc-cell-num">02</div><h3 class="svc-cell-title">Real reply, one business day</h3><p class="svc-cell-desc">Quote in 24 hours. Mockup in 48. Question on a Friday afternoon — answer before you leave for the weekend.</p></div>
-      <div class="svc-cell"><div class="svc-cell-num">03</div><h3 class="svc-cell-title">No surprises after</h3><p class="svc-cell-desc">The price you approve is the price you pay. The date we promise is the date it ships. No back-end fees, no policy fights.</p></div>
-      <div class="svc-cell"><div class="svc-cell-num">04</div><h3 class="svc-cell-title">Reorders that remember</h3><p class="svc-cell-desc">We keep your artwork file, sizing notes, and roster from last year. A reorder is one email, not a restart from scratch.</p></div>
-      <div class="svc-cell"><div class="svc-cell-num">05</div><h3 class="svc-cell-title">We answer the hard ones</h3><p class="svc-cell-desc">Late adds, libero contrast, school compliance, sponsor placement, sister-team kits. We've handled it before, and we'll tell you straight.</p></div>
-      <div class="svc-cell"><div class="svc-cell-num">06</div><h3 class="svc-cell-title">Built for clubs, not brands</h3><p class="svc-cell-desc">We work for you, not the apparel companies. If a brand isn't right for your program this year, we'll say so on the call.</p></div>
+      <div class="svc-cell"><h3 class="svc-cell-title">A name, not a number</h3><p class="svc-cell-desc">One specialist on every order. They learn your roster, your colors, your reorder rhythm, your director's pet peeves.</p></div>
+      <div class="svc-cell"><h3 class="svc-cell-title">Real reply, one business day</h3><p class="svc-cell-desc">Quote in 24 hours. Mockup in 48. Question on a Friday afternoon, answer before you leave for the weekend.</p></div>
+      <div class="svc-cell"><h3 class="svc-cell-title">No surprises after</h3><p class="svc-cell-desc">The price you approve is the price you pay. The date we promise is the date it ships. No back-end fees, no policy fights.</p></div>
+      <div class="svc-cell"><h3 class="svc-cell-title">Reorders that remember</h3><p class="svc-cell-desc">We keep your artwork file, sizing notes, and roster from last year. A reorder is one email, not a restart from scratch.</p></div>
+      <div class="svc-cell"><h3 class="svc-cell-title">We answer the hard ones</h3><p class="svc-cell-desc">Late adds, libero contrast, school compliance, sponsor placement, sister-team kits. We've handled it before, and we'll tell you straight.</p></div>
+      <div class="svc-cell"><h3 class="svc-cell-title">Built for clubs, not brands</h3><p class="svc-cell-desc">We work for you, not the apparel companies. If a brand isn't right for your program this year, we'll say so on the call.</p></div>
     </div>
   </div>
 </section>
 
 
 <!-- ====================================================================
-     SECTION 6. THE DIFFERENCE — side-by-side comparison
+     SECTION 6. THE DIFFERENCE, side-by-side comparison
      ==================================================================== -->
 <section class="bg-avb-black py-24 md:py-32 px-6 lg:px-12">
   <div class="max-w-[1280px] mx-auto">
 
     <div class="mb-14 lg:mb-16">
-      <div class="text-[11px] uppercase tracking-[0.25em] text-avb-red font-semibold mb-4 reveal">06 / The difference</div>
+      <div class="text-[11px] uppercase tracking-[0.25em] text-avb-red font-semibold mb-4 reveal">The difference</div>
       <h2 class="font-display font-semibold text-white uppercase reveal display-tight"
           style="font-size: clamp(2.25rem, 5.5vw, 4rem); line-height: 1;">
         Too big to care.<br>Too small to deliver.<br>We're neither.
       </h2>
       <p class="mt-5 text-white/65 text-base md:text-lg max-w-xl reveal">
-        The market is consolidating. The big players scale; the small ones disappear. We did neither — we built the volleyball-only alternative for programs that won't settle for either side of that trade.
+        The market is consolidating. The big players scale; the small ones disappear. We did neither, we built the volleyball-only alternative for programs that won't settle for either side of that trade.
       </p>
     </div>
 
@@ -632,12 +566,12 @@
       <div class="bg-avb-black p-8 md:p-10 compare-typical">
         <div class="text-[11px] uppercase tracking-[0.25em] text-white/45 font-semibold mb-6">The other dealers</div>
         <div class="text-white/75 leading-relaxed">
-          <div class="compare-row"><span class="compare-mark">—</span><span>Too big to care, or too small to keep up</span></div>
-          <div class="compare-row"><span class="compare-mark">—</span><span>Chasing answers across a ticket queue</span></div>
-          <div class="compare-row"><span class="compare-mark">—</span><span>Different rep every reorder</span></div>
-          <div class="compare-row"><span class="compare-mark">—</span><span>"4 to 8 weeks" with no real commitment</span></div>
-          <div class="compare-row"><span class="compare-mark">—</span><span>Volleyball is one of twelve categories</span></div>
-          <div class="compare-row"><span class="compare-mark">—</span><span>Things fall through the cracks late</span></div>
+          <div class="compare-row"><span class="compare-mark">&times;</span><span>Too big to care, or too small to keep up</span></div>
+          <div class="compare-row"><span class="compare-mark">&times;</span><span>Chasing answers across a ticket queue</span></div>
+          <div class="compare-row"><span class="compare-mark">&times;</span><span>Different rep every reorder</span></div>
+          <div class="compare-row"><span class="compare-mark">&times;</span><span>"4 to 8 weeks" with no real commitment</span></div>
+          <div class="compare-row"><span class="compare-mark">&times;</span><span>Volleyball is one of twelve categories</span></div>
+          <div class="compare-row"><span class="compare-mark">&times;</span><span>Things fall through the cracks late</span></div>
         </div>
       </div>
       <div class="bg-white p-8 md:p-10 compare-us">
@@ -646,9 +580,9 @@
           <div class="compare-row"><svg class="compare-mark w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg><span>A human you can call by name</span></div>
           <div class="compare-row"><svg class="compare-mark w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg><span>Same specialist year after year</span></div>
           <div class="compare-row"><svg class="compare-mark w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg><span>30 days, guaranteed in writing on CustomFuze</span></div>
-          <div class="compare-row"><svg class="compare-mark w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg><span>Volleyball-only — every order, every day</span></div>
+          <div class="compare-row"><svg class="compare-mark w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg><span>Volleyball-only, every order, every day</span></div>
           <div class="compare-row"><svg class="compare-mark w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg><span>Run on a proven system, not improvisation</span></div>
-          <div class="compare-row"><svg class="compare-mark w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg><span>Your file stays with us — reorders are one email</span></div>
+          <div class="compare-row"><svg class="compare-mark w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg><span>Your file stays with us, reorders are one email</span></div>
         </div>
       </div>
     </div>
@@ -663,26 +597,26 @@
   <div class="max-w-[1280px] mx-auto">
 
     <div class="mb-12 lg:mb-16 text-center">
-      <div class="text-[11px] uppercase tracking-[0.25em] text-avb-grey font-semibold mb-4 reveal">07 / The lines</div>
+      <div class="text-[11px] uppercase tracking-[0.25em] text-avb-grey font-semibold mb-4 reveal">Top brands</div>
       <h2 class="font-display font-semibold text-avb-black uppercase reveal display-tight"
           style="font-size: clamp(2.25rem, 5.5vw, 4rem); line-height: 1;">
-        Every brand<br>worth wearing.
+        Shop other<br>top brands.
       </h2>
       <p class="mt-5 text-avb-grey text-base md:text-lg max-w-xl mx-auto reveal">
-        CustomFuze is our house line. We also do full custom on the premium brands your athletes already trust.
+        CustomFuze is our house line. When your program wants a badge on the chest, we build full custom on the premium brands your athletes already know.
         <a href="premium-brands.html" class="link-inline text-avb-black font-medium">See the premium brands →</a>
       </p>
     </div>
 
     <div class="brand-stage">
       <div class="brand-wheel" id="brand-wheel">
-        <div class="brand-card" aria-hidden="true"><img class="brand-logo" src="https://cdn.shopify.com/s/files/1/0834/3745/3598/files/customfuze_logo_1.png?v=1756144449" alt="" loading="lazy" decoding="async"><div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">House line</div></div>
+        
         <div class="brand-card" aria-hidden="true"><div class="brand-wordmark">adidas</div><div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Full custom</div></div>
         <div class="brand-card" aria-hidden="true"><img class="brand-logo" src="https://cdn.shopify.com/s/files/1/0834/3745/3598/files/under_armour_logo.png?v=1726495605" alt="" loading="lazy" decoding="async"><div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Full custom</div></div>
         <div class="brand-card" aria-hidden="true"><img class="brand-logo" src="https://cdn.shopify.com/s/files/1/0834/3745/3598/files/Mizuno.svg?v=1778155832" alt="" loading="lazy" decoding="async"><div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Full custom</div></div>
         <div class="brand-card" aria-hidden="true"><img class="brand-logo" src="https://cdn.shopify.com/s/files/1/0834/3745/3598/files/asics_logo.png?v=1726495605" alt="" loading="lazy" decoding="async"><div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Full custom</div></div>
 
-        <div class="brand-card"><img class="brand-logo" src="https://cdn.shopify.com/s/files/1/0834/3745/3598/files/customfuze_logo_1.png?v=1756144449" alt="CustomFuze" loading="lazy" decoding="async"><div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">House line</div></div>
+        
         <div class="brand-card"><div class="brand-wordmark" aria-label="Adidas">adidas</div><div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Full custom</div></div>
         <div class="brand-card"><img class="brand-logo" src="https://cdn.shopify.com/s/files/1/0834/3745/3598/files/under_armour_logo.png?v=1726495605" alt="Under Armour" loading="lazy" decoding="async"><div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Full custom</div></div>
         <div class="brand-card"><img class="brand-logo" src="https://cdn.shopify.com/s/files/1/0834/3745/3598/files/Mizuno.svg?v=1778155832" alt="Mizuno" loading="lazy" decoding="async"><div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Full custom</div></div>
@@ -698,7 +632,7 @@
 
 
 <!-- ====================================================================
-     SECTION 8. TEAM-SIDE CLOSE — both CTAs
+     SECTION 8. TEAM-SIDE CLOSE, both CTAs
      ==================================================================== -->
 <section class="bg-avb-offwhite py-24 md:py-32 px-6 lg:px-12">
   <div class="max-w-2xl mx-auto text-center">
@@ -710,7 +644,7 @@
       Send the roster. We'll send a CustomFuze quote in 24 hours and a real ship date you can plan around. If you're serious about your program, we're your partner.
     </p>
     <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
-      <a href="mailto:team@allvolleyball.com?subject=CustomFuze%20sublimation%20quote" class="inline-flex items-center gap-2 btn-red text-white font-medium px-7 py-4 text-base">
+      <a href="#quote" data-quote="customfuze" class="inline-flex items-center gap-2 btn-red text-white font-medium px-7 py-4 text-base">
         Request a CustomFuze Quote
       </a>
       <a href="premium-brands.html" class="inline-flex items-center gap-2 border border-avb-black text-avb-black font-medium px-7 py-4 text-base btn-ghost-dark">
@@ -734,198 +668,6 @@
      ==================================================================== -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-
-
-<!-- ====================================================================
-     TIMELINE PICKER — CustomFuze
-     ==================================================================== -->
-<script>
-(() => {
-  const calLabel = document.getElementById('cal-label');
-  const calGrid  = document.getElementById('cal-grid');
-  const calPrev  = document.getElementById('cal-prev');
-  const calNext  = document.getElementById('cal-next');
-  const calAvailabilityNote = document.getElementById('cal-availability-note');
-  const calRushNote = document.getElementById('cal-rush-note');
-  const calIdealNote = document.getElementById('cal-ideal-note');
-  const calTimelineTitle = document.getElementById('cal-timeline-title');
-  const calTimelineSubtitle = document.getElementById('cal-timeline-subtitle');
-  const tlTrack    = document.getElementById('tl-track');
-  const tlSummary  = document.getElementById('tl-summary');
-  const tlHelper   = document.getElementById('tl-helper');
-  const tlStatus   = document.getElementById('tl-status');
-
-  if (!calLabel || !calGrid || !calPrev || !calNext || !tlTrack || !tlSummary || !tlHelper || !tlStatus) return;
-
-  const ANCHOR_TODAY = startOfDay(new Date());
-  const MONTHS_LONG  = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-  const MONTHS_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  const fmtFull  = d => `${MONTHS_SHORT[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
-  const fmtShort = d => `${MONTHS_SHORT[d.getMonth()]} ${d.getDate()}`;
-
-  const CONFIG = {
-    brandName: 'CustomFuze',
-    startLeadDays: 2,
-    designToOnCourtDays: 30,
-    productionOffsetDays: 7,
-    shipBufferDays: 7,
-    rushWindowDays: 7,
-    rangeLabel: '30-day guaranteed window',
-    idealCopy: 'For the cleanest CustomFuze path',
-    steps: [
-      { label: 'Start request', note: '2 days before Design Lock' },
-      { label: 'Design Lock',   note: 'Roster, sizes, artwork approved' },
-      { label: 'Production',    note: '7 days from Design Lock' },
-      { label: 'Ships',         note: '7 days before target' },
-      { label: 'On Court',      note: '30 days from Design Lock' }
-    ]
-  };
-
-  let selectedDate = addDays(ANCHOR_TODAY, 42);
-  let viewYear  = selectedDate.getFullYear();
-  let viewMonth = selectedDate.getMonth();
-
-  function startOfDay(date) { return new Date(date.getFullYear(), date.getMonth(), date.getDate()); }
-  function addDays(date, days) { const d = new Date(date); d.setDate(d.getDate() + days); return d; }
-  function diffDays(a, b) {
-    const x = new Date(a.getFullYear(), a.getMonth(), a.getDate());
-    const y = new Date(b.getFullYear(), b.getMonth(), b.getDate());
-    return Math.round((x - y) / 86400000);
-  }
-  function isSameDay(a, b) {
-    return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
-  }
-  function getActiveTiming() {
-    const minIdealDate = getOnCourtDate(addDays(ANCHOR_TODAY, CONFIG.startLeadDays));
-    return { minIdealDate, minDate: addDays(minIdealDate, -CONFIG.rushWindowDays), maxDate: addDays(ANCHOR_TODAY, 365) };
-  }
-  function getDesignLockDate(onCourtDate) { return addDays(onCourtDate, -CONFIG.designToOnCourtDays); }
-  function getOnCourtDate(designLockDate) { return addDays(designLockDate, CONFIG.designToOnCourtDays); }
-  function getTimelineDates(onCourtDate) {
-    const designLock = getDesignLockDate(onCourtDate);
-    const shipDate = addDays(onCourtDate, -CONFIG.shipBufferDays);
-    return [addDays(designLock, -CONFIG.startLeadDays), designLock, addDays(designLock, CONFIG.productionOffsetDays), shipDate, onCourtDate];
-  }
-  function getDateState(date) {
-    const { minDate, minIdealDate, maxDate } = getActiveTiming();
-    if (date < minDate || date > maxDate) return 'disabled';
-    if (date < minIdealDate) return 'critical';
-    return 'ideal';
-  }
-
-  function updateCalendarNotes() {
-    const { minDate, minIdealDate } = getActiveTiming();
-    const rushEnd = addDays(minIdealDate, -1);
-    if (calTimelineTitle) calTimelineTitle.textContent = `${CONFIG.brandName} Timeline`;
-    if (calTimelineSubtitle) calTimelineSubtitle.textContent = CONFIG.rangeLabel;
-    if (calAvailabilityNote) calAvailabilityNote.textContent = `Today is ${fmtFull(ANCHOR_TODAY)}. Dates before ${fmtFull(minDate)} are unavailable for ${CONFIG.brandName}.`;
-    if (calRushNote) calRushNote.textContent = `${fmtFull(minDate)} through ${fmtFull(rushEnd)} are outside the ideal ${CONFIG.rangeLabel}, but we'll review what is possible.`;
-    if (calIdealNote) calIdealNote.textContent = `${CONFIG.idealCopy}, choose ${fmtFull(minIdealDate)} or later so approval, production, shipping, and team handoff all have room to breathe.`;
-  }
-
-  function renderCalendar() {
-    calLabel.textContent = `${MONTHS_LONG[viewMonth]} ${viewYear}`;
-    calGrid.innerHTML = '';
-    const firstDay = new Date(viewYear, viewMonth, 1);
-    const lastDay  = new Date(viewYear, viewMonth + 1, 0);
-    const startBlanks = firstDay.getDay();
-    const totalDays = lastDay.getDate();
-    for (let i = 0; i < startBlanks; i++) { const cell = document.createElement('div'); cell.className = 'cal-cell'; calGrid.appendChild(cell); }
-    for (let day = 1; day <= totalDays; day++) {
-      const date = new Date(viewYear, viewMonth, day);
-      const cell = document.createElement('div'); cell.className = 'cal-cell';
-      const btn = document.createElement('button'); btn.type = 'button'; btn.textContent = day;
-      const dateState = getDateState(date);
-      const disabled = dateState === 'disabled';
-      const isCritical = dateState === 'critical';
-      const isSelected = isSameDay(date, selectedDate);
-      const isToday = isSameDay(date, ANCHOR_TODAY);
-      btn.className = 'cal-day ' + (
-        disabled ? 'cal-day--disabled' :
-        isSelected && isCritical ? 'cal-day--selected-critical' :
-        isSelected ? 'cal-day--selected' :
-        isCritical ? 'cal-day--critical' :
-        isToday ? 'cal-day--today' : 'cal-day--default'
-      );
-      if (isCritical) btn.setAttribute('aria-label', `${fmtFull(date)} rush request window`);
-      if (disabled) btn.disabled = true;
-      else btn.addEventListener('click', () => { selectedDate = date; renderCalendar(); updateTimeline(); });
-      cell.appendChild(btn); calGrid.appendChild(cell);
-    }
-    const { minDate, maxDate } = getActiveTiming();
-    const minMonthStart = new Date(minDate.getFullYear(), minDate.getMonth(), 1);
-    const maxMonthStart = new Date(maxDate.getFullYear(), maxDate.getMonth(), 1);
-    const viewMonthStart = new Date(viewYear, viewMonth, 1);
-    calPrev.disabled = viewMonthStart <= minMonthStart;
-    calNext.disabled = viewMonthStart >= maxMonthStart;
-  }
-
-  calPrev.addEventListener('click', () => { if (calPrev.disabled) return; const prev = new Date(viewYear, viewMonth - 1, 1); viewMonth = prev.getMonth(); viewYear = prev.getFullYear(); renderCalendar(); });
-  calNext.addEventListener('click', () => { if (calNext.disabled) return; const next = new Date(viewYear, viewMonth + 1, 1); viewMonth = next.getMonth(); viewYear = next.getFullYear(); renderCalendar(); });
-
-  function buildTimelineSteps() {
-    tlTrack.innerHTML = '';
-    CONFIG.steps.forEach((step, i) => {
-      const row = document.createElement('div');
-      row.className = 'tl-step'; row.dataset.idx = i;
-      row.innerHTML = `<div class="tl-step-marker">${i + 1}</div><div><div class="tl-step-kicker">${step.note}</div><div class="tl-step-title">${step.label}</div></div><div class="tl-step-date" data-role="date"></div>`;
-      tlTrack.appendChild(row);
-    });
-  }
-
-  function updateTimeline() {
-    const { minIdealDate } = getActiveTiming();
-    const today = ANCHOR_TODAY;
-    const target = selectedDate;
-    const dates = getTimelineDates(target);
-    const dateState = getDateState(target);
-    const rows = tlTrack.querySelectorAll('.tl-step');
-    rows.forEach((row, i) => {
-      const isTarget = i === dates.length - 1;
-      const isPast = dates[i] < today && !isSameDay(dates[i], today);
-      row.classList.toggle('tl-step--target', isTarget);
-      row.classList.toggle('tl-step--critical', dateState === 'critical');
-      row.classList.toggle('tl-step--past', isPast);
-      row.querySelector('[data-role="date"]').textContent = fmtShort(dates[i]);
-    });
-    const days = diffDays(target, today);
-    const dayLabel = days === 1 ? 'day' : 'days';
-    const earliestIdealDays = diffDays(minIdealDate, today);
-    let html = '';
-    if (dateState === 'critical') {
-      tlSummary.textContent = 'Rush review needed';
-      tlHelper.textContent = `Selected on-court date: ${fmtFull(target)}. This is ${days} ${dayLabel} from today and needs a ${CONFIG.brandName} timeline review before we can commit.`;
-      html = `<p class="text-avb-red"><span class="font-semibold">Rush request.</span> ${fmtFull(target)} is before the ideal ${CONFIG.brandName} window. The normal start point was ${fmtFull(dates[0])} and lock date was ${fmtFull(dates[1])}; we will review it and confirm what is possible.</p>`;
-    } else if (days <= earliestIdealDays + 3) {
-      tlSummary.textContent = 'Earliest ideal schedule';
-      tlHelper.textContent = `Selected on-court date: ${fmtFull(target)}. The milestones below keep the order inside the ${CONFIG.brandName} ${CONFIG.rangeLabel}.`;
-      html = `<p class="text-avb-black"><span class="font-semibold">Earliest ideal window.</span> Start by ${fmtFull(dates[0])}; lock the order by ${fmtFull(dates[1])}, the next milestone is ${fmtFull(dates[2])}, ships around ${fmtFull(dates[3])}, and lands on court ${fmtFull(target)}.</p>`;
-    } else if (days <= earliestIdealDays + 28) {
-      tlSummary.textContent = 'Standard schedule';
-      tlHelper.textContent = `Selected on-court date: ${fmtFull(target)}. Use these dates as the latest safe checkpoints for ${CONFIG.brandName}.`;
-      html = `<p class="text-avb-black"><span class="font-semibold">Standard window.</span> Start by ${fmtFull(dates[0])} and lock the order by ${fmtFull(dates[1])} to keep the ${CONFIG.brandName} schedule intact.</p>`;
-    } else {
-      tlSummary.textContent = 'Plenty of runway';
-      tlHelper.textContent = `Selected on-court date: ${fmtFull(target)}. You have room to plan before the ${CONFIG.brandName} production clock starts.`;
-      html = `<p class="text-avb-black"><span class="font-semibold">Plenty of runway.</span> Your ${CONFIG.brandName} start target is ${fmtFull(dates[0])}, with room to plan before lock.</p>`;
-    }
-    tlStatus.innerHTML = html;
-  }
-
-  function ensureSelectedDate() {
-    const { minDate, minIdealDate, maxDate } = getActiveTiming();
-    if (selectedDate < minDate || selectedDate > maxDate) selectedDate = minIdealDate;
-    viewYear = selectedDate.getFullYear();
-    viewMonth = selectedDate.getMonth();
-  }
-
-  ensureSelectedDate();
-  buildTimelineSteps();
-  updateCalendarNotes();
-  renderCalendar();
-  updateTimeline();
-})();
-</script>
 
 
 <!-- ====================================================================
@@ -1010,5 +752,6 @@ if (window.gsap && window.ScrollTrigger) {
 }
 </script>
 
+<script src="assets/site.js" defer></script>
 </body>
 </html>

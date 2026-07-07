@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Premium Branded Jerseys — Adidas, ASICS, Mizuno, Under Armour | All Volleyball</title>
+<title>Premium Branded Jerseys, Adidas, ASICS, Mizuno, Under Armour | All Volleyball</title>
 <meta name="description" content="Full-custom Adidas, ASICS, Mizuno, and Under Armour volleyball jerseys. One volleyball-only specialist handles the dealer side, the layout, and the reorder. Compare the brands side by side.">
 
 <!-- Google Fonts -->
@@ -37,15 +37,16 @@
 </script>
 
 <link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/quote.css">
 </head>
 <body class="font-body">
 
 <!-- ====================================================================
-     TOP NAV — persistent quote CTA + link to CustomFuze
+     TOP NAV, persistent quote CTA + link to CustomFuze
      ==================================================================== -->
 <header class="site-nav">
   <div class="site-nav-inner">
-    <a href="index.html" class="site-nav-brand" aria-label="All Volleyball — Premium Brands">
+    <a href="index.html" class="site-nav-brand" aria-label="All Volleyball, Premium Brands">
       <span class="site-nav-brand-name">All Volleyball</span>
       <span class="site-nav-brand-tag">Premium Brands</span>
     </a>
@@ -54,7 +55,7 @@
         <span class="site-nav-switch-label-long">View&nbsp;</span>CustomFuze
         <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
       </a>
-      <a href="mailto:team@allvolleyball.com?subject=Premium%20brand%20sublimation%20quote" class="site-nav-cta">
+      <a href="#quote" data-quote="premium" class="site-nav-cta">
         Request a Premium Brand Quote
       </a>
     </nav>
@@ -82,10 +83,10 @@
         The badge<br>they know.<br>Handled right.
       </h1>
       <p class="mt-5 text-white/85 text-[1rem] md:text-[1.15rem] max-w-xl leading-relaxed">
-        Adidas, ASICS, Mizuno, and Under Armour — full custom, run through our team-line dealer access. One volleyball-only specialist owns the brand marks, the layout, the ship date, and every reorder.
+        Adidas, ASICS, Mizuno, and Under Armour, full custom, run through our team-line dealer access. One volleyball-only specialist owns the brand marks, the layout, the ship date, and every reorder.
       </p>
       <div class="hero-actions mt-7 flex flex-col sm:flex-row gap-3">
-        <a href="mailto:team@allvolleyball.com?subject=Premium%20brand%20sublimation%20quote" class="group inline-flex items-center justify-center gap-2 btn-red text-white font-medium px-6 py-3.5 text-[1rem]">
+        <a href="#quote" data-quote="premium" class="group inline-flex items-center justify-center gap-2 btn-red text-white font-medium px-6 py-3.5 text-[1rem]">
           Request a Premium Brand Quote
           <svg class="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
         </a>
@@ -140,7 +141,7 @@
             <path d="M104 92v230M124 94v228M144 98v224" stroke="#fff" stroke-width="6" opacity=".25"/>
             <text x="178" y="242" text-anchor="middle" font-family="Oswald, Arial, sans-serif" font-size="82" font-weight="700" fill="#fff">23</text>
           </svg>
-          <figcaption class="hero-jersey-caption"><span class="hero-jersey-title">Adidas</span><span class="hero-jersey-desc">Est. 6–10 Weeks</span></figcaption>
+          <figcaption class="hero-jersey-caption"><span class="hero-jersey-title">Adidas</span><span class="hero-jersey-desc">Est. 6 to 10 Weeks</span></figcaption>
         </figure>
         <figure class="hero-jersey-slide" data-slot="1">
           <svg class="hero-jersey-placeholder" viewBox="0 0 320 430" aria-hidden="true" focusable="false">
@@ -177,19 +178,42 @@
 
 
 <!-- ====================================================================
-     SECTION 1. BUILD DETAILS — brand-tabbed (Adidas / ASICS / Mizuno / UA)
+     BRAND RAIL, rotating logos at the top of the premium page
+     ==================================================================== -->
+<section class="bg-white pt-8 pb-5 overflow-hidden border-b border-avb-divider">
+  <div class="max-w-[1280px] mx-auto px-6 lg:px-12 mb-5 text-center">
+    <div class="text-[11px] uppercase tracking-[0.25em] text-avb-grey font-semibold">Full custom on the lines your athletes trust</div>
+  </div>
+  <div class="brand-stage">
+    <div class="brand-wheel" id="brand-wheel">
+      <div class="brand-card" aria-hidden="true"><img class="brand-logo" src="https://cdn.shopify.com/s/files/1/0834/3745/3598/files/customfuze_logo_1.png?v=1756144449" alt="" loading="lazy" decoding="async"><div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">House line</div></div>
+      <div class="brand-card" aria-hidden="true"><div class="brand-wordmark">adidas</div><div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Full custom</div></div>
+      <div class="brand-card" aria-hidden="true"><img class="brand-logo" src="https://cdn.shopify.com/s/files/1/0834/3745/3598/files/under_armour_logo.png?v=1726495605" alt="" loading="lazy" decoding="async"><div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Full custom</div></div>
+      <div class="brand-card" aria-hidden="true"><img class="brand-logo" src="https://cdn.shopify.com/s/files/1/0834/3745/3598/files/Mizuno.svg?v=1778155832" alt="" loading="lazy" decoding="async"><div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Full custom</div></div>
+      <div class="brand-card" aria-hidden="true"><img class="brand-logo" src="https://cdn.shopify.com/s/files/1/0834/3745/3598/files/asics_logo.png?v=1726495605" alt="" loading="lazy" decoding="async"><div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Full custom</div></div>
+      <div class="brand-card"><img class="brand-logo" src="https://cdn.shopify.com/s/files/1/0834/3745/3598/files/customfuze_logo_1.png?v=1756144449" alt="CustomFuze" loading="lazy" decoding="async"><div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">House line</div></div>
+      <div class="brand-card"><div class="brand-wordmark" aria-label="Adidas">adidas</div><div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Full custom</div></div>
+      <div class="brand-card"><img class="brand-logo" src="https://cdn.shopify.com/s/files/1/0834/3745/3598/files/under_armour_logo.png?v=1726495605" alt="Under Armour" loading="lazy" decoding="async"><div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Full custom</div></div>
+      <div class="brand-card"><img class="brand-logo" src="https://cdn.shopify.com/s/files/1/0834/3745/3598/files/Mizuno.svg?v=1778155832" alt="Mizuno" loading="lazy" decoding="async"><div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Full custom</div></div>
+      <div class="brand-card"><img class="brand-logo" src="https://cdn.shopify.com/s/files/1/0834/3745/3598/files/asics_logo.png?v=1726495605" alt="ASICS" loading="lazy" decoding="async"><div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Full custom</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================
+     SECTION 1. BUILD DETAILS, brand-tabbed (Adidas / ASICS / Mizuno / UA)
      ==================================================================== -->
 <section id="build" class="bg-avb-offwhite py-24 md:py-32 px-6 lg:px-12">
   <div class="max-w-[1280px] mx-auto">
 
     <div class="mb-12 lg:mb-16">
-      <div class="text-[11px] uppercase tracking-[0.25em] text-avb-grey font-semibold mb-4 reveal">01 / The premium lines</div>
+      <div class="text-[11px] uppercase tracking-[0.25em] text-avb-grey font-semibold mb-4 reveal">The premium lines</div>
       <h2 class="font-display font-semibold text-avb-black uppercase reveal display-tight"
           style="font-size: clamp(2.25rem, 5.5vw, 4rem); line-height: 1;">
         Pick the badge.<br>We handle the rest.
       </h2>
       <p class="mt-5 text-avb-grey text-base md:text-lg max-w-xl reveal">
-        Every premium line runs on the manufacturer's calendar — but you only ever deal with us. Choose a brand to see how we manage it. Want a guaranteed 30-day date instead?
+        Every premium line runs on the manufacturer's calendar, but you only ever deal with us. Choose a brand to see how we manage it. Want a guaranteed 30-day date instead?
         <a href="index.html" class="link-inline text-avb-black font-medium">View CustomFuze.</a>
       </p>
 
@@ -230,7 +254,7 @@
         <h4 class="font-display font-semibold uppercase text-2xl mb-4 leading-tight" id="build-side-title">Estimate window</h4>
         <p class="text-white/85 leading-relaxed text-base mb-6" id="build-side-copy"></p>
         <div class="space-y-0 pt-4 border-t border-white/15" id="build-side-proofs"></div>
-        <a id="build-side-cta" href="mailto:team@allvolleyball.com?subject=Premium%20brand%20sublimation%20quote" class="mt-auto pt-10 inline-flex items-center gap-2 text-avb-red font-semibold text-xs uppercase tracking-[0.18em] hover:text-white transition-colors">
+        <a id="build-side-cta" href="#quote" data-quote="premium" class="mt-auto pt-10 inline-flex items-center gap-2 text-avb-red font-semibold text-xs uppercase tracking-[0.18em] hover:text-white transition-colors">
           Request a quote →
         </a>
       </aside>
@@ -240,18 +264,18 @@
 
 
 <!-- ====================================================================
-     SECTION 2. HOW THE BRANDS COMPARE — multi-brand matrix
+     SECTION 2. HOW THE BRANDS COMPARE, multi-brand matrix
      ==================================================================== -->
 <section id="compare" class="bg-white py-24 md:py-32 px-6 lg:px-12">
   <div class="max-w-[1280px] mx-auto">
     <div class="mb-12 lg:mb-16">
-      <div class="text-[11px] uppercase tracking-[0.25em] text-avb-grey font-semibold mb-4 reveal">02 / Compare the brands</div>
+      <div class="text-[11px] uppercase tracking-[0.25em] text-avb-grey font-semibold mb-4 reveal">Compare the brands</div>
       <h2 class="font-display font-semibold text-avb-black uppercase reveal display-tight"
           style="font-size: clamp(2.25rem, 5.5vw, 4rem); line-height: 1;">
         Four brands,<br>side by side.
       </h2>
       <p class="mt-5 text-avb-grey text-base md:text-lg max-w-2xl reveal">
-        All four run on the manufacturer's calendar — estimated up front, then confirmed once allocation clears. Here is how they differ so you can pick the right badge for your program.
+        All four run on the manufacturer's calendar, estimated up front, then confirmed once allocation clears. Here is how they differ so you can pick the right badge for your program.
       </p>
     </div>
 
@@ -269,17 +293,17 @@
         <tbody>
           <tr>
             <td class="brand-matrix-metric">Best for</td>
-            <td>The three-stripe badge — schools, scholastic, sponsor presentation.</td>
+            <td>The three-stripe badge, schools, scholastic, sponsor presentation.</td>
             <td>A sharp court presentation with clean sponsor and school marks.</td>
             <td>Programs whose athletes already know the volleyball badge.</td>
             <td>A high-contrast, performance-forward read on court and broadcast.</td>
           </tr>
           <tr>
             <td class="brand-matrix-metric">Typical lead time</td>
-            <td><strong>6 – 10 weeks</strong>~8 weeks typical.</td>
-            <td><strong>6 – 10 weeks</strong>~7 weeks typical.</td>
-            <td><strong>6 – 10 weeks</strong>~9 weeks typical.</td>
-            <td><strong>6 – 10 weeks</strong>~10 weeks typical.</td>
+            <td><strong>6 to 10 weeks</strong>~8 weeks typical.</td>
+            <td><strong>6 to 10 weeks</strong>~7 weeks typical.</td>
+            <td><strong>6 to 10 weeks</strong>~9 weeks typical.</td>
+            <td><strong>6 to 10 weeks</strong>~10 weeks typical.</td>
           </tr>
           <tr>
             <td class="brand-matrix-metric">What we manage</td>
@@ -314,7 +338,7 @@
     </div>
 
     <p class="mt-6 text-sm text-avb-grey reveal">
-      None of these guarantee a hard date up front — that is what our house line is for.
+      None of these guarantee a hard date up front, that is what our house line is for.
       <a href="index.html" class="link-inline text-avb-black font-medium">See CustomFuze: 30 days, guaranteed in writing →</a>
     </p>
   </div>
@@ -322,13 +346,13 @@
 
 
 <!-- ====================================================================
-     SECTION 3. TIMELINE PICKER — per brand
+     SECTION 3. TIMELINE PICKER, per brand
      ==================================================================== -->
 <section id="timeline" class="bg-avb-offwhite py-24 md:py-32 px-6 lg:px-12">
   <div class="max-w-[1280px] mx-auto">
 
     <div class="mb-12 lg:mb-16">
-      <div class="text-[11px] uppercase tracking-[0.25em] text-avb-grey font-semibold mb-4 reveal">03 / Timeline</div>
+      <div class="text-[11px] uppercase tracking-[0.25em] text-avb-grey font-semibold mb-4 reveal">Timeline</div>
       <h2 class="font-display font-semibold text-avb-black uppercase reveal display-tight"
           style="font-size: clamp(2.25rem, 5.5vw, 4rem); line-height: 1;">
         Your date,<br>on the brand calendar.
@@ -378,7 +402,7 @@
           <div id="tl-track"></div>
           <div id="tl-status" class="mt-10 pt-6 border-t border-avb-divider text-base leading-relaxed"></div>
           <div class="mt-auto pt-8">
-            <a href="mailto:team@allvolleyball.com?subject=Premium%20brand%20sublimation%20quote" class="inline-flex w-full items-center justify-center gap-2 btn-red text-white font-medium px-7 py-4 text-base">
+            <a href="#quote" data-quote="premium" class="inline-flex w-full items-center justify-center gap-2 btn-red text-white font-medium px-7 py-4 text-base">
               Send Us Your Roster
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
             </a>
@@ -391,19 +415,19 @@
 
 
 <!-- ====================================================================
-     SECTION 4. DEADLINE — estimated (managed) vs. CustomFuze cross-sell
+     SECTION 4. DEADLINE, estimated (managed) vs. CustomFuze cross-sell
      ==================================================================== -->
 <section id="deadline" class="bg-white py-24 md:py-32 px-6 lg:px-12">
   <div class="max-w-[1280px] mx-auto">
 
     <div class="mb-12 lg:mb-16">
-      <div class="text-[11px] uppercase tracking-[0.25em] text-avb-grey font-semibold mb-4 reveal">04 / Delivery</div>
+      <div class="text-[11px] uppercase tracking-[0.25em] text-avb-grey font-semibold mb-4 reveal">Delivery</div>
       <h2 class="font-display font-semibold text-avb-black uppercase reveal display-tight"
           style="font-size: clamp(2.25rem, 5.5vw, 4rem); line-height: 1;">
         Estimated up front.<br>Never guessed.
       </h2>
       <p class="mt-5 text-avb-grey text-base md:text-lg max-w-xl reveal">
-        Branded lines run on the manufacturer's calendar, not ours. We won't pretend otherwise — we give you a real range immediately and lock a confirmed date the moment the brand clears allocation.
+        Branded lines run on the manufacturer's calendar, not ours. We won't pretend otherwise, we give you a real range immediately and lock a confirmed date the moment the brand clears allocation.
       </p>
     </div>
 
@@ -416,18 +440,18 @@
           <span class="deadline-stamp">Estimated</span>
         </div>
         <div class="deadline-number">
-          <span class="deadline-number-line">6 – 10 weeks.</span>
+          <span class="deadline-number-line">6 to 10 weeks.</span>
           <span class="deadline-number-line deadline-number-line--sub">Managed.</span>
         </div>
         <p class="deadline-copy text-avb-body">
-          We share a real range the day we quote, then replace it with a hard ship date the moment the brand confirms stock and slotting. You get weekly status through one specialist — no silent stretches, no chasing the rep.
+          We share a real range the day we quote, then replace it with a hard ship date the moment the brand confirms stock and slotting. You get weekly status through one specialist, no silent stretches, no chasing the rep.
         </p>
         <div class="deadline-grid">
           <div><div class="deadline-grid-label">Best case</div><div class="deadline-grid-value text-avb-black">6 wks</div></div>
           <div><div class="deadline-grid-label">Typical</div><div class="deadline-grid-value text-avb-black">8 wks</div></div>
           <div><div class="deadline-grid-label">Outer edge</div><div class="deadline-grid-value text-avb-black">10 wks</div></div>
         </div>
-        <a href="mailto:team@allvolleyball.com?subject=Premium%20brand%20sublimation%20quote" class="mt-8 inline-flex items-center gap-2 border border-avb-black text-avb-black font-medium px-6 py-3.5 text-base btn-ghost-dark">
+        <a href="#quote" data-quote="premium" class="mt-8 inline-flex items-center gap-2 border border-avb-black text-avb-black font-medium px-6 py-3.5 text-base btn-ghost-dark">
           Request a Premium Brand Quote
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
         </a>
@@ -444,7 +468,7 @@
           <span class="deadline-number-line deadline-number-line--sub">Guaranteed.</span>
         </div>
         <p class="deadline-copy text-white/85">
-          If the deadline is the priority over the badge, our house line is the answer. CustomFuze ships in 30 days from Design Lock — signed on your quote, freight on us if we miss, and no reorder minimum.
+          If the deadline is the priority over the badge, our house line is the answer. CustomFuze ships in 30 days from Design Lock, signed on your quote, freight on us if we miss, and no reorder minimum.
         </p>
         <div class="deadline-grid">
           <div><div class="deadline-grid-label">Quote in</div><div class="deadline-grid-value">24 hrs</div></div>
@@ -462,21 +486,21 @@
 
 
 <!-- ====================================================================
-     SECTION 5. WE ARE THE GO-TO — Volleyball-first
+     SECTION 5. WE ARE THE GO-TO, Volleyball-first
      ==================================================================== -->
 <section class="bg-avb-offwhite py-24 md:py-32 px-6 lg:px-12">
   <div class="max-w-[1280px] mx-auto">
     <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-20 lg:mb-24">
       <div class="lg:col-span-5">
-        <div class="text-[11px] uppercase tracking-[0.25em] text-avb-grey font-semibold mb-4 reveal">05 / The go-to</div>
+        <div class="text-[11px] uppercase tracking-[0.25em] text-avb-grey font-semibold mb-4 reveal">The go-to</div>
         <h2 class="font-display font-semibold text-avb-black uppercase reveal display-tight"
             style="font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.02;">
           One sport.<br>Thirty years.<br>No detours.
         </h2>
       </div>
       <div class="lg:col-span-7 lg:pt-4 space-y-5 text-avb-body text-base md:text-lg leading-relaxed reveal">
-        <p>Buying a branded uniform through most dealers means chasing the rep, waiting on a portal, and hoping the allocation clears in time. We've handled volleyball — and only volleyball — since 1995, and we hold the team-line dealer relationships that put your order in the right production queue from day one.</p>
-        <p>That focus is the whole point. You deal with us, not the brand. We run a proven process that keeps every quote, every reorder, every ship date on the rails — even when the manufacturer's calendar is the constraint.</p>
+        <p>Buying a branded uniform through most dealers means chasing the rep, waiting on a portal, and hoping the allocation clears in time. We've handled volleyball, and only volleyball, since 1995, and we hold the team-line dealer relationships that put your order in the right production queue from day one.</p>
+        <p>That focus is the whole point. You deal with us, not the brand. We run a proven process that keeps every quote, every reorder, every ship date on the rails, even when the manufacturer's calendar is the constraint.</p>
       </div>
     </div>
 
@@ -507,78 +531,38 @@
 
 
 <!-- ====================================================================
-     SECTION 6. SERVICE — How we show up
+     SECTION 6. SERVICE, How we show up
      ==================================================================== -->
 <section id="service" class="bg-white py-24 md:py-32 px-6 lg:px-12">
   <div class="max-w-[1280px] mx-auto">
     <div class="grid lg:grid-cols-12 gap-12 mb-16">
       <div class="lg:col-span-5">
-        <div class="text-[11px] uppercase tracking-[0.25em] text-avb-grey font-semibold mb-4 reveal">06 / How we show up</div>
+        <div class="text-[11px] uppercase tracking-[0.25em] text-avb-grey font-semibold mb-4 reveal">How we show up</div>
         <h2 class="font-display font-semibold text-avb-black uppercase reveal display-tight"
             style="font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.02;">
           You deal<br>with us,<br>not the brand.
         </h2>
       </div>
       <div class="lg:col-span-7 lg:pt-6 space-y-5 text-avb-body text-base md:text-lg leading-relaxed reveal">
-        <p>The hard part of a branded order isn't the jersey — it's the brand's calendar, the mark compliance, and the allocation queue. That's the part a generalist dealer passes back to you.</p>
+        <p>The hard part of a branded order isn't the jersey, it's the brand's calendar, the mark compliance, and the allocation queue. That's the part a generalist dealer passes back to you.</p>
         <p>One Team Sales Specialist owns your order from the first email to the last box on the doorstep. Same name, same direct line, every reorder, every year. We handle the dealer side, the brand-standard layout, and the confirm-the-date follow-up so you don't have to.</p>
       </div>
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-avb-divider border border-avb-divider reveal">
-      <div class="svc-cell"><div class="svc-cell-num">01</div><h3 class="svc-cell-title">Team-line dealer access</h3><p class="svc-cell-desc">Your order goes into the brand's team production queue on our dealer account — not the retail channel.</p></div>
-      <div class="svc-cell"><div class="svc-cell-num">02</div><h3 class="svc-cell-title">Brand-standard layout</h3><p class="svc-cell-desc">Marks, sponsor placement, and number blocks built to each brand's spec so approvals pass the first round.</p></div>
-      <div class="svc-cell"><div class="svc-cell-num">03</div><h3 class="svc-cell-title">A name, not a number</h3><p class="svc-cell-desc">One specialist on every order. Same direct line for the quote, the confirm, and every reorder after.</p></div>
-      <div class="svc-cell"><div class="svc-cell-num">04</div><h3 class="svc-cell-title">Estimate, then a hard date</h3><p class="svc-cell-desc">A real range the day we quote, replaced with a confirmed ship date the moment allocation clears.</p></div>
-      <div class="svc-cell"><div class="svc-cell-num">05</div><h3 class="svc-cell-title">Reorders that remember</h3><p class="svc-cell-desc">Your approved spec stays on file. We check the current brand piece and pull from the same artwork.</p></div>
-      <div class="svc-cell"><div class="svc-cell-num">06</div><h3 class="svc-cell-title">Straight answers</h3><p class="svc-cell-desc">If a brand can't hit your date this season, we'll tell you on the call — and point you to the line that can.</p></div>
+      <div class="svc-cell"><h3 class="svc-cell-title">Team-line dealer access</h3><p class="svc-cell-desc">Your order goes into the brand's team production queue on our dealer account, not the retail channel.</p></div>
+      <div class="svc-cell"><h3 class="svc-cell-title">Brand-standard layout</h3><p class="svc-cell-desc">Marks, sponsor placement, and number blocks built to each brand's spec so approvals pass the first round.</p></div>
+      <div class="svc-cell"><h3 class="svc-cell-title">A name, not a number</h3><p class="svc-cell-desc">One specialist on every order. Same direct line for the quote, the confirm, and every reorder after.</p></div>
+      <div class="svc-cell"><h3 class="svc-cell-title">Estimate, then a hard date</h3><p class="svc-cell-desc">A real range the day we quote, replaced with a confirmed ship date the moment allocation clears.</p></div>
+      <div class="svc-cell"><h3 class="svc-cell-title">Reorders that remember</h3><p class="svc-cell-desc">Your approved spec stays on file. We check the current brand piece and pull from the same artwork.</p></div>
+      <div class="svc-cell"><h3 class="svc-cell-title">Straight answers</h3><p class="svc-cell-desc">If a brand can't hit your date this season, we'll tell you on the call, and point you to the line that can.</p></div>
     </div>
   </div>
 </section>
 
 
 <!-- ====================================================================
-     SECTION 7. BRAND SHOWCASE
-     ==================================================================== -->
-<section class="bg-avb-offwhite py-24 md:py-32 px-6 lg:px-12 overflow-hidden">
-  <div class="max-w-[1280px] mx-auto">
-    <div class="mb-12 lg:mb-16 text-center">
-      <div class="text-[11px] uppercase tracking-[0.25em] text-avb-grey font-semibold mb-4 reveal">07 / The lines</div>
-      <h2 class="font-display font-semibold text-avb-black uppercase reveal display-tight"
-          style="font-size: clamp(2.25rem, 5.5vw, 4rem); line-height: 1;">
-        Every brand<br>worth wearing.
-      </h2>
-      <p class="mt-5 text-avb-grey text-base md:text-lg max-w-xl mx-auto reveal">
-        We do full custom on the premium brands your athletes already trust — and our own house line when the date has to be guaranteed.
-        <a href="index.html" class="link-inline text-avb-black font-medium">See CustomFuze →</a>
-      </p>
-    </div>
-
-    <div class="brand-stage">
-      <div class="brand-wheel" id="brand-wheel">
-        <div class="brand-card" aria-hidden="true"><div class="brand-wordmark">adidas</div><div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Full custom</div></div>
-        <div class="brand-card" aria-hidden="true"><img class="brand-logo" src="https://cdn.shopify.com/s/files/1/0834/3745/3598/files/asics_logo.png?v=1726495605" alt="" loading="lazy" decoding="async"><div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Full custom</div></div>
-        <div class="brand-card" aria-hidden="true"><img class="brand-logo" src="https://cdn.shopify.com/s/files/1/0834/3745/3598/files/Mizuno.svg?v=1778155832" alt="" loading="lazy" decoding="async"><div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Full custom</div></div>
-        <div class="brand-card" aria-hidden="true"><img class="brand-logo" src="https://cdn.shopify.com/s/files/1/0834/3745/3598/files/under_armour_logo.png?v=1726495605" alt="" loading="lazy" decoding="async"><div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Full custom</div></div>
-        <div class="brand-card" aria-hidden="true"><img class="brand-logo" src="https://cdn.shopify.com/s/files/1/0834/3745/3598/files/customfuze_logo_1.png?v=1756144449" alt="" loading="lazy" decoding="async"><div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">House line</div></div>
-
-        <div class="brand-card"><div class="brand-wordmark" aria-label="Adidas">adidas</div><div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Full custom</div></div>
-        <div class="brand-card"><img class="brand-logo" src="https://cdn.shopify.com/s/files/1/0834/3745/3598/files/asics_logo.png?v=1726495605" alt="ASICS" loading="lazy" decoding="async"><div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Full custom</div></div>
-        <div class="brand-card"><img class="brand-logo" src="https://cdn.shopify.com/s/files/1/0834/3745/3598/files/Mizuno.svg?v=1778155832" alt="Mizuno" loading="lazy" decoding="async"><div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Full custom</div></div>
-        <div class="brand-card"><img class="brand-logo" src="https://cdn.shopify.com/s/files/1/0834/3745/3598/files/under_armour_logo.png?v=1726495605" alt="Under Armour" loading="lazy" decoding="async"><div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">Full custom</div></div>
-        <div class="brand-card"><img class="brand-logo" src="https://cdn.shopify.com/s/files/1/0834/3745/3598/files/customfuze_logo_1.png?v=1756144449" alt="CustomFuze" loading="lazy" decoding="async"><div class="mt-3 text-[10px] uppercase tracking-[0.22em] text-avb-grey font-semibold">House line</div></div>
-      </div>
-    </div>
-
-    <div class="mt-12 text-center text-sm text-avb-grey">
-      Don't see your brand? <a href="mailto:team@allvolleyball.com" class="link-inline text-avb-black font-medium">Ask us.</a>
-    </div>
-  </div>
-</section>
-
-
-<!-- ====================================================================
-     SECTION 8. TEAM-SIDE CLOSE — both CTAs
+     SECTION 8. TEAM-SIDE CLOSE, both CTAs
      ==================================================================== -->
 <section class="bg-avb-black py-24 md:py-32 px-6 lg:px-12">
   <div class="max-w-2xl mx-auto text-center">
@@ -590,7 +574,7 @@
       Send the roster and the brand you're after. We'll send a quote in 24 hours with a real range, then a confirmed ship date the moment allocation clears.
     </p>
     <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
-      <a href="mailto:team@allvolleyball.com?subject=Premium%20brand%20sublimation%20quote" class="inline-flex items-center gap-2 btn-red text-white font-medium px-7 py-4 text-base">
+      <a href="#quote" data-quote="premium" class="inline-flex items-center gap-2 btn-red text-white font-medium px-7 py-4 text-base">
         Request a Premium Brand Quote
       </a>
       <a href="index.html" class="inline-flex items-center gap-2 border border-white/45 text-white font-medium px-7 py-4 text-base btn-ghost-light">
@@ -614,7 +598,7 @@
 
 
 <!-- ====================================================================
-     TIMELINE PICKER — per premium brand
+     TIMELINE PICKER, per premium brand
      ==================================================================== -->
 <script>
 (() => {
@@ -821,92 +805,92 @@
 
 
 <!-- ====================================================================
-     BUILD DETAILS — brand-tabbed panel + products
+     BUILD DETAILS, brand-tabbed panel + products
      ==================================================================== -->
 <script>
 const BRANDS = [
   {
     slug: 'adidas', name: 'Adidas', tabLabel: 'Icon line', accent: '#111111',
-    copy: 'For programs that need the brand badge on the kit — schools, scholastic programs, and clubs with a sponsor presentation to maintain. We handle the dealer side so you only deal with us.',
+    copy: 'For programs that need the brand badge on the kit, schools, scholastic programs, and clubs with a sponsor presentation to maintain. We handle the dealer side so you only deal with us.',
     details: [
-      ['Authorized dealer access.', 'We carry the full Adidas team catalog. You don\'t need to chase the brand — we slot the order on our dealer account.'],
+      ['Authorized dealer access.', 'We carry the full Adidas team catalog. You don\'t need to chase the brand, we slot the order on our dealer account.'],
       ['Brand-mark compliance.', 'Every layout we send back is built to Adidas brand standards, so school approvals and sponsor reviews go through without a second round.'],
       ['Real range, not a guess.', 'We give you the brand\'s current production window up front and lock a confirmed ship date as soon as the line is allocated.'],
-      ['One contact, same person.', 'You email and call us — not Adidas. Your specialist owns the order from quote to delivery.'],
+      ['One contact, same person.', 'You email and call us, not Adidas. Your specialist owns the order from quote to delivery.'],
       ['Reorder lockbox.', 'Adidas changes catalogs on their own schedule. We keep your spec on file and flag you early if a piece is being retired.']
     ],
     sideTitle: 'Adidas estimate window',
     sideCopy: 'Adidas runs on the manufacturer\'s production calendar. We share the live range, then a confirmed date once stock and slotting clear.',
-    proofs: [['Typical','6 – 10 weeks'],['Confirmed when','Stock + slotting cleared'],['Your contact','One AVB specialist'],['Compliance','Built to brand standards']]
+    proofs: [['Typical','6 to 10 weeks'],['Confirmed when','Stock + slotting cleared'],['Your contact','One AVB specialist'],['Compliance','Built to brand standards']]
   },
   {
     slug: 'asics', name: 'ASICS', tabLabel: 'Court line', accent: '#0057A8',
     copy: 'A strong fit for programs that want a sharp court presentation and a clean sponsor or school-mark layout. We manage the ASICS team-line process end to end.',
     details: [
-      ['Team-line access.', 'We hold the dealer relationship that puts your order in the ASICS team production queue — not the retail one.'],
+      ['Team-line access.', 'We hold the dealer relationship that puts your order in the ASICS team production queue, not the retail one.'],
       ['Sponsor and mark layout.', 'We lay out sponsor placement, school marks, and number block to ASICS\'s spec so the kit reads cleanly from the bleachers.'],
       ['Confirmed ship date.', 'We share the estimate window the day we quote, and replace it with a hard date the moment ASICS confirms allocation.'],
-      ['Late-roster handling.', 'Adds and libero alternates are placed against the same approved spec, not a new design — no risk of mismatched generations.'],
+      ['Late-roster handling.', 'Adds and libero alternates are placed against the same approved spec, not a new design, no risk of mismatched generations.'],
       ['One reorder window per year.', 'We coordinate your reorder against the brand\'s production window so you don\'t miss the cutoff for next season.']
     ],
     sideTitle: 'ASICS estimate window',
     sideCopy: 'ASICS runs in production cycles. We get you a real range fast and a hard ship date the moment your slot confirms.',
-    proofs: [['Typical','6 – 10 weeks'],['Confirmed when','Allocation locked'],['Your contact','One AVB specialist'],['Reorder window','Coordinated yearly']]
+    proofs: [['Typical','6 to 10 weeks'],['Confirmed when','Allocation locked'],['Your contact','One AVB specialist'],['Reorder window','Coordinated yearly']]
   },
   {
     slug: 'mizuno', name: 'Mizuno', tabLabel: 'Volleyball line', accent: '#174EA6',
     copy: 'The volleyball-credibility brand. For programs whose athletes already know the badge and whose directors want a kit that looks the part on a tournament stream.',
     details: [
-      ['Volleyball-line standing.', 'We carry Mizuno\'s volleyball team line directly. You don\'t go through retail — we go through the team channel.'],
-      ['Libero variant handling.', 'Your libero kit is built from the same approved spec as the team look — same generation, same artwork file, not a last-minute alternate.'],
+      ['Volleyball-line standing.', 'We carry Mizuno\'s volleyball team line directly. You don\'t go through retail, we go through the team channel.'],
+      ['Libero variant handling.', 'Your libero kit is built from the same approved spec as the team look, same generation, same artwork file, not a last-minute alternate.'],
       ['Sister-team coordination.', 'Multi-team clubs ordering Mizuno for varsity and a different line for younger groups get one bundled timeline from us.'],
-      ['Quote-to-confirm communication.', 'We share weekly status checkpoints once the order is placed with Mizuno — no silent stretches between Design Lock and ship date.'],
+      ['Quote-to-confirm communication.', 'We share weekly status checkpoints once the order is placed with Mizuno, no silent stretches between Design Lock and ship date.'],
       ['Reorder continuity.', 'Mizuno catalogs shift season to season. We flag you in advance if a piece is going to be replaced, so you can lock supply.']
     ],
     sideTitle: 'Mizuno estimate window',
     sideCopy: 'Mizuno volleyball runs on a tight production cadence. We give a real range, then a confirmed date once the brand clears your allocation.',
-    proofs: [['Typical','6 – 10 weeks'],['Confirmed when','Volleyball line allocation'],['Status check','Weekly through your specialist'],['Libero variant','Same spec, same file']]
+    proofs: [['Typical','6 to 10 weeks'],['Confirmed when','Volleyball line allocation'],['Status check','Weekly through your specialist'],['Libero variant','Same spec, same file']]
   },
   {
     slug: 'under-armour', name: 'Under Armour', tabLabel: 'Performance line', accent: '#C23946',
     copy: 'For programs that want a high-contrast, performance-forward read. We handle the dealer side and the kit layout so your director only deals with us.',
     details: [
       ['Authorized team dealer.', 'We carry the Under Armour team line on our dealer account, so your order goes in through the right channel from day one.'],
-      ['High-contrast number layout.', 'Numbers, names, and sponsor blocks are laid out for legibility from the stands and from broadcast cameras — not just on the proof sheet.'],
+      ['High-contrast number layout.', 'Numbers, names, and sponsor blocks are laid out for legibility from the stands and from broadcast cameras, not just on the proof sheet.'],
       ['Estimate, then confirmed.', 'We share the production window up front and replace it with a hard ship date when Under Armour confirms allocation.'],
       ['Multi-team continuity.', 'Clubs running UA for varsity and a different line elsewhere get one consolidated delivery schedule from your specialist.'],
       ['Reorder spec preservation.', 'Your approved spec stays on file. Next season\'s order pulls from the same artwork, not a fresh round of revisions.']
     ],
     sideTitle: 'Under Armour estimate window',
     sideCopy: 'Under Armour runs on the manufacturer\'s production calendar. We share the live range and lock a confirmed ship date once allocated.',
-    proofs: [['Typical','6 – 10 weeks'],['Confirmed when','UA allocation cleared'],['Your contact','One AVB specialist'],['Reorder','Same spec, on file']]
+    proofs: [['Typical','6 to 10 weeks'],['Confirmed when','UA allocation cleared'],['Your contact','One AVB specialist'],['Reorder','Same spec, on file']]
   }
 ];
 
 const PRODUCT_SETS = {
   adidas: [
-    { title: 'Tabela 23 Short Sleeve', desc: 'Recognizable Adidas court look for school programs and badge-required team orders.', price: '$25–$45', eta: '8 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/adidas_Women_s_Tabela_23_Short_Sleeve_Jersey_Black_-_1.png?v=1748305203' },
-    { title: 'Adidas Long Sleeve', desc: 'Long-sleeve team option with three-stripe presence and a cleaner warmup-to-court read.', price: '$35–$60', eta: '8 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/adidas_Women_s_Tabela_23_Short_Sleeve_Jersey_Black_-_1.png?v=1748305203' },
-    { title: 'Adidas Sleeveless', desc: 'Sleeveless team-line option for programs that want the Adidas mark with lighter coverage.', price: '$30–$55', eta: '8 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/adidas_Women_s_Tabela_23_Short_Sleeve_Jersey_Black_-_1.png?v=1748305203' },
-    { title: 'Adidas Libero Alternate', desc: 'Badge-consistent alternate kit coordinated against Adidas stock, slotting, and color rules.', price: '$30–$60', eta: '8 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/adidas_Women_s_Tabela_23_Short_Sleeve_Jersey_Black_-_1.png?v=1748305203' }
+    { title: 'Tabela 23 Short Sleeve', desc: 'Recognizable Adidas court look for school programs and badge-required team orders.', price: '$25-$45', eta: '8 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/adidas_Women_s_Tabela_23_Short_Sleeve_Jersey_Black_-_1.png?v=1748305203' },
+    { title: 'Adidas Long Sleeve', desc: 'Long-sleeve team option with three-stripe presence and a cleaner warmup-to-court read.', price: '$35-$60', eta: '8 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/adidas_Women_s_Tabela_23_Short_Sleeve_Jersey_Black_-_1.png?v=1748305203' },
+    { title: 'Adidas Sleeveless', desc: 'Sleeveless team-line option for programs that want the Adidas mark with lighter coverage.', price: '$30-$55', eta: '8 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/adidas_Women_s_Tabela_23_Short_Sleeve_Jersey_Black_-_1.png?v=1748305203' },
+    { title: 'Adidas Libero Alternate', desc: 'Badge-consistent alternate kit coordinated against Adidas stock, slotting, and color rules.', price: '$30-$60', eta: '8 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/adidas_Women_s_Tabela_23_Short_Sleeve_Jersey_Black_-_1.png?v=1748305203' }
   ],
   asics: [
-    { title: 'ASICS Court Jersey', desc: 'Court-focused team look with sponsor and number placement managed to ASICS standards.', price: '$30–$55', eta: '7 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/asics_logo.png?v=1726495605' },
-    { title: 'ASICS Sleeveless', desc: 'Clean sleeveless option for programs that want a lighter ASICS presentation.', price: '$28–$50', eta: '7 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/asics_logo.png?v=1726495605' },
-    { title: 'ASICS Libero Kit', desc: 'Alternate colorway coordinated to the same approved ASICS team specification.', price: '$32–$58', eta: '7 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/asics_logo.png?v=1726495605' },
-    { title: 'ASICS Reorder Set', desc: 'Replacement or add-on ordering planned around the current ASICS production window.', price: '$30–$60', eta: '7 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/asics_logo.png?v=1726495605' }
+    { title: 'ASICS Court Jersey', desc: 'Court-focused team look with sponsor and number placement managed to ASICS standards.', price: '$30-$55', eta: '7 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/asics_logo.png?v=1726495605' },
+    { title: 'ASICS Sleeveless', desc: 'Clean sleeveless option for programs that want a lighter ASICS presentation.', price: '$28-$50', eta: '7 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/asics_logo.png?v=1726495605' },
+    { title: 'ASICS Libero Kit', desc: 'Alternate colorway coordinated to the same approved ASICS team specification.', price: '$32-$58', eta: '7 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/asics_logo.png?v=1726495605' },
+    { title: 'ASICS Reorder Set', desc: 'Replacement or add-on ordering planned around the current ASICS production window.', price: '$30-$60', eta: '7 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/asics_logo.png?v=1726495605' }
   ],
   mizuno: [
-    { title: 'V-Neck Sleeveless', desc: 'Volleyball-first Mizuno silhouette for programs whose athletes know the badge.', price: '$30–$55', eta: '9 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/440813_9090_01.jpg?v=1744990865' },
-    { title: 'Mizuno Short Sleeve', desc: 'Tournament-ready team jersey with the Mizuno volleyball read directors ask for.', price: '$35–$60', eta: '9 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/440813_9090_01.jpg?v=1744990865' },
-    { title: 'Mizuno Libero Variant', desc: 'Contrast variant kept tied to the same team file and production generation.', price: '$35–$62', eta: '9 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/440813_9090_01.jpg?v=1744990865' },
-    { title: 'Mizuno Reorder Kit', desc: 'Season-to-season continuity plan for programs staying inside the Mizuno catalog.', price: '$35–$65', eta: '9 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/440813_9090_01.jpg?v=1744990865' }
+    { title: 'V-Neck Sleeveless', desc: 'Volleyball-first Mizuno silhouette for programs whose athletes know the badge.', price: '$30-$55', eta: '9 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/440813_9090_01.jpg?v=1744990865' },
+    { title: 'Mizuno Short Sleeve', desc: 'Tournament-ready team jersey with the Mizuno volleyball read directors ask for.', price: '$35-$60', eta: '9 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/440813_9090_01.jpg?v=1744990865' },
+    { title: 'Mizuno Libero Variant', desc: 'Contrast variant kept tied to the same team file and production generation.', price: '$35-$62', eta: '9 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/440813_9090_01.jpg?v=1744990865' },
+    { title: 'Mizuno Reorder Kit', desc: 'Season-to-season continuity plan for programs staying inside the Mizuno catalog.', price: '$35-$65', eta: '9 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/440813_9090_01.jpg?v=1744990865' }
   ],
   'under-armour': [
-    { title: 'Team Tech Short Sleeve', desc: 'Performance-forward UA jersey for high-contrast team and school presentations.', price: '$25–$45', eta: '10 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/1367847_001_01.jpg?v=1744990889' },
-    { title: 'UA Long Sleeve', desc: 'Long-sleeve team option with UA branding and coordinated name/number layout.', price: '$35–$60', eta: '10 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/1367847_001_01.jpg?v=1744990889' },
-    { title: 'UA Libero Alternate', desc: 'Contrast-ready alternate built around UA availability and the approved team spec.', price: '$32–$58', eta: '10 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/1367847_001_01.jpg?v=1744990889' },
-    { title: 'UA Reorder Set', desc: 'Add-on or replacement kit checked against current UA allocation before order lock.', price: '$30–$60', eta: '10 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/1367847_001_01.jpg?v=1744990889' }
+    { title: 'Team Tech Short Sleeve', desc: 'Performance-forward UA jersey for high-contrast team and school presentations.', price: '$25-$45', eta: '10 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/1367847_001_01.jpg?v=1744990889' },
+    { title: 'UA Long Sleeve', desc: 'Long-sleeve team option with UA branding and coordinated name/number layout.', price: '$35-$60', eta: '10 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/1367847_001_01.jpg?v=1744990889' },
+    { title: 'UA Libero Alternate', desc: 'Contrast-ready alternate built around UA availability and the approved team spec.', price: '$32-$58', eta: '10 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/1367847_001_01.jpg?v=1744990889' },
+    { title: 'UA Reorder Set', desc: 'Add-on or replacement kit checked against current UA allocation before order lock.', price: '$30-$60', eta: '10 weeks', img: 'https://cdn.shopify.com/s/files/1/0834/3745/3598/files/1367847_001_01.jpg?v=1744990889' }
   ]
 };
 
@@ -1100,5 +1084,6 @@ if (window.gsap && window.ScrollTrigger) {
 }
 </script>
 
+<script src="assets/site.js" defer></script>
 </body>
 </html>

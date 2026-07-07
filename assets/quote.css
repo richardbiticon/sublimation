@@ -1,0 +1,201 @@
+/* ====================================================================
+   quote.css — shared additions
+   1. Sticky nav that hides at the very top and slides in on scroll
+   2. Typeform-style multi-step quote modal
+   3. Number-free feature/service rows
+   Loaded AFTER styles.css so these rules win where they overlap.
+   ==================================================================== */
+
+/* ============ 1. STICKY REVEAL NAV ============ */
+.site-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  transform: translateY(-100%);
+  transition: transform 320ms cubic-bezier(.2,.7,.2,1), box-shadow 300ms ease;
+  will-change: transform;
+}
+.site-nav.is-visible {
+  transform: translateY(0);
+  box-shadow: 0 10px 34px rgba(0,0,0,0.30);
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-nav { transition: none; }
+}
+
+/* ============ 2. NUMBER-FREE ROWS ============ */
+/* Feature list on the house-line / premium panel — no circled numbers */
+.detail-row {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  padding: 20px 0 20px 20px;
+  position: relative;
+}
+.detail-row::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 24px;
+  width: 8px; height: 8px;
+  border-radius: 999px;
+  background: var(--brand-accent, #C23946);
+}
+.detail-row:first-child { padding-top: 8px; }
+.detail-row:first-child::before { top: 12px; }
+
+/* Service grid cells — drop the big number, add a thin accent */
+.svc-cell { position: relative; }
+.svc-cell-title { padding-top: 16px; }
+.svc-cell-title::before {
+  content: "";
+  position: absolute;
+  top: 32px; left: 28px;
+  width: 26px; height: 2px;
+  background: #C23946;
+}
+
+/* ============ 3. QUOTE MODAL (Typeform-style) ============ */
+.quote-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: none;
+  background: #0A0A0A;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 260ms ease;
+}
+.quote-modal.is-open { display: block; opacity: 1; }
+body.quote-open { overflow: hidden; }
+
+.quote-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 55% at 18% 10%, rgba(194,57,70,0.42) 0%, rgba(194,57,70,0) 60%),
+    radial-gradient(ellipse 60% 50% at 85% 90%, rgba(80,16,24,0.66) 0%, rgba(80,16,24,0) 65%),
+    linear-gradient(155deg, #050505 0%, #180508 50%, #0A0A0A 100%);
+  pointer-events: none;
+}
+
+.quote-progress {
+  position: absolute; top: 0; left: 0;
+  height: 4px; width: 0%;
+  background: #C23946;
+  transition: width 300ms cubic-bezier(.2,.7,.2,1);
+  z-index: 3;
+}
+
+.quote-top {
+  position: relative; z-index: 3;
+  max-width: 1440px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 24px;
+}
+.quote-brand {
+  font-family: 'Oswald', sans-serif; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.02em; font-size: 1.05rem;
+  display: inline-flex; align-items: baseline; gap: 10px;
+}
+.quote-brand span { color: rgba(255,255,255,0.5); font-size: 10px; font-weight: 700; letter-spacing: 0.2em; }
+.quote-close {
+  appearance: none; background: transparent; border: 1px solid rgba(255,255,255,0.3);
+  color: #fff; width: 40px; height: 40px; border-radius: 999px;
+  font-size: 1.2rem; line-height: 1; cursor: pointer;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+.quote-close:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.6); }
+
+.quote-stage {
+  position: relative; z-index: 2;
+  height: calc(100% - 76px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 12px 24px 40px;
+}
+.quote-steps { width: 100%; max-width: 680px; }
+
+.quote-step { display: none; }
+.quote-step.is-active { display: block; animation: quoteIn 420ms cubic-bezier(.2,.7,.2,1); }
+@keyframes quoteIn { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .quote-step.is-active { animation: none; } }
+
+.quote-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: #C23946; font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 18px;
+}
+.quote-eyebrow svg { width: 14px; height: 14px; }
+.quote-question {
+  font-family: 'Oswald', sans-serif; font-weight: 600; text-transform: uppercase;
+  line-height: 1.02; letter-spacing: 0;
+  font-size: clamp(1.9rem, 5vw, 3.2rem);
+  margin-bottom: 12px;
+}
+.quote-help { color: rgba(255,255,255,0.6); font-size: 1rem; line-height: 1.55; margin-bottom: 26px; max-width: 34rem; }
+
+.quote-field {
+  width: 100%; background: transparent; border: 0;
+  border-bottom: 2px solid rgba(255,255,255,0.25);
+  color: #fff; font-family: 'Inter', sans-serif;
+  font-size: clamp(1.2rem, 3vw, 1.75rem); padding: 12px 2px;
+  transition: border-color 200ms ease;
+}
+.quote-field::placeholder { color: rgba(255,255,255,0.32); }
+.quote-field:focus { outline: none; border-color: #C23946; }
+textarea.quote-field { resize: none; border: 2px solid rgba(255,255,255,0.25); border-radius: 6px; font-size: 1.15rem; padding: 14px; }
+
+.quote-choices { display: flex; flex-direction: column; gap: 12px; max-width: 34rem; }
+.quote-choice {
+  display: flex; align-items: center; gap: 14px;
+  text-align: left; cursor: pointer;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.22);
+  color: #fff; padding: 15px 18px; border-radius: 8px;
+  font-size: 1.05rem; transition: background-color 150ms ease, border-color 150ms ease, transform 150ms ease;
+}
+.quote-choice:hover { background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.5); }
+.quote-choice.is-selected { background: rgba(194,57,70,0.16); border-color: #C23946; }
+.quote-choice-key {
+  flex: 0 0 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(255,255,255,0.35); border-radius: 6px;
+  font-size: 0.82rem; font-weight: 700; color: rgba(255,255,255,0.7);
+}
+.quote-choice.is-selected .quote-choice-key { background: #C23946; border-color: #C23946; color: #fff; }
+
+.quote-actions { display: flex; align-items: center; gap: 16px; margin-top: 30px; flex-wrap: wrap; }
+.quote-next {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #C23946; color: #fff; border: 0; cursor: pointer;
+  font-family: 'Inter', sans-serif; font-weight: 600; font-size: 1rem;
+  padding: 14px 26px; border-radius: 4px;
+  transition: background-color 160ms ease;
+}
+.quote-next:hover { background: #A82F3B; }
+.quote-next svg { width: 16px; height: 16px; }
+.quote-hint { color: rgba(255,255,255,0.45); font-size: 0.85rem; }
+.quote-hint strong { color: rgba(255,255,255,0.75); font-weight: 600; }
+.quote-back {
+  appearance: none; background: transparent; border: 0; cursor: pointer;
+  color: rgba(255,255,255,0.6); font-size: 0.9rem; padding: 6px 0;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.quote-back:hover { color: #fff; }
+.quote-back svg { width: 15px; height: 15px; }
+.quote-error { color: #ff8189; font-size: 0.9rem; margin-top: 12px; min-height: 1.1em; }
+
+/* Review + success */
+.quote-review { display: grid; gap: 10px; max-width: 40rem; margin-bottom: 8px; }
+.quote-review-row {
+  display: grid; grid-template-columns: 150px minmax(0,1fr); gap: 14px;
+  padding: 12px 0; border-top: 1px solid rgba(255,255,255,0.12); align-items: baseline;
+}
+.quote-review-row:first-child { border-top: 0; }
+.quote-review-label { color: rgba(255,255,255,0.5); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+.quote-review-value { color: #fff; font-size: 1.02rem; }
+.quote-success-icon {
+  width: 64px; height: 64px; border-radius: 999px; background: rgba(194,57,70,0.18);
+  border: 1px solid #C23946; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;
+}
+.quote-success-icon svg { width: 30px; height: 30px; color: #C23946; }
+
+@media (max-width: 640px) {
+  .quote-review-row { grid-template-columns: minmax(0,1fr); gap: 2px; }
+  .quote-stage { align-items: flex-start; padding-top: 20px; }
+}
